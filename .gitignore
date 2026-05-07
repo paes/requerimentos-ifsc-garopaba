@@ -1,0 +1,14 @@
+# Arquivos Temporarios e Uploads
+public/uploads/*
+!public/uploads/.gitkeep
+public/temp/*
+!public/temp/.gitkeep
+
+# Dependencias e Cache (caso use composer futuramente)
+vendor/
+node_modules/
+
+# Logs e arquivos de sistema
+*.log
+.DS_Store
+Thumbs.db
