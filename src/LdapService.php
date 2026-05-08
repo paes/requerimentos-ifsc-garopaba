@@ -7,11 +7,12 @@
 
 class LdapService
 {
-    private $host = "ldap.canoinhas.ifsc.edu.br";
+    // TODO: preencher com os dados do servidor LDAP do campus Garopaba (fornecido pela DTIC/CTIC)
+    private $host = "TODO_LDAP_HOST_GAROPABA";
     private $port = 389;
     private $baseDns = [
-        "ou=Outros_Canoinhas,ou=Usuarios,dc=cefetsc,dc=edu,dc=br", // Primeira prioridade
-        "ou=Canoinhas,ou=Usuarios,dc=cefetsc,dc=edu,dc=br"        // Segunda prioridade
+        "TODO_BASE_DN_GAROPABA_1", // Primeira prioridade — ex: ou=Garopaba,ou=Usuarios,dc=cefetsc,dc=edu,dc=br
+        "TODO_BASE_DN_GAROPABA_2"  // Segunda prioridade (se houver OU alternativa)
     ];
     private $conn;
 

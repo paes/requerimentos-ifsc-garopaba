@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Para mais detalhes, acesse:</p>
                 <p><a href='" . BASE_URL . "/check_status.php' style='color: #1CBB9B; font-weight: bold;'>Consultar Protocolo</a></p>
                 <br>
-                <p>Atenciosamente,<br>IFSC Câmpus Canoinhas</p>
+                <p>Atenciosamente,<br>IFSC Câmpus Garopaba</p>
             ";
             $emailService->send($request['student_email'], $request['student_name'], $subject, $body, false);
             $emailService->triggerBackgroundProcess();
@@ -239,7 +239,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Para mais detalhes, acesse:</p>
                 <p><a href='" . BASE_URL . "/check_status.php' style='color: #1CBB9B; font-weight: bold;'>Consultar Protocolo</a></p>
                 <br>
-                <p>Atenciosamente,<br>IFSC Câmpus Canoinhas</p>
+                <p>Atenciosamente,<br>IFSC Câmpus Garopaba</p>
             ";
             $emailService->send($request['student_email'], $request['student_name'], $subject, $body, false);
             $emailService->triggerBackgroundProcess();

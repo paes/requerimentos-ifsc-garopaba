@@ -145,7 +145,7 @@ try {
         <p>Você pode acompanhar o status da sua solicitação clicando no link abaixo:</p>
         <p><a href='" . BASE_URL . "/check_status.php' style='color: #1CBB9B; font-weight: bold;'>Acompanhar Solicitação</a></p>
         <br>
-        <p>Atenciosamente,<br>IFSC Câmpus Canoinhas</p>
+        <p>Atenciosamente,<br>IFSC Câmpus Garopaba</p>
     ";
 
     $emailService->send($studentEmail, $studentName, $subject, $body, false);

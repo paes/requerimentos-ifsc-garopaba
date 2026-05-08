@@ -8,14 +8,16 @@
 // Se rodando em localhost/127.0.0.1 e NAO no caminho especifico de producao, assume raiz
 // Ajuste essa logica se voce tiver uma configuracao local diferente
 
-$isProduction = strpos($_SERVER['HTTP_HOST'], 'sites.canoinhas.ifsc.edu.br') !== false;
+// TODO: substituir pela URL de produção de Garopaba após implantação no servidor
+$isProduction = strpos($_SERVER['HTTP_HOST'], 'TODO_HOST_GAROPABA') !== false;
 
-// Chaves do Cloudflare Turnstile
-define('TURNSTILE_SITE_KEY', '0x4AAAAAACGFmVmXjtW4uAwx');
-define('TURNSTILE_SECRET_KEY', '0x4AAAAAACGFmf_S0rEwxGs__uhlfaKt5Vg');
+// TODO: gerar novas chaves Cloudflare Turnstile para o domínio de Garopaba em https://dash.cloudflare.com
+define('TURNSTILE_SITE_KEY', 'TODO_TURNSTILE_SITE_KEY');
+define('TURNSTILE_SECRET_KEY', 'TODO_TURNSTILE_SECRET_KEY');
 
 if ($isProduction) {
-    define('BASE_URL', 'https://sites.canoinhas.ifsc.edu.br/requerimentos');
+    // TODO: substituir pela URL real do campus Garopaba
+    define('BASE_URL', 'https://TODO_HOST_GAROPABA/requerimentos');
     define('ENABLE_TURNSTILE', true);
     define('ENABLE_EMAILS', true);
 } else {
