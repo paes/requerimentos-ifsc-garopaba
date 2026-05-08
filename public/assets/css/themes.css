@@ -154,6 +154,87 @@
 }
 
 /* ==============================
+   IFSC THEME — override cores hardcoded #1CBB9B
+   ============================== */
+
+[data-theme="ifsc"] .bg-\[\#1CBB9B\] {
+  background-color: var(--primary) !important;
+}
+[data-theme="ifsc"] .text-\[\#1CBB9B\] {
+  color: var(--primary) !important;
+}
+[data-theme="ifsc"] .border-\[\#1CBB9B\],
+[data-theme="ifsc"] .border-\[\#1CBB9B\]\/10,
+[data-theme="ifsc"] .border-\[\#1CBB9B\]\/20 {
+  border-color: var(--primary) !important;
+}
+[data-theme="ifsc"] .hover\:bg-\[\#169C80\]:hover,
+[data-theme="ifsc"] .hover\:bg-\[\#1CBB9B\]:hover {
+  background-color: var(--primary-dark) !important;
+}
+[data-theme="ifsc"] .hover\:text-\[\#169C80\]:hover {
+  color: var(--primary-dark) !important;
+}
+[data-theme="ifsc"] .hover\:border-\[\#1CBB9B\]:hover {
+  border-color: var(--primary) !important;
+}
+[data-theme="ifsc"] .focus\:ring-\[\#1CBB9B\]:focus {
+  --tw-ring-color: var(--primary) !important;
+}
+[data-theme="ifsc"] .group:focus-within .group-focus-within\:text-\[\#1CBB9B\] {
+  color: var(--primary) !important;
+}
+[data-theme="ifsc"] .type-card.selected,
+[data-theme="ifsc"] .type-card:hover {
+  border-color: var(--primary) !important;
+}
+
+/* ==============================
+   NOTURNO — formulário público (.glass, type-card, step dots)
+   ============================== */
+
+[data-theme="noturno"] .glass {
+  background: var(--surface) !important;
+}
+[data-theme="noturno"] .type-card {
+  background-color: var(--surface-2) !important;
+  border-color: var(--border) !important;
+}
+[data-theme="noturno"] .type-card:hover,
+[data-theme="noturno"] .type-card.selected {
+  background-color: var(--surface) !important;
+}
+
+/* Pontos inativos da barra de progresso */
+[data-theme="noturno"] #step-dot-2,
+[data-theme="noturno"] #step-dot-3 {
+  background-color: var(--surface-2) !important;
+  border-color: var(--border) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Linha de fundo da barra de progresso */
+[data-theme="noturno"] .bg-gray-200 {
+  background-color: var(--border) !important;
+}
+
+/* Hover states do dark mode */
+[data-theme="noturno"] .hover\:bg-gray-50:hover {
+  background-color: var(--surface-hover) !important;
+}
+[data-theme="noturno"] .hover\:bg-gray-100:hover {
+  background-color: var(--surface-hover) !important;
+}
+[data-theme="noturno"] .hover\:text-gray-900:hover {
+  color: var(--text) !important;
+}
+
+/* Seções de upload/anexo */
+[data-theme="noturno"] .border-dashed {
+  border-color: var(--border) !important;
+}
+
+/* ==============================
    BOTÕES DE TEMA
    ============================== */
 
