@@ -70,8 +70,10 @@
 }
 
 /* Sidebar active state (usa classes brand- do Tailwind) */
-[data-theme] .bg-brand-DEFAULT\/10,
-[data-theme] [class*="bg-brand-DEFAULT"] {
+[data-theme] .bg-brand-DEFAULT {
+  background-color: var(--primary) !important;
+}
+[data-theme] .bg-brand-DEFAULT\/10 {
   background-color: color-mix(in srgb, var(--primary) 12%, transparent) !important;
 }
 [data-theme] .text-brand-DEFAULT {
@@ -238,6 +240,16 @@
    NOTURNO — área administrativa
    ============================== */
 
+/* Header escuro no dark mode */
+[data-theme="noturno"] .theme-header {
+  background-color: #0f1e1a !important;
+}
+
+/* bg-gray-50/80 (variante estática) */
+[data-theme="noturno"] .bg-gray-50\/80 {
+  background-color: var(--surface-2) !important;
+}
+
 /* Cabeçalho de tabela (usa bg-gray-50/50 com transparência) */
 [data-theme="noturno"] .bg-gray-50\/50 {
   background-color: var(--surface-2) !important;
@@ -258,17 +270,44 @@
   color: var(--primary) !important;
 }
 
-/* brand-light/10 (ícone do dashboard) → mais visível no dark */
+/* brand-light/* → teal semitransparente (ícones, avatares, badges concluído) */
 [data-theme="noturno"] .bg-brand-light\/10 {
   background-color: color-mix(in srgb, var(--primary) 15%, transparent) !important;
+}
+[data-theme="noturno"] .bg-brand-light\/20 {
+  background-color: color-mix(in srgb, var(--primary) 22%, transparent) !important;
+}
+[data-theme="noturno"] .hover\:bg-brand-light\/10:hover {
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent) !important;
+}
+[data-theme="noturno"] .hover\:bg-brand-light\/20:hover {
+  background-color: color-mix(in srgb, var(--primary) 22%, transparent) !important;
+}
+
+/* Bordas brand no dark */
+[data-theme="noturno"] .border-brand-light\/30,
+[data-theme="noturno"] .hover\:border-brand-light\/30:hover,
+[data-theme="noturno"] .hover\:border-brand-light\/50:hover,
+[data-theme="noturno"] .hover\:border-brand-DEFAULT\/50:hover {
+  border-color: rgba(28, 187, 155, 0.40) !important;
 }
 
 /* ── Badges de status: amarelo ─────────────────── */
 [data-theme="noturno"] .bg-yellow-50 {
   background-color: rgba(161, 98, 7, 0.20) !important;
 }
-[data-theme="noturno"] .text-yellow-600 {
+[data-theme="noturno"] .bg-yellow-100 {
+  background-color: rgba(161, 98, 7, 0.25) !important;
+}
+[data-theme="noturno"] .text-yellow-600,
+[data-theme="noturno"] .text-yellow-700 {
   color: #fbbf24 !important;
+}
+[data-theme="noturno"] .hover\:text-yellow-700:hover {
+  color: #fbbf24 !important;
+}
+[data-theme="noturno"] .border-yellow-100 {
+  border-color: rgba(202, 138, 4, 0.25) !important;
 }
 [data-theme="noturno"] .border-yellow-200 {
   border-color: rgba(202, 138, 4, 0.35) !important;
@@ -281,8 +320,10 @@
 [data-theme="noturno"] .bg-blue-50 {
   background-color: rgba(37, 99, 235, 0.15) !important;
 }
+[data-theme="noturno"] .text-blue-700,
 [data-theme="noturno"] .text-blue-600,
-[data-theme="noturno"] .text-blue-500 {
+[data-theme="noturno"] .text-blue-500,
+[data-theme="noturno"] .text-blue-400 {
   color: #60a5fa !important;
 }
 [data-theme="noturno"] .border-blue-100 {
@@ -290,6 +331,9 @@
 }
 [data-theme="noturno"] .hover\:bg-blue-50:hover {
   background-color: rgba(37, 99, 235, 0.15) !important;
+}
+[data-theme="noturno"] .hover\:text-blue-600:hover {
+  color: #60a5fa !important;
 }
 
 /* ── Badges de status: verde ───────────────────── */
@@ -299,10 +343,16 @@
 [data-theme="noturno"] .bg-green-100 {
   background-color: rgba(22, 163, 74, 0.20) !important;
 }
+[data-theme="noturno"] .bg-green-200 {
+  background-color: rgba(74, 222, 128, 0.30) !important;
+}
 [data-theme="noturno"] .text-green-800,
 [data-theme="noturno"] .text-green-700,
 [data-theme="noturno"] .text-green-600 {
   color: #4ade80 !important;
+}
+[data-theme="noturno"] .border-green-100 {
+  border-color: rgba(22, 163, 74, 0.25) !important;
 }
 [data-theme="noturno"] .border-green-200 {
   border-color: rgba(22, 163, 74, 0.30) !important;
@@ -317,8 +367,16 @@
 }
 [data-theme="noturno"] .text-red-700,
 [data-theme="noturno"] .text-red-600,
-[data-theme="noturno"] .text-red-500 {
+[data-theme="noturno"] .text-red-500,
+[data-theme="noturno"] .text-red-400 {
   color: #f87171 !important;
+}
+[data-theme="noturno"] .hover\:text-red-600:hover,
+[data-theme="noturno"] .hover\:text-red-500:hover {
+  color: #f87171 !important;
+}
+[data-theme="noturno"] .border-red-100 {
+  border-color: rgba(220, 38, 38, 0.25) !important;
 }
 [data-theme="noturno"] .border-red-200 {
   border-color: rgba(220, 38, 38, 0.30) !important;
