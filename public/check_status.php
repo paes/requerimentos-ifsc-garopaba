@@ -64,50 +64,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html lang="pt-BR"><head>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('req_theme') || 'default')</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultar Protocolo - IFSC</title>
-
     <?php if (ENABLE_TURNSTILE): ?>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <?php endif; ?>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            light: '#34D399', // Emerald 400
-                            DEFAULT: '#10B981', // Emerald 500
-                            dark: '#059669', // Emerald 600
-                            darker: '#064E3B', // Emerald 900
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/themes.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/tailwind.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="<?= BASE_URL ?>/assets/js/theme.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .glass {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-        .gradient-bg {
-            background: #F2F4F8;
-        }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .gradient-bg { background: #F2F4F8; }
     </style>
 </head>
 <body class="gradient-bg min-h-screen flex flex-col text-gray-800">
 
-    <header class="bg-[#1CBB9B] text-white shadow-lg">
+    <header class="theme-header text-white shadow-lg">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-4">
                 <img src="<?= BASE_URL ?>/assets/img/logob.png" alt="IFSC Logo" class="h-10 brightness-0 invert opacity-90 hover:opacity-100 transition-opacity">
@@ -116,10 +93,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Sistema de Requerimentos</p>
                 </div>
             </div>
-            <a href="<?= BASE_URL ?>/index.php" class="text-sm font-medium text-white/90 hover:text-white transition-colors flex items-center">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                Voltar ao Início
-            </a>
+            <div class="flex items-center space-x-4">
+                <div class="theme-switcher">
+                    <button class="theme-btn" data-t="default" title="Esmeralda">💎</button>
+                    <button class="theme-btn" data-t="ifsc"    title="IFSC">🍃</button>
+                    <button class="theme-btn" data-t="noturno" title="Noturno">🌙</button>
+                </div>
+                <a href="<?= BASE_URL ?>/index.php" class="text-sm font-medium text-white/90 hover:text-white transition-colors flex items-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Voltar ao Início
+                </a>
+            </div>
         </div>
     </header>
 

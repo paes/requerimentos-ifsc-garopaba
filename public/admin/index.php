@@ -57,47 +57,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
+<html lang="pt-BR"><head>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('req_theme') || 'default')</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Administrativo - IFSC</title>
     <title>Login Administrativo - IFSC</title>
     <?php if (ENABLE_TURNSTILE): ?>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <?php endif; ?>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            light: '#4CD9B0',
-                            DEFAULT: '#1CBB9B', // Mint Green
-                            dark: '#169C80',
-                            darker: '#0E6B56',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/themes.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/tailwind.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="<?= BASE_URL ?>/assets/img/favicon.ico" type="image/x-icon">
+    <script src="<?= BASE_URL ?>/assets/js/theme.js"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .gradient-bg {
-            background: #F2F4F8;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: #F2F4F8; }
     </style>
 </head>
 
@@ -151,6 +126,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="mt-8 text-center">
             <a href="<?= BASE_URL ?>/index.php" class="text-sm text-gray-400 hover:text-brand-DEFAULT transition-colors">Voltar para
                 o site</a>
+        </div>
+        <div class="mt-4 flex justify-center">
+            <div class="theme-switcher">
+                <button class="theme-btn text-gray-400" data-t="default" title="Esmeralda">💎</button>
+                <button class="theme-btn text-gray-400" data-t="ifsc"    title="IFSC">🍃</button>
+                <button class="theme-btn text-gray-400" data-t="noturno" title="Noturno">🌙</button>
+            </div>
         </div>
     </div>
 

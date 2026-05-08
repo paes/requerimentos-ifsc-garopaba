@@ -14,23 +14,23 @@ if (!isset($user) && class_exists('Auth')) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
+<html lang="pt-BR"><head>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('req_theme') || 'default')</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= isset($pageTitle) ? $pageTitle . ' - IFSC' : 'IFSC Admin' ?></title>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/themes.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/tailwind.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="<?= BASE_URL ?>/assets/img/favicon.ico" type="image/x-icon">
-
+    <script src="<?= BASE_URL ?>/assets/js/theme.js"></script>
 </head>
 
 <body class="bg-[#F2F4F8] flex h-screen overflow-hidden">
 
     <!-- Top Navigation Bar -->
     <header
-        class="fixed top-0 left-0 right-0 py-1 bg-[#1CBB9B] shadow-md z-50 flex items-center justify-between px-6 transition-all duration-300 print:hidden">
+        class="fixed top-0 left-0 right-0 py-1 theme-header shadow-md z-50 flex items-center justify-between px-6 transition-all duration-300 print:hidden">
         <!-- Logo Area -->
         <div class="flex items-center w-64">
             <!-- Mobile Menu Button -->
@@ -49,7 +49,13 @@ if (!isset($user) && class_exists('Auth')) {
 
         <!-- Right Side Actions -->
         <div class="flex items-center gap-4">
-            <!-- User Profile Dropdown (Simplified) -->
+            <!-- Theme Switcher -->
+            <div class="theme-switcher">
+                <button class="theme-btn" data-t="default" title="Esmeralda">💎</button>
+                <button class="theme-btn" data-t="ifsc"    title="IFSC">🍃</button>
+                <button class="theme-btn" data-t="noturno" title="Noturno">🌙</button>
+            </div>
+            <!-- User Profile -->
             <div class="flex items-center gap-3 text-white">
                 <div class="text-right hidden sm:block">
                     <p class="text-sm font-bold leading-tight"><?= htmlspecialchars($user['user_name'] ?? 'Usuário') ?>

@@ -1,0 +1,184 @@
+/* ==============================
+   TEMAS — requisicoes_ifsc_gpb
+   ============================== */
+
+:root {
+  --primary:       #1CBB9B;
+  --primary-dark:  #169C80;
+  --primary-light: #ccfaf2;
+  --danger:        #dc2626;
+  --bg:            #F2F4F8;
+  --surface:       #ffffff;
+  --surface-2:     #f9fafb;
+  --surface-hover: #f3f4f6;
+  --border:        #e5e7eb;
+  --text:          #333333;
+  --text-2:        #6b7280;
+  --text-muted:    #9ca3af;
+  --shadow:        0 2px 8px rgba(0,0,0,0.07);
+  --focus-ring:    rgba(28,187,155,0.25);
+}
+
+[data-theme="ifsc"] {
+  --primary:       #7aba05;
+  --primary-dark:  #5e8f03;
+  --primary-light: #dcfce7;
+  --danger:        #d61a0c;
+  --focus-ring:    rgba(122,186,5,0.20);
+}
+
+[data-theme="noturno"] {
+  --primary:       #1CBB9B;
+  --primary-dark:  #169C80;
+  --primary-light: #0d3d32;
+  --danger:        #ef4444;
+  --bg:            #0f172a;
+  --surface:       #1e293b;
+  --surface-2:     #263246;
+  --surface-hover: #2d3a4f;
+  --border:        #334155;
+  --text:          #f1f5f9;
+  --text-2:        #94a3b8;
+  --text-muted:    #64748b;
+  --shadow:        0 2px 8px rgba(0,0,0,0.35);
+  --focus-ring:    rgba(28,187,155,0.30);
+}
+
+/* ==============================
+   CLASSES SEMÂNTICAS DE TEMA
+   ============================== */
+
+.theme-header {
+  background-color: var(--primary) !important;
+}
+
+.theme-btn-primary {
+  background-color: var(--primary) !important;
+  color: #fff !important;
+}
+.theme-btn-primary:hover {
+  background-color: var(--primary-dark) !important;
+}
+
+.theme-text-primary {
+  color: var(--primary) !important;
+}
+
+.theme-focus:focus {
+  --tw-ring-color: var(--focus-ring) !important;
+  border-color: var(--primary) !important;
+}
+
+/* Sidebar active state (usa classes brand- do Tailwind) */
+[data-theme] .bg-brand-DEFAULT\/10,
+[data-theme] [class*="bg-brand-DEFAULT"] {
+  background-color: color-mix(in srgb, var(--primary) 12%, transparent) !important;
+}
+[data-theme] .text-brand-DEFAULT {
+  color: var(--primary) !important;
+}
+
+/* ==============================
+   TEMA NOTURNO — overrides Tailwind
+   ============================== */
+
+[data-theme="noturno"] body,
+[data-theme="noturno"] .gradient-bg {
+  background-color: var(--bg) !important;
+}
+
+/* Superfícies brancas / cards */
+[data-theme="noturno"] .bg-white {
+  background-color: var(--surface) !important;
+}
+[data-theme="noturno"] .bg-gray-50 {
+  background-color: var(--surface-2) !important;
+}
+[data-theme="noturno"] .bg-gray-100 {
+  background-color: var(--surface-hover) !important;
+}
+
+/* Texto */
+[data-theme="noturno"] .text-gray-900,
+[data-theme="noturno"] .text-gray-800 {
+  color: var(--text) !important;
+}
+[data-theme="noturno"] .text-gray-700,
+[data-theme="noturno"] .text-gray-600 {
+  color: var(--text-2) !important;
+}
+[data-theme="noturno"] .text-gray-500,
+[data-theme="noturno"] .text-gray-400 {
+  color: var(--text-muted) !important;
+}
+
+/* Bordas */
+[data-theme="noturno"] .border-gray-100,
+[data-theme="noturno"] .border-gray-200,
+[data-theme="noturno"] .border-gray-50 {
+  border-color: var(--border) !important;
+}
+[data-theme="noturno"] .divide-gray-100 > * + * {
+  border-color: var(--border) !important;
+}
+
+/* Sombras */
+[data-theme="noturno"] .shadow-sm,
+[data-theme="noturno"] .shadow-md,
+[data-theme="noturno"] .shadow-xl {
+  box-shadow: var(--shadow) !important;
+}
+
+/* Inputs e formulários */
+[data-theme="noturno"] input,
+[data-theme="noturno"] select,
+[data-theme="noturno"] textarea {
+  background-color: var(--surface-2) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+[data-theme="noturno"] input::placeholder,
+[data-theme="noturno"] textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Badges e tags */
+[data-theme="noturno"] .bg-gray-100.text-gray-600 {
+  background-color: var(--surface-hover) !important;
+  color: var(--text-2) !important;
+}
+
+/* Background hardcoded do layout admin */
+[data-theme="noturno"] .bg-\[#F2F4F8\] {
+  background-color: var(--bg) !important;
+}
+
+/* ==============================
+   BOTÕES DE TEMA
+   ============================== */
+
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 3px 5px;
+  border-radius: 6px;
+  opacity: 0.65;
+  transition: opacity 0.15s, background 0.15s;
+  line-height: 1;
+}
+.theme-btn:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.15);
+}
+.theme-btn.active {
+  opacity: 1;
+  background: rgba(255,255,255,0.25);
+}

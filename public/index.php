@@ -30,25 +30,25 @@ $typesStmt->execute();
 $requestTypes = $typesStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
+<html lang="pt-BR"><head>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('req_theme') || 'default')</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IFSC - Sistema de Requerimentos</title>
     <?php if (ENABLE_TURNSTILE): ?>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <?php endif; ?>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/themes.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/tailwind.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="<?= BASE_URL ?>/assets/img/favicon.ico" type="image/x-icon">
-
+    <script src="<?= BASE_URL ?>/assets/js/theme.js"></script>
 </head>
 
 <body class="gradient-bg min-h-screen text-gray-800">
 
     <!-- Header -->
-    <header class="bg-[#1CBB9B] text-white shadow-lg">
+    <header class="theme-header text-white shadow-lg">
         <div class="container mx-auto px-6 py-2 flex items-center justify-between">
             <div class="flex items-center space-x-4">
                 <img src="<?= BASE_URL ?>/assets/img/logob.png" alt="IFSC Logo"
@@ -58,7 +58,12 @@ $requestTypes = $typesStmt->fetchAll(PDO::FETCH_ASSOC);
                     <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Sistema de Requerimentos</p>
                 </div>
             </div>
-            <div class="flex items-center space-x-6">
+            <div class="flex items-center space-x-4">
+                <div class="theme-switcher">
+                    <button class="theme-btn" data-t="default" title="Esmeralda">💎</button>
+                    <button class="theme-btn" data-t="ifsc"    title="IFSC">🍃</button>
+                    <button class="theme-btn" data-t="noturno" title="Noturno">🌙</button>
+                </div>
                 <a href="<?= BASE_URL ?>/check_status.php"
                     class="text-sm font-medium text-white/90 hover:text-white transition-colors">Consultar Protocolo</a>
                 <a href="<?= BASE_URL ?>/admin/index.php"
