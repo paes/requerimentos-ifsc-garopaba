@@ -562,7 +562,7 @@ $requestTypes = $typesStmt->fetchAll(PDO::FETCH_ASSOC);
             <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="IFSC Logo"
                 class="h-8 mx-auto mb-4 opacity-50 grayscale hover:grayscale-0 transition-all">
             <p class="text-sm text-gray-500">&copy; <?= date('Y') ?> Instituto Federal de Santa Catarina - Câmpus
-                Garopaba | Créditos: Prof. Eduardo Gomes</p>
+                Garopaba | Desenvolvido pelo Prof. Eduardo Gomes (Câmpus Canoinhas) e gentilmente cedido ao Câmpus Garopaba</p>
         </div>
     </footer>
 

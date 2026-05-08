@@ -8,8 +8,8 @@
 class Database {
     private $host = 'localhost';
     private $db_name = 'ifsc_requests';
-    private $username = 'root';
-    private $password = 'suporteA1012';
+    private $username = 'ifsc';
+    private $password = 'ifsc1234';
     public $conn;
 
     public function getConnection() {

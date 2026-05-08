@@ -21,8 +21,7 @@ if ($isProduction) {
     define('ENABLE_TURNSTILE', true);
     define('ENABLE_EMAILS', true);
 } else {
-    // Para desenvolvimento local (ajuste se rodar dentro de uma subpasta localmente) senha dev123
-    define('BASE_URL', '');
+    define('BASE_URL', '/requerimentos');
     define('ENABLE_TURNSTILE', false);
     define('ENABLE_EMAILS', false);
 }
