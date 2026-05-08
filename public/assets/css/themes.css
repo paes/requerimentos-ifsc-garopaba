@@ -235,6 +235,112 @@
 }
 
 /* ==============================
+   NOTURNO — área administrativa
+   ============================== */
+
+/* Cabeçalho de tabela (usa bg-gray-50/50 com transparência) */
+[data-theme="noturno"] .bg-gray-50\/50 {
+  background-color: var(--surface-2) !important;
+}
+
+/* Hover de linhas de tabela */
+[data-theme="noturno"] .hover\:bg-gray-50\/80:hover {
+  background-color: var(--surface-hover) !important;
+}
+
+/* Borda gray-300 em formulários admin */
+[data-theme="noturno"] .border-gray-300 {
+  border-color: var(--border) !important;
+}
+
+/* brand-dark = #169C80 → usa primary no dark */
+[data-theme="noturno"] .text-brand-dark {
+  color: var(--primary) !important;
+}
+
+/* brand-light/10 (ícone do dashboard) → mais visível no dark */
+[data-theme="noturno"] .bg-brand-light\/10 {
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent) !important;
+}
+
+/* ── Badges de status: amarelo ─────────────────── */
+[data-theme="noturno"] .bg-yellow-50 {
+  background-color: rgba(161, 98, 7, 0.20) !important;
+}
+[data-theme="noturno"] .text-yellow-600 {
+  color: #fbbf24 !important;
+}
+[data-theme="noturno"] .border-yellow-200 {
+  border-color: rgba(202, 138, 4, 0.35) !important;
+}
+[data-theme="noturno"] .hover\:bg-yellow-100:hover {
+  background-color: rgba(161, 98, 7, 0.25) !important;
+}
+
+/* ── Badges de status: azul ────────────────────── */
+[data-theme="noturno"] .bg-blue-50 {
+  background-color: rgba(37, 99, 235, 0.15) !important;
+}
+[data-theme="noturno"] .text-blue-600,
+[data-theme="noturno"] .text-blue-500 {
+  color: #60a5fa !important;
+}
+[data-theme="noturno"] .border-blue-100 {
+  border-color: rgba(59, 130, 246, 0.30) !important;
+}
+[data-theme="noturno"] .hover\:bg-blue-50:hover {
+  background-color: rgba(37, 99, 235, 0.15) !important;
+}
+
+/* ── Badges de status: verde ───────────────────── */
+[data-theme="noturno"] .bg-green-50 {
+  background-color: rgba(22, 163, 74, 0.15) !important;
+}
+[data-theme="noturno"] .bg-green-100 {
+  background-color: rgba(22, 163, 74, 0.20) !important;
+}
+[data-theme="noturno"] .text-green-800,
+[data-theme="noturno"] .text-green-700,
+[data-theme="noturno"] .text-green-600 {
+  color: #4ade80 !important;
+}
+[data-theme="noturno"] .border-green-200 {
+  border-color: rgba(22, 163, 74, 0.30) !important;
+}
+
+/* ── Badges de status: vermelho ────────────────── */
+[data-theme="noturno"] .bg-red-50 {
+  background-color: rgba(220, 38, 38, 0.15) !important;
+}
+[data-theme="noturno"] .bg-red-100 {
+  background-color: rgba(220, 38, 38, 0.20) !important;
+}
+[data-theme="noturno"] .text-red-700,
+[data-theme="noturno"] .text-red-600,
+[data-theme="noturno"] .text-red-500 {
+  color: #f87171 !important;
+}
+[data-theme="noturno"] .border-red-200 {
+  border-color: rgba(220, 38, 38, 0.30) !important;
+}
+[data-theme="noturno"] .hover\:bg-red-50:hover {
+  background-color: rgba(220, 38, 38, 0.15) !important;
+}
+
+/* Teal com opacidade (request_details) */
+[data-theme="noturno"] .bg-\[\#1CBB9B\]\/5 {
+  background-color: rgba(28, 187, 155, 0.12) !important;
+}
+[data-theme="noturno"] .border-\[\#1CBB9B\]\/10 {
+  border-color: rgba(28, 187, 155, 0.25) !important;
+}
+
+/* Anel branco ao redor dos ícones de timeline */
+[data-theme="noturno"] .ring-white {
+  --tw-ring-color: var(--surface) !important;
+}
+
+/* ==============================
    BOTÕES DE TEMA
    ============================== */
 
