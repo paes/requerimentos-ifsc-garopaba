@@ -195,26 +195,60 @@ try {
 
     // 5. Success Response & Email
     require_once '../src/EmailService.php';
+    require_once '../src/EmailTemplate.php';
     $emailService = new EmailService($conn);
 
     $safeStudentName = htmlspecialchars($studentName);
-    $safeProtocol = htmlspecialchars($protocolCode);
+    $safeProtocol    = htmlspecialchars($protocolCode);
 
-    $subject = "Recebemos sua solicitação - Protocolo: $safeProtocol";
+    // Busca nome do curso e do tipo para usar nos e-mails
+    $courseNameRow = $conn->prepare("SELECT name FROM courses WHERE id = :id");
+    $courseNameRow->execute([':id' => $courseId]);
+    $safeCourseName = htmlspecialchars($courseNameRow->fetchColumn() ?: '');
+
+    $typeNameRow = $conn->prepare("SELECT name FROM request_types WHERE id = :id");
+    $typeNameRow->execute([':id' => $requestTypeId]);
+    $safeTypeName = htmlspecialchars($typeNameRow->fetchColumn() ?: '');
+
+    // --- E-mail de confirmação ao aluno ---
+    $subject = "Requerimento recebido — Protocolo $safeProtocol";
     $body = "
-        <h2>Olá, $safeStudentName!</h2>
-        <p>Sua solicitação foi recebida com sucesso.</p>
-        <p><strong>Protocolo:</strong> $safeProtocol</p>
-        <p><strong>Status:</strong> Pendente</p>
-        <p>Você pode acompanhar o status da sua solicitação clicando no link abaixo:</p>
-        <p><a href='" . BASE_URL . "/check_status.php' style='color: #1CBB9B; font-weight: bold;'>Acompanhar Solicitação</a></p>
-        <br>
-        <p>Atenciosamente,<br>IFSC Câmpus Garopaba</p>
+        <p>Olá, <strong>$safeStudentName</strong>!</p>
+        <p>Sua solicitação foi recebida com sucesso e será analisada em breve.</p>
+
+        <div style='background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:16px 20px;margin:20px 0;text-align:center;'>
+            <p style='margin:0;font-size:11px;color:#16a34a;font-weight:bold;text-transform:uppercase;letter-spacing:1px;'>Número de Protocolo</p>
+            <p style='margin:6px 0 0;font-size:22px;font-weight:bold;color:#15803d;font-family:monospace;letter-spacing:1px;'>$safeProtocol</p>
+            <p style='margin:6px 0 0;font-size:12px;color:#4b5563;'>Guarde este número para acompanhar sua solicitação</p>
+        </div>
+
+        <table style='width:100%;border-collapse:collapse;font-size:14px;'>
+            <tr style='border-bottom:1px solid #f3f4f6;'>
+                <td style='padding:8px 0;color:#6b7280;width:40%;'>Tipo de Requerimento</td>
+                <td style='padding:8px 0;font-weight:600;color:#111827;'>$safeTypeName</td>
+            </tr>
+            <tr style='border-bottom:1px solid #f3f4f6;'>
+                <td style='padding:8px 0;color:#6b7280;'>Curso</td>
+                <td style='padding:8px 0;font-weight:600;color:#111827;'>$safeCourseName</td>
+            </tr>
+            <tr>
+                <td style='padding:8px 0;color:#6b7280;'>Status</td>
+                <td style='padding:8px 0;'><span style='background:#fef3c7;color:#92400e;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;'>Em análise</span></td>
+            </tr>
+        </table>
+
+        <p style='margin-top:20px;'>Você receberá um novo e-mail assim que houver uma atualização. Se preferir, acompanhe pelo sistema:</p>
+
+        <div style='text-align:center;margin:24px 0;'>
+            <a href='" . BASE_URL . "/check_status.php'
+               style='background:#1CBB9B;color:#ffffff;padding:12px 32px;border-radius:6px;font-weight:bold;text-decoration:none;font-size:14px;display:inline-block;'>
+                Acompanhar Solicitação
+            </a>
+        </div>
     ";
+    $emailService->send($studentEmail, $studentName, $subject, EmailTemplate::wrap($body), false);
 
-    $emailService->send($studentEmail, $studentName, $subject, $body, false);
-
-    // E-mail para os Admins
+    // --- E-mail de notificação ao responsável pela análise (step 1 do workflow) ---
     $stepStmt = $conn->prepare("SELECT role_id FROM workflow_steps WHERE request_type_id = :type AND step_order = 1");
     $stepStmt->execute([':type' => $requestTypeId]);
     $stepRole = $stepStmt->fetchColumn();
@@ -232,22 +266,43 @@ try {
             $usersStmt->execute([':role' => $stepRole]);
         }
 
-        $typeNameStmt = $conn->prepare("SELECT name FROM request_types WHERE id = :id");
-        $typeNameStmt->execute([':id' => $requestTypeId]);
-        $safeTypeName = htmlspecialchars($typeNameStmt->fetchColumn());
-
-        $adminSubject = "Nova Solicitação Pendente - Protocolo: $safeProtocol";
-        $adminBody = "
-            <h2>Nova Solicitação Recebida</h2>
-            <p><strong>Aluno:</strong> $safeStudentName</p>
-            <p><strong>Protocolo:</strong> $safeProtocol</p>
-            <p><strong>Tipo de Requerimento:</strong> $safeTypeName</p>
-            <p>Acesse o sistema administrativo para analisar:</p>
-            <p><a href='" . BASE_URL . "/admin/request_details.php?id=$requestId' style='color: #1CBB9B; font-weight: bold;'>Visualizar Requerimento</a></p>
-        ";
+        $adminSubject = "Nova solicitação aguardando análise — $safeProtocol";
 
         foreach ($usersStmt->fetchAll(PDO::FETCH_ASSOC) as $recipient) {
-            $emailService->send($recipient['email'], $recipient['name'], $adminSubject, $adminBody, false);
+            $safeRecipientName = htmlspecialchars($recipient['name']);
+            $adminBody = "
+                <p>Olá, <strong>$safeRecipientName</strong>!</p>
+                <p>Uma nova solicitação foi registrada no sistema e aguarda sua análise.</p>
+
+                <div style='background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin:20px 0;'>
+                    <table style='width:100%;border-collapse:collapse;font-size:14px;'>
+                        <tr style='border-bottom:1px solid #e2e8f0;'>
+                            <td style='padding:8px 0;color:#6b7280;width:40%;'>Protocolo</td>
+                            <td style='padding:8px 0;font-weight:700;color:#111827;font-family:monospace;'>$safeProtocol</td>
+                        </tr>
+                        <tr style='border-bottom:1px solid #e2e8f0;'>
+                            <td style='padding:8px 0;color:#6b7280;'>Aluno(a)</td>
+                            <td style='padding:8px 0;font-weight:600;color:#111827;'>$safeStudentName</td>
+                        </tr>
+                        <tr style='border-bottom:1px solid #e2e8f0;'>
+                            <td style='padding:8px 0;color:#6b7280;'>Tipo de Requerimento</td>
+                            <td style='padding:8px 0;font-weight:600;color:#111827;'>$safeTypeName</td>
+                        </tr>
+                        <tr>
+                            <td style='padding:8px 0;color:#6b7280;'>Curso</td>
+                            <td style='padding:8px 0;font-weight:600;color:#111827;'>$safeCourseName</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style='text-align:center;margin:24px 0;'>
+                    <a href='" . BASE_URL . "/admin/request_details.php?id=$requestId'
+                       style='background:#1CBB9B;color:#ffffff;padding:12px 32px;border-radius:6px;font-weight:bold;text-decoration:none;font-size:14px;display:inline-block;'>
+                        Analisar Requerimento
+                    </a>
+                </div>
+            ";
+            $emailService->send($recipient['email'], $recipient['name'], $adminSubject, EmailTemplate::wrap($adminBody), false);
         }
 
         $emailService->triggerBackgroundProcess();
