@@ -242,6 +242,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Atenciosamente,<br>IFSC Câmpus Garopaba</p>
             ";
             $emailService->send($request['student_email'], $request['student_name'], $subject, $body, false);
+
+            // Notifica docente(s) — apenas para 2ª Chamada
+            if ($request['request_type_id'] == 2) {
+                $extra2 = json_decode($request['extra_fields'] ?? '{}', true);
+                $teacherIds2 = array_filter((array)($extra2['selected_teachers'] ?? []), 'is_numeric');
+                $actionLabel = ($action === 'reject') ? 'indeferida' : 'deferida';
+
+                if (!empty($teacherIds2)) {
+                    $placeholders2 = implode(',', array_fill(0, count($teacherIds2), '?'));
+                    $tStmt2 = $conn->prepare("SELECT name, email FROM teachers WHERE id IN ($placeholders2) AND email IS NOT NULL AND email != ''");
+                    $tStmt2->execute(array_values($teacherIds2));
+                    foreach ($tStmt2->fetchAll(PDO::FETCH_ASSOC) as $tRow) {
+                        $tSubject = "2ª Chamada – Solicitação {$actionLabel} (Protocolo #{$request['protocol_code']})";
+                        $obsHtml = $observation ? '<p><strong>Observação do coordenador:</strong> ' . nl2br(htmlspecialchars($observation)) . '</p>' : '';
+                        $tBody = "
+                            <p>Prezado(a) <strong>{$tRow['name']}</strong>,</p>
+                            <p>A solicitação de <strong>Avaliação de 2ª Chamada</strong> do(a) aluno(a)
+                               <strong>{$request['student_name']}</strong> (Protocolo #{$request['protocol_code']})
+                               foi <strong>{$actionLabel}</strong> pela Coordenadoria de Curso.</p>
+                            {$obsHtml}
+                            <p>Este é um aviso automático do sistema de requerimentos do IFSC Câmpus Garopaba.</p>
+                        ";
+                        $emailService->send($tRow['email'], $tRow['name'], $tSubject, $tBody, false);
+                    }
+                }
+            }
+
             $emailService->triggerBackgroundProcess();
         }
 
@@ -421,6 +448,114 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </dl>
             </div>
+
+            <?php
+            $extraFields = json_decode($request['extra_fields'] ?? 'null', true);
+            $typeIdForExtra = intval($request['request_type_id']);
+
+            // Labels legíveis para cada chave
+            $extraLabels = [
+                'start_date'          => 'Data de Início',
+                'end_date'            => 'Data Final',
+                'selected_subjects'   => 'UCs Selecionadas',
+                'selected_teachers'   => 'Docentes',
+                'teacher_other_name'  => 'Outro Professor',
+                'also_justify_absence'=> 'Também justifica falta?',
+                'semesters_to_lock'   => 'Semestres a trancar',
+                'lock_reason'         => 'Motivo do Trancamento',
+                'cancel_reason'       => 'Motivo do Cancelamento',
+                'uc_isolated_names'   => 'UC(s)',
+                'uc_isolated_course'  => 'Curso que oferece',
+                'doc_type'            => 'Tipo de Documento',
+                'diploma_course_name' => 'Nome do Curso',
+                'graduation_year'     => 'Ano de Conclusão',
+                'validation_type'     => 'Tipo de Validação',
+                'uc_re_detail'        => 'Detalhes RE',
+                'uc_rs_detail'        => 'Detalhes RS',
+                'uc_eae_detail'       => 'Detalhes EAE',
+                'uc_special_names'    => 'UC(s) de interesse',
+                'uc_special_course'   => 'Curso que oferece',
+                'uc_changes'          => 'UCs a incluir/cancelar',
+                'enade_status'        => 'Situação ENADE',
+                'colacao_declaration' => 'Declaração aceita?',
+                'uc_cancel_reason'    => 'Motivo do Cancelamento',
+            ];
+
+            // Quais chaves mostrar por tipo
+            $extraFieldsByType = [
+                1  => ['start_date','end_date','selected_subjects'],
+                2  => ['selected_subjects','selected_teachers','teacher_other_name','also_justify_absence'],
+                4  => ['semesters_to_lock','lock_reason'],
+                5  => ['cancel_reason'],
+                7  => ['uc_isolated_names','uc_isolated_course'],
+                8  => ['doc_type','diploma_course_name','graduation_year'],
+                9  => ['validation_type','uc_re_detail','uc_rs_detail','uc_eae_detail'],
+                12 => ['uc_special_names','uc_special_course'],
+                14 => ['uc_changes'],
+                18 => ['enade_status','colacao_declaration'],
+                22 => ['selected_subjects','selected_teachers','teacher_other_name'],
+                25 => ['selected_subjects','uc_cancel_reason'],
+            ];
+
+            if (!empty($extraFields) && isset($extraFieldsByType[$typeIdForExtra])):
+                // Carrega nomes de subjects e teachers para lookup
+                $subjectNames = [];
+                $teacherNames = [];
+                $teacherEmails = [];
+                $subStmt = $conn->query("SELECT id, name FROM subjects");
+                foreach ($subStmt->fetchAll(PDO::FETCH_ASSOC) as $row) $subjectNames[$row['id']] = $row['name'];
+                $tchStmt = $conn->query("SELECT id, name, email FROM teachers");
+                foreach ($tchStmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+                    $teacherNames[$row['id']] = $row['name'];
+                    $teacherEmails[$row['id']] = $row['email'];
+                }
+
+                function renderExtraValue($key, $value, $subjectNames, $teacherNames, $teacherEmails = []) {
+                    if (is_bool($value)) return $value ? 'Sim' : 'Não';
+                    if ($key === 'selected_subjects' && is_array($value)) {
+                        $names = array_map(fn($id) => $subjectNames[$id] ?? "ID $id", $value);
+                        return implode(', ', $names) ?: '—';
+                    }
+                    if ($key === 'selected_teachers' && is_array($value)) {
+                        $parts = array_map(function($id) use ($teacherNames, $teacherEmails) {
+                            $name = htmlspecialchars($teacherNames[$id] ?? "ID $id");
+                            $hasEmail = !empty($teacherEmails[$id]);
+                            $badge = $hasEmail ? '' : ' <span class="text-xs text-amber-500 font-medium">(sem e-mail)</span>';
+                            return $name . $badge;
+                        }, $value);
+                        return $parts ? implode(', ', $parts) : '—';
+                    }
+                    if (is_array($value)) return implode(', ', $value) ?: '—';
+                    if ($value === '' || $value === null) return '—';
+                    return htmlspecialchars((string)$value);
+                }
+            ?>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-brand-DEFAULT" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    Informações do Requerimento
+                </h3>
+                <dl class="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
+                    <?php foreach ($extraFieldsByType[$typeIdForExtra] as $key):
+                        if (!array_key_exists($key, $extraFields)) continue;
+                        $val = $extraFields[$key];
+                        // Omite campos vazios/falsos pouco relevantes
+                        if (($val === '' || $val === null || $val === [] || $val === false) && $key !== 'colacao_declaration' && $key !== 'also_justify_absence') continue;
+                    ?>
+                        <div class="<?= in_array($key, ['uc_changes','uc_re_detail','uc_rs_detail','uc_eae_detail','uc_isolated_names','uc_special_names','uc_cancel_reason','selected_subjects','selected_teachers']) ? 'sm:col-span-2' : '' ?>">
+                            <dt class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">
+                                <?= $extraLabels[$key] ?? $key ?>
+                            </dt>
+                            <dd class="text-sm font-medium text-gray-800 bg-gray-50 px-3 py-2 rounded-lg border border-gray-100">
+                                <?= renderExtraValue($key, $val, $subjectNames, $teacherNames, $teacherEmails) ?>
+                            </dd>
+                        </div>
+                    <?php endforeach; ?>
+                </dl>
+            </div>
+            <?php endif; ?>
 
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                 <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center">

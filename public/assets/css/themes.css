@@ -20,11 +20,11 @@
 }
 
 [data-theme="ifsc"] {
-  --primary:       #7aba05;
-  --primary-dark:  #5e8f03;
+  --primary:       #32a041;
+  --primary-dark:  #288034;
   --primary-light: #dcfce7;
-  --danger:        #d61a0c;
-  --focus-ring:    rgba(122,186,5,0.20);
+  --danger:        #c8191e;
+  --focus-ring:    rgba(50,160,65,0.20);
 }
 
 [data-theme="noturno"] {

@@ -35,16 +35,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $information = $_POST['information'];
         $attention = $_POST['attention'];
         $active = isset($_POST['active']) ? 1 : 0;
+        $featured = isset($_POST['featured']) ? 1 : 0;
 
         try {
             if ($action === 'create') {
-                $stmt = $conn->prepare("INSERT INTO request_types (name, information, attention, active) VALUES (:name, :information, :attention, :active)");
-                $stmt->execute([':name' => $name, ':information' => $information, ':attention' => $attention, ':active' => $active]);
+                $stmt = $conn->prepare("INSERT INTO request_types (name, information, attention, active, featured) VALUES (:name, :information, :attention, :active, :featured)");
+                $stmt->execute([':name' => $name, ':information' => $information, ':attention' => $attention, ':active' => $active, ':featured' => $featured]);
                 $message = 'Tipo de requisição criado com sucesso!';
             } else {
                 $id = $_POST['id'];
-                $stmt = $conn->prepare("UPDATE request_types SET name = :name, information = :information, attention = :attention, active = :active WHERE id = :id");
-                $stmt->execute([':name' => $name, ':information' => $information, ':attention' => $attention, ':active' => $active, ':id' => $id]);
+                $stmt = $conn->prepare("UPDATE request_types SET name = :name, information = :information, attention = :attention, active = :active, featured = :featured WHERE id = :id");
+                $stmt->execute([':name' => $name, ':information' => $information, ':attention' => $attention, ':active' => $active, ':featured' => $featured, ':id' => $id]);
                 $message = 'Tipo de requisição atualizado com sucesso!';
             }
         } catch (PDOException $e) {
@@ -142,10 +143,16 @@ $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <div class="flex items-center justify-between pt-2">
-                <label class="flex items-center cursor-pointer">
-                    <input type="checkbox" name="active" value="1" <?= (!isset($editingType) || $editingType['active']) ? 'checked' : '' ?> class="h-4 w-4 text-[#1CBB9B] focus:ring-[#1CBB9B] border-gray-300 rounded">
-                    <span class="ml-2 text-sm text-gray-700">Ativo (visível no formulário)</span>
-                </label>
+                <div class="flex items-center gap-6">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" name="active" value="1" <?= (!isset($editingType) || $editingType['active']) ? 'checked' : '' ?> class="h-4 w-4 text-[#1CBB9B] focus:ring-[#1CBB9B] border-gray-300 rounded">
+                        <span class="ml-2 text-sm text-gray-700">Ativo (visível no formulário)</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" name="featured" value="1" <?= ($editingType['featured'] ?? 0) ? 'checked' : '' ?> class="h-4 w-4 text-amber-500 focus:ring-amber-400 border-gray-300 rounded">
+                        <span class="ml-2 text-sm text-gray-700">Destacar como "Mais utilizado"</span>
+                    </label>
+                </div>
                 <div class="flex gap-2">
                     <?php if ($editingType): ?>
                         <a href="request_types.php"
@@ -168,14 +175,11 @@ $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <table class="min-w-full divide-y divide-gray-100">
                 <thead class="bg-gray-50/50">
                     <tr>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Nome
-                        </th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Info /
-                            Atenção</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Status
-                        </th>
-                        <th class="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">Ações
-                        </th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Nome</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Info / Atenção</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Destaque</th>
+                        <th class="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">Ações</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-100">
@@ -196,11 +200,16 @@ $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 <?php if ($t['active']): ?>
-                                    <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Ativo</span>
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Ativo</span>
                                 <?php else: ?>
-                                    <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Inativo</span>
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Inativo</span>
+                                <?php endif; ?>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <?php if (!empty($t['featured'])): ?>
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 text-amber-800">Destaque</span>
+                                <?php else: ?>
+                                    <span class="text-gray-300">—</span>
                                 <?php endif; ?>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

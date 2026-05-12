@@ -44,61 +44,124 @@ try {
     $startDateDB = null;
     $endDateDB = null;
     $courseUnitsDB = null;
+    $requestTypeIdInt = intval($requestTypeId);
 
-    if ($requestTypeId == 1) {
+    // Legado tipo 1: preserva colunas dedicadas e constrói resumo na descrição
+    if ($requestTypeIdInt === 1) {
         $startDate = $_POST['start_date'] ?? '';
-        $endDate = $_POST['end_date'] ?? '';
-        $subjects = $_POST['subjects'] ?? '';
-        if ($startDate && $endDate && $subjects) {
-            $startDateDB = $startDate;
-            $endDateDB = $endDate;
-            $courseUnitsDB = $subjects;
+        $endDate   = $_POST['end_date'] ?? '';
+        $selSubjects = $_POST['selected_subjects'] ?? [];
+        $subjectsText = is_array($selSubjects) ? implode(', ', $selSubjects) : $selSubjects;
+        if ($startDate && $endDate) {
+            $startDateDB   = $startDate;
+            $endDateDB     = $endDate;
+            $courseUnitsDB = $subjectsText;
             $days = ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];
             $startObj = new DateTime($startDate);
-            $endObj = new DateTime($endDate);
+            $endObj   = new DateTime($endDate);
             $description .= "\n\nData Início: " . $startObj->format('d/m/Y') . ' (' . $days[$startObj->format('w')] . ')';
-            $description .= "\nData Final: " . $endObj->format('d/m/Y') . ' (' . $days[$endObj->format('w')] . ')';
-            $description .= "\nUnidades Curriculares: " . $subjects;
+            $description .= "\nData Final: "   . $endObj->format('d/m/Y')   . ' (' . $days[$endObj->format('w')] . ')';
+            if ($subjectsText) $description .= "\nUnidades Curriculares: " . $subjectsText;
         }
     }
 
+    // Monta extra_fields JSON por tipo
+    $extra = [];
+    switch ($requestTypeIdInt) {
+        case 1:
+            $extra['start_date']        = $_POST['start_date'] ?? '';
+            $extra['end_date']          = $_POST['end_date'] ?? '';
+            $extra['selected_subjects'] = $_POST['selected_subjects'] ?? [];
+            break;
+        case 2:
+            $extra['selected_subjects'] = $_POST['selected_subjects'] ?? [];
+            $extra['selected_teachers'] = $_POST['selected_teachers'] ?? [];
+            $extra['teacher_other_name']= $_POST['teacher_other_name'] ?? '';
+            $extra['also_justify_absence'] = isset($_POST['also_justify_absence']);
+            break;
+        case 4:
+            $extra['semesters_to_lock'] = $_POST['semesters_to_lock'] ?? '';
+            $extra['lock_reason']       = $_POST['lock_reason'] ?? '';
+            break;
+        case 5:
+            $extra['cancel_reason'] = $_POST['cancel_reason'] ?? '';
+            break;
+        case 7:
+            $extra['uc_isolated_names']  = $_POST['uc_isolated_names'] ?? '';
+            $extra['uc_isolated_course'] = $_POST['uc_isolated_course'] ?? '';
+            break;
+        case 8:
+            $extra['doc_type']           = $_POST['doc_type'] ?? '';
+            $extra['diploma_course_name']= $_POST['diploma_course_name'] ?? '';
+            $extra['graduation_year']    = $_POST['graduation_year'] ?? '';
+            break;
+        case 9:
+            $extra['validation_type'] = $_POST['validation_type'] ?? '';
+            $extra['uc_re_detail']    = $_POST['uc_re_detail'] ?? '';
+            $extra['uc_rs_detail']    = $_POST['uc_rs_detail'] ?? '';
+            $extra['uc_eae_detail']   = $_POST['uc_eae_detail'] ?? '';
+            break;
+        case 12:
+            $extra['uc_special_names']  = $_POST['uc_special_names'] ?? '';
+            $extra['uc_special_course'] = $_POST['uc_special_course'] ?? '';
+            break;
+        case 14:
+            $extra['uc_changes'] = $_POST['uc_changes'] ?? '';
+            break;
+        case 18:
+            $extra['enade_status']        = $_POST['enade_status'] ?? '';
+            $extra['colacao_declaration'] = isset($_POST['colacao_declaration']);
+            break;
+        case 22:
+            $extra['selected_subjects'] = $_POST['selected_subjects'] ?? [];
+            $extra['selected_teachers'] = $_POST['selected_teachers'] ?? [];
+            $extra['teacher_other_name']= $_POST['teacher_other_name'] ?? '';
+            break;
+        case 25:
+            $extra['selected_subjects'] = $_POST['selected_subjects'] ?? [];
+            $extra['uc_cancel_reason']  = $_POST['uc_cancel_reason'] ?? '';
+            break;
+    }
+    $extraFieldsJson = !empty($extra) ? json_encode($extra, JSON_UNESCAPED_UNICODE) : null;
+
     $query = "INSERT INTO requests (
-                protocol_code, student_name, student_email, student_phone, student_id, course_id, 
-                class_info, is_minor, guardian_name, guardian_phone, request_type_id, 
-                description, status, schedule_type, arrival_time_1, arrival_time_2, 
+                protocol_code, student_name, student_email, student_phone, student_id, course_id,
+                class_info, is_minor, guardian_name, guardian_phone, request_type_id,
+                description, status, schedule_type, arrival_time_1, arrival_time_2,
                 departure_time_1, departure_time_2, declaration_accepted,
-                start_date, end_date, course_units
+                start_date, end_date, course_units, extra_fields
               ) VALUES (
-                :protocol, :name, :email, :phone, :sid, :cid, 
-                :class_info, :minor, :gname, :gphone, :type, 
-                :desc, 'pending', :stype, :at1, :at2, 
+                :protocol, :name, :email, :phone, :sid, :cid,
+                :class_info, :minor, :gname, :gphone, :type,
+                :desc, 'pending', :stype, :at1, :at2,
                 :dt1, :dt2, :declaration,
-                :start_date, :end_date, :course_units
+                :start_date, :end_date, :course_units, :extra_fields
               )";
 
     $stmt = $conn->prepare($query);
     $stmt->execute([
-        ':protocol' => $protocolCode,
-        ':name' => $studentName,
-        ':email' => $studentEmail,
-        ':phone' => $studentPhone,
-        ':sid' => $studentId,
-        ':cid' => $courseId,
-        ':class_info' => $classInfo,
-        ':minor' => $isMinor ? 1 : 0,
-        ':gname' => $guardianName,
-        ':gphone' => $guardianPhone,
-        ':type' => $requestTypeId,
-        ':desc' => $description,
-        ':stype' => $_POST['schedule_type'] ?? null,
-        ':at1' => !empty($_POST['arrival_time_1']) ? $_POST['arrival_time_1'] : null,
-        ':at2' => !empty($_POST['arrival_time_2']) ? $_POST['arrival_time_2'] : null,
-        ':dt1' => !empty($_POST['departure_time_1']) ? $_POST['departure_time_1'] : null,
-        ':dt2' => !empty($_POST['departure_time_2']) ? $_POST['departure_time_2'] : null,
+        ':protocol'    => $protocolCode,
+        ':name'        => $studentName,
+        ':email'       => $studentEmail,
+        ':phone'       => $studentPhone,
+        ':sid'         => $studentId,
+        ':cid'         => $courseId,
+        ':class_info'  => $classInfo,
+        ':minor'       => $isMinor ? 1 : 0,
+        ':gname'       => $guardianName,
+        ':gphone'      => $guardianPhone,
+        ':type'        => $requestTypeId,
+        ':desc'        => $description,
+        ':stype'       => $_POST['schedule_type'] ?? null,
+        ':at1'         => !empty($_POST['arrival_time_1']) ? $_POST['arrival_time_1'] : null,
+        ':at2'         => !empty($_POST['arrival_time_2']) ? $_POST['arrival_time_2'] : null,
+        ':dt1'         => !empty($_POST['departure_time_1']) ? $_POST['departure_time_1'] : null,
+        ':dt2'         => !empty($_POST['departure_time_2']) ? $_POST['departure_time_2'] : null,
         ':declaration' => isset($_POST['declaration_accepted']) ? 1 : 0,
-        ':start_date' => $startDateDB,
-        ':end_date' => $endDateDB,
-        ':course_units' => $courseUnitsDB
+        ':start_date'  => $startDateDB,
+        ':end_date'    => $endDateDB,
+        ':course_units'=> $courseUnitsDB,
+        ':extra_fields'=> $extraFieldsJson,
     ]);
 
     $requestId = $conn->lastInsertId();

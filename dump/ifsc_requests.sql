@@ -30,21 +30,16 @@ CREATE TABLE `courses` (
 
 /*Data for the table `courses` */
 
-insert  into `courses`(`id`,`name`,`level`,`active`) values 
-(1,'EMI Alimentos','Técnico Integrado',1),
-(2,'EMI Edificações','Técnico Integrado',1),
-(3,'EMI Informática','Técnico Integrado',1),
-(4,'Concomitante em Edificações','Técnico Concomitante',1),
-(5,'Concomitante em Manutenção e Suporte em Informática','Técnico Concomitante',1),
-(6,'Tecnologia em Alimentos','Graduação',1),
-(7,'Análise e Desenvolvimento de Sistemas (ADS)','Graduação',1),
-(8,'Bacharelado em Agronomia','Graduação',1),
-(9,'PROEJA em Agroecologia','PROEJA',1),
-(10,'Pós-graduação em Educação e Diversidade','Pós Graduação',1),
-(11,'FIC-Programação Front-End React com Javascript','Formação Continuada',1),
-(12,'Pós-graduação em Ciência e Tecnologia de Alimentos','Pós Graduação',1),
-(13,'ESPANHOL BÁSICO: LÍNGUA E CULTURA','Formação Continuada',1),
-(14,'Partiu IF','Formação Continuada',1);
+insert  into `courses`(`id`,`name`,`level`,`active`) values
+(1,'Técnico em Administração','Técnico Integrado',1),
+(2,'Técnico em Lazer','Técnico Integrado',1),
+(3,'Técnico em Informática','Técnico Integrado',1),
+(4,'Técnico em Biotecnologia','Técnico Concomitante',1),
+(7,'CST em Sistemas para Internet','Graduação',1),
+(8,'CST em Gestão Ambiental','Graduação',1),
+(15,'FIC em Inglês','Formação Continuada',1),
+(16,'Técnico em Guia de Turismo','Técnico Concomitante',1),
+(17,'PROEJA em Serviços de Restauração e Bar','PROEJA',1);
 
 /*Table structure for table `email_config` */
 
@@ -245,21 +240,7 @@ CREATE TABLE `user_courses` (
 
 /*Data for the table `user_courses` */
 
-insert  into `user_courses`(`user_id`,`course_id`) values 
-(19,1),
-(20,2),
-(21,3),
-(20,4),
-(23,5),
-(18,6),
-(10,7),
-(17,8),
-(22,9),
-(26,10),
-(6,11),
-(27,12),
-(29,13),
-(32,14);
+/* user_courses limpo — reatribuir via painel admin após configurar cursos do câmpus Garopaba */
 
 /*Table structure for table `users` */
 
@@ -373,6 +354,142 @@ insert  into `workflow_steps`(`id`,`request_type_id`,`role_id`,`step_order`) val
 (70,4,4,3),
 (71,4,11,4),
 (72,4,13,6);
+
+/*Table structure for table `subjects` */
+
+DROP TABLE IF EXISTS `subjects`;
+
+CREATE TABLE `subjects` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `course_id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `period` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `active` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `course_id` (`course_id`),
+  CONSTRAINT `subjects_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `subjects` */
+
+insert into `subjects`(`course_id`,`name`,`period`,`active`) values
+-- Técnico em Administração (id=1) — 1º Ano
+(1,'Fundamentos da Administração','1º Ano',1),(1,'Informática Aplicada','1º Ano',1),(1,'Orientação ao Ensino Técnico','1º Ano',1),(1,'Matemática I','1º Ano',1),(1,'Física I','1º Ano',1),(1,'Química I','1º Ano',1),(1,'Biologia I','1º Ano',1),(1,'História I','1º Ano',1),(1,'Geografia I','1º Ano',1),(1,'Filosofia I','1º Ano',1),(1,'Educação Física I','1º Ano',1),(1,'Língua Portuguesa e Literatura I','1º Ano',1),(1,'Espanhol I','1º Ano',1),
+-- ADM — 2º Ano
+(1,'Administração de Marketing','2º Ano',1),(1,'Administração da Qualidade','2º Ano',1),(1,'Administração da Produção e Logística','2º Ano',1),(1,'Matemática para Administradores','2º Ano',1),(1,'Matemática II','2º Ano',1),(1,'Física II','2º Ano',1),(1,'Química II','2º Ano',1),(1,'Biologia II','2º Ano',1),(1,'História II','2º Ano',1),(1,'Geografia II','2º Ano',1),(1,'Filosofia II','2º Ano',1),(1,'Educação Física II','2º Ano',1),(1,'Língua Portuguesa e Literatura II','2º Ano',1),(1,'Sociologia I','2º Ano',1),(1,'Artes I','2º Ano',1),
+-- ADM — 3º Ano
+(1,'Administração de Pessoas','3º Ano',1),(1,'Administração Financeira','3º Ano',1),(1,'Inglês','3º Ano',1),(1,'Empreendedorismo','3º Ano',1),(1,'Projeto Integrador II','3º Ano',1),(1,'Responsabilidade Socioambiental e Sustentabilidade','3º Ano',1),(1,'Matemática III','3º Ano',1),(1,'Física III','3º Ano',1),(1,'Química III','3º Ano',1),(1,'História III','3º Ano',1),(1,'Geografia III','3º Ano',1),(1,'Língua Portuguesa e Literatura III','3º Ano',1),(1,'Sociologia II','3º Ano',1),(1,'Artes II','3º Ano',1),
+-- Técnico em Lazer (id=2) — 1º Ano
+(2,'Arte I','1º Ano',1),(2,'Biologia I','1º Ano',1),(2,'Cultura, Identidade e Patrimônio','1º Ano',1),(2,'Educação Ambiental e Lazer','1º Ano',1),(2,'Educação Física I','1º Ano',1),(2,'Espanhol I','1º Ano',1),(2,'Filosofia I','1º Ano',1),(2,'Física I','1º Ano',1),(2,'Geografia I','1º Ano',1),(2,'História I','1º Ano',1),(2,'Inglês I','1º Ano',1),(2,'Lazer e Turismo: Inclusão Social e Interseccionalidades','1º Ano',1),(2,'Língua Portuguesa e Literatura I','1º Ano',1),(2,'Matemática I','1º Ano',1),(2,'Oficina de Integração de Ensino','1º Ano',1),(2,'Química I','1º Ano',1),(2,'Sociologia I','1º Ano',1),(2,'Sociedade, Trabalho e Tempo Livre','1º Ano',1),(2,'Teorias do Lazer','1º Ano',1),(2,'Teorias do Turismo e Hospitalidade','1º Ano',1),
+-- Lazer — 2º Ano
+(2,'Atividades Esportivas e Recreativas','2º Ano',1),(2,'Arte II','2º Ano',1),(2,'Espanhol Aplicado','2º Ano',1),(2,'Ecoturismo e Turismo de Base Comunitária','2º Ano',1),(2,'Educação Física II','2º Ano',1),(2,'Filosofia II','2º Ano',1),(2,'Física II','2º Ano',1),(2,'Geografia II','2º Ano',1),(2,'História II','2º Ano',1),(2,'Inglês II','2º Ano',1),(2,'Lazer e Turismo: Cultura Digital','2º Ano',1),(2,'Língua Portuguesa e Literatura II','2º Ano',1),(2,'Matemática II','2º Ano',1),(2,'Mobilidade e Planejamento Urbano em Lazer e Turismo','2º Ano',1),(2,'Oficina de Integração II (Pesquisa)','2º Ano',1),(2,'Políticas Públicas e Terceiro Setor do Lazer e Turismo','2º Ano',1),(2,'Química II','2º Ano',1),(2,'Sociologia II','2º Ano',1),(2,'Sociologia do Esporte','2º Ano',1),
+-- Lazer — 3º Ano
+(2,'Atividades de Aventura em Lazer','3º Ano',1),(2,'Biologia II','3º Ano',1),(2,'Empreendimentos Solidários','3º Ano',1),(2,'Espanhol II','3º Ano',1),(2,'Física III','3º Ano',1),(2,'Geografia III','3º Ano',1),(2,'História III','3º Ano',1),(2,'Inglês Aplicado ao Lazer','3º Ano',1),(2,'Introdução à Estética e Filosofia da Arte','3º Ano',1),(2,'Linguagens Artísticas e Lazer','3º Ano',1),(2,'Língua Portuguesa e Literatura III','3º Ano',1),(2,'Matemática III','3º Ano',1),(2,'Organização de Eventos','3º Ano',1),(2,'Oficina de Integração III (Extensão)','3º Ano',1),(2,'Química III','3º Ano',1),
+-- Técnico em Informática (id=3) — 1º Ano
+(3,'Algoritmos e Lógica de Programação','1º Ano',1),(3,'Biologia I','1º Ano',1),(3,'Educação Física I','1º Ano',1),(3,'Filosofia I','1º Ano',1),(3,'Física I','1º Ano',1),(3,'História I','1º Ano',1),(3,'Inglês','1º Ano',1),(3,'Introdução à Informática','1º Ano',1),(3,'Língua Portuguesa e Literatura I','1º Ano',1),(3,'Matemática I','1º Ano',1),(3,'Química I','1º Ano',1),(3,'Redes de Computadores','1º Ano',1),
+-- Informática — 2º Ano
+(3,'Arte I','2º Ano',1),(3,'Banco de Dados','2º Ano',1),(3,'Biologia II','2º Ano',1),(3,'Educação Física II','2º Ano',1),(3,'Filosofia II','2º Ano',1),(3,'Física II','2º Ano',1),(3,'Geografia II','2º Ano',1),(3,'Inglês Aplicado','2º Ano',1),(3,'Língua Portuguesa e Literatura II','2º Ano',1),(3,'Manutenção e Configuração de Computadores','2º Ano',1),(3,'Matemática II','2º Ano',1),(3,'Programação e Engenharia de Software','2º Ano',1),(3,'Sociologia I','2º Ano',1),
+-- Informática — 3º Ano
+(3,'Espanhol','3º Ano',1),(3,'Física III','3º Ano',1),(3,'Língua Portuguesa e Literatura III','3º Ano',1),(3,'Matemática III','3º Ano',1),(3,'Programação para Dispositivos Móveis','3º Ano',1),(3,'Programação Web','3º Ano',1),(3,'Projeto Integrador II','3º Ano',1),(3,'Química III','3º Ano',1),(3,'Responsabilidade Socioambiental e Sustentabilidade','3º Ano',1),(3,'Sociologia II','3º Ano',1),(3,'Tópicos Avançados em Informática','3º Ano',1),
+-- Técnico em Biotecnologia (id=4)
+(4,'Biologia Aplicada','1º Semestre',1),(4,'Gestão de Laboratório','1º Semestre',1),(4,'Linguagem e Comunicação','1º Semestre',1),(4,'Ambientação Profissional I','2º Semestre',1),(4,'Bioética','3º Semestre',1),(4,'Espanhol Aplicado','3º Semestre',1),(4,'Técnicas de Citologia','3º Semestre',1),(4,'Técnicas de Microbiologia','3º Semestre',1),(4,'Bioprospecção','4º Semestre',1),(4,'Biotecnologia Ambiental','4º Semestre',1),(4,'Bioestatística','5º Semestre',1),(4,'Projeto Integrador II','5º Semestre',1),(4,'Técnicas de Bioquímica','5º Semestre',1),(4,'Empreendedorismo','6º Semestre',1),
+-- CST em Sistemas para Internet (id=7)
+(7,'Algoritmos e Técnicas de Programação','1º Semestre',1),(7,'Fundamentos de Matemática','1º Semestre',1),(7,'Fundamentos de Sistemas para Internet','1º Semestre',1),(7,'Inglês Aplicado','1º Semestre',1),(7,'Banco de Dados I','2º Semestre',1),(7,'Banco de Dados II','3º Semestre',1),(7,'Engenharia de Software I','3º Semestre',1),(7,'Estrutura de Dados','3º Semestre',1),(7,'Interfaces e Experiência do Usuário','3º Semestre',1),(7,'Linguagem e Comunicação','3º Semestre',1),(7,'Programação para Internet I','3º Semestre',1),(7,'Engenharia de Software II','4º Semestre',1),(7,'Ciência de Dados I','5º Semestre',1),(7,'Empreendedorismo e Inovação','5º Semestre',1),(7,'Gerenciamento de Serviços para Internet','5º Semestre',1),(7,'Programação para Dispositivos Móveis I','5º Semestre',1),(7,'Ciência de Dados II','6º Semestre',1),
+-- CST em Gestão Ambiental (id=8)
+(8,'Biologia Aplicada','1º Semestre',1),(8,'Fundamentos de Administração','1º Semestre',1),(8,'Geociências Ambientais','1º Semestre',1),(8,'História da Gestão Ambiental','1º Semestre',1),(8,'Linguagem e Comunicação I','1º Semestre',1),(8,'Metodologia da Pesquisa','1º Semestre',1),(8,'Segurança e Saúde Ocupacional','1º Semestre',1),(8,'Educação Ambiental','2º Semestre',1),(8,'Geomática','2º Semestre',1),(8,'Ecologia Aplicada','3º Semestre',1),(8,'Estatística Aplicada','3º Semestre',1),(8,'Gestão Costeira','3º Semestre',1),(8,'Legislação Ambiental','3º Semestre',1),(8,'Topografia Aplicada ao Georeferenciamento','3º Semestre',1),(8,'Ferramentas de Gestão Ambiental','4º Semestre',1),(8,'Gestão de Áreas Protegidas','4º Semestre',1),(8,'Gestão de Qualidade','4º Semestre',1),(8,'Gestão de Recursos Hídricos','4º Semestre',1),(8,'Gestão de Resíduos Sólidos','4º Semestre',1),(8,'Avaliação de Impactos Ambientais','5º Semestre',1),(8,'Empreendedorismo','5º Semestre',1),(8,'Gestão de Projetos','5º Semestre',1),(8,'Licenciamento Ambiental','5º Semestre',1),(8,'Tópicos Especiais em Gestão Ambiental I','5º Semestre',1),
+-- FIC em Inglês (id=15)
+(15,'Inglês',NULL,1),
+-- Técnico em Guia de Turismo (id=16)
+(16,'Espanhol Aplicado ao Guia de Turismo I','1º Semestre',1),(16,'Fundamentos do Turismo','1º Semestre',1),(16,'Geografia de Santa Catarina I','1º Semestre',1),(16,'História de Santa Catarina no Contexto do Brasil e do Mundo I','1º Semestre',1),(16,'Linguagem e Comunicação I','1º Semestre',1),(16,'Patrimônio Cultural','1º Semestre',1),(16,'Técnica Profissional 1','1º Semestre',1),(16,'História da Arte Ocidental e Brasileira','1º Semestre',1),(16,'Educação e Responsabilidade Ambiental','2º Semestre',1),(16,'Ecossistemas Regionais de Santa Catarina','2º Semestre',1),(16,'Espanhol Aplicado ao Guia de Turismo II','2º Semestre',1),(16,'Geografia de Santa Catarina II','2º Semestre',1),(16,'História de Santa Catarina no Contexto do Brasil e do Mundo II','2º Semestre',1),
+-- PROEJA em Serviços de Restauração e Bar (id=17)
+(17,'Armazenagem e Estocagem',NULL,1),(17,'Espanhol Aplicado',NULL,1),(17,'Filosofia',NULL,1),(17,'Física',NULL,1),(17,'Geografia',NULL,1),(17,'Linguagem e Comunicação',NULL,1),(17,'Matemática',NULL,1),(17,'Química',NULL,1),(17,'Sociologia',NULL,1);
+
+/*Table structure for table `teachers` */
+
+DROP TABLE IF EXISTS `teachers`;
+
+CREATE TABLE `teachers` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `active` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `teachers` */
+
+insert into `teachers`(`name`) values
+('ADRIANA MURARA SILVA'),
+('ALBERTO FELIPE FRIDERICHS BARROS'),
+('ALINE BORBA OLIVEIRA'),
+('ANDRÉA CRISTIANE MACHADO MORAES'),
+('ANDRE LUIZ SILVA DE MORAES'),
+('ANTONIO MIGUEL FAUSTINI ZARTH'),
+('CARMINE INES ACKER'),
+('CLÁUDIA TELES DA SILVA'),
+('CRISTIANE OLIVEIRA DA SILVA'),
+('DIEGO MARLON DE CASTRO'),
+('EDUARDO BATISTA VON BOROWSKI'),
+('EDUARDO CARGNIN FERREIRA'),
+('ELISA SERENA GANDOLFO MARTINS'),
+('FABIANA BESEN SANTOS'),
+('FABIANA DE AGAPITO KANGERSKI'),
+('FELIX LOZANO MEDINA'),
+('FERNANDO SOARES DE JESUS'),
+('FRANCIELE ROCHA DE OLIVEIRA'),
+('IGNACIO KIRHIAKO SEPULVEDA RAMIREZ'),
+('JACIARA ZARPELLON MAZO'),
+('JEAN MARCEL DE ALMEIDA ESPINOZA'),
+('JOÃO EDUARDO NAVACHI DA SILVEIRA'),
+('JOAO HENRIQUE QUOOS'),
+('JOSE RODRIGO BARTH ADAMS'),
+('JOSIMARA MARTINS KRAUSEN'),
+('JULIANI BRIGNOL WALOTEK'),
+('JULIANO DA CUNHA GOMES'),
+('JULIO CEZAR BRAGAGLIA'),
+('KARYNA LANDRA MARCELINO'),
+('LUANA DE GUSMAO SILVEIRA'),
+('LUANA DOS SANTOS DE SOUZA'),
+('LUANA WRITZL'),
+('LUCAS DE CASTRO'),
+('LUIZ ANTONIO SCHALATA PACHECO'),
+('MARCELO LEANDRO DOS SANTOS'),
+('MARIANA REIS LEAL FERNANDES'),
+('MARIA ROSA DA SILVA COSTA'),
+('MARILIA RIBAS MACHADO'),
+('MICHELINE SARTORI'),
+('MICHELSCH JOAO DA SILVA'),
+('NAUBER GAVSKI DA SILVA'),
+('PAULA MAYARA ZUANAZZI'),
+('RENATA WALESKA DE SOUSA PIMENTA'),
+('RENATO DA SILVA ROSA RODRIGUES'),
+('ROSANE SCHENKEL DE AQUINO'),
+('RYAN MARCOS FRAGNANI CARDOSO'),
+('SABRINA MORO VILLELA PACHECO'),
+('SANDRA BEATRIZ KOELLING'),
+('SCHIRLEI RUSSI VON DENTZ'),
+('SIBELI PAULON FERRONATO'),
+('TELMA PIRES PACHECO AMORIM'),
+('THAIANA PEREIRA DOS ANJOS REIS'),
+('THIAGO LIPINSKI PAES'),
+('THIAGO WALTRIK');
+
+/* Migrations: alter existing tables and insert new request types */
+
+ALTER TABLE `requests` ADD COLUMN IF NOT EXISTS `extra_fields` JSON NULL AFTER `course_units`;
+
+ALTER TABLE `request_types` ADD COLUMN IF NOT EXISTS `featured` tinyint(1) DEFAULT '0' AFTER `active`;
+
+UPDATE `request_types` SET `name` = 'Plano de Estudo Diferenciado (PEDi)' WHERE `id` = 15;
+UPDATE `request_types` SET `active` = 0 WHERE `id` = 16;
+UPDATE `request_types` SET `featured` = 1 WHERE `id` IN (1,2,4,14,20,22);
+
+INSERT IGNORE INTO `request_types` (`id`,`name`,`active`,`featured`,`information`,`attention`) VALUES
+(22,'Revisão de Avaliação',1,1,
+  'Será permitida a revisão de atividade de avaliação quando o estudante discordar da correção realizada pelo professor.',
+  NULL),
+(25,'Cancelamento de Matrícula em Unidade Curricular',1,0,
+  'Apenas para cursos em regime de matrícula por unidade curricular. O cancelamento poderá ocorrer uma única vez para cada UC.',
+  'Deve ser mantida matrícula em pelo menos uma unidade curricular.');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
