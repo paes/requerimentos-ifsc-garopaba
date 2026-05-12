@@ -278,7 +278,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                <strong>" . htmlspecialchars($request['student_name']) . "</strong>
                                (Protocolo <strong>#{$request['protocol_code']}</strong>)
                                foi <strong style='color:{$actionColor};'>{$actionLabel}</strong>
-                               pela Coordenadoria de Curso.</p>
+                               pela Coordenação de Curso.</p>
                             {$ucHtml}
                             {$obsHtml}
                         ";

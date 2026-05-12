@@ -74,9 +74,10 @@ try {
             $extra['selected_subjects'] = $_POST['selected_subjects'] ?? [];
             break;
         case 2:
-            $extra['selected_subjects'] = $_POST['selected_subjects'] ?? [];
-            $extra['selected_teachers'] = $_POST['selected_teachers'] ?? [];
-            $extra['teacher_other_name']= $_POST['teacher_other_name'] ?? '';
+            $extra['selected_subjects']    = $_POST['selected_subjects'] ?? [];
+            $extra['selected_teachers']    = $_POST['selected_teachers'] ?? [];
+            $extra['uc_other_name']        = trim($_POST['uc_other_name'] ?? '');
+            $extra['teacher_other_name']   = $_POST['teacher_other_name'] ?? '';
             $extra['also_justify_absence'] = isset($_POST['also_justify_absence']);
             break;
         case 4:

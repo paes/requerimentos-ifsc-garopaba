@@ -137,7 +137,7 @@ $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(
 
         <div class="glass rounded-2xl shadow-xl p-8 md:p-10 border border-white/50">
             <form id="requestForm" action="<?= BASE_URL ?>/submit_request.php" method="POST"
-                enctype="multipart/form-data" class="space-y-8">
+                enctype="multipart/form-data" class="space-y-8" novalidate>
 
                 <!-- ETAPA 1: DADOS PESSOAIS -->
                 <div id="form-step-1" class="space-y-8 animate-fade-in">
@@ -559,7 +559,7 @@ $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(
                                     <p><strong>RS — Reconhecimento de Saberes:</strong> Você possui experiência prática/profissional comprovável na área da UC. Apresente documentação (CTPS, declaração de empresa, certificados, portfólio, etc.).</p>
                                     <p><strong>EAE — Extraordinário Aproveitamento:</strong> Você demonstra domínio do conteúdo e solicita uma avaliação especial designada pelo professor responsável pela UC.</p>
                                 </div>
-                                <p class="text-xs text-blue-700 border-t border-blue-200 pt-2">Sua solicitação será encaminhada à Coordenadoria de Curso, responsável pela análise. Para RE e RS, a documentação comprobatória é obrigatória. Para EAE, a Coordenadoria designará o professor que aplicará a avaliação especial.</p>
+                                <p class="text-xs text-blue-700 border-t border-blue-200 pt-2">Sua solicitação será encaminhada à Coordenação de Curso, responsável pela análise. Para RE e RS, a documentação comprobatória é obrigatória. Para EAE, a Coordenação de Curso designará o professor que aplicará a avaliação especial.</p>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Validação <span class="text-red-500">*</span></label>
@@ -1806,31 +1806,49 @@ $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(
             const btnSpinner = document.getElementById('btn_spinner');
 
             form.addEventListener('submit', function (e) {
-                if (form.checkValidity()) {
-                    // Verifica se algum upload ainda esta em andamento
-                    const pendingUploads = document.querySelectorAll('.upload-progress-container:not(.hidden)');
-                    if (pendingUploads.length > 0) {
+                // checkValidity() nativo inclui campos ocultos de outros tipos → usar checagem por visibilidade
+                function isElementVisible(el) {
+                    let p = el;
+                    while (p && p !== form) {
+                        if (p.classList && p.classList.contains('hidden')) return false;
+                        p = p.parentElement;
+                    }
+                    return true;
+                }
+
+                const visibleInvalid = Array.from(
+                    form.querySelectorAll('input[required], select[required], textarea[required]')
+                ).find(el => el.type !== 'hidden' && !el.disabled && isElementVisible(el) && !el.checkValidity());
+
+                if (visibleInvalid) {
+                    e.preventDefault();
+                    visibleInvalid.reportValidity();
+                    return;
+                }
+
+                // Verifica se algum upload ainda esta em andamento
+                const pendingUploads = document.querySelectorAll('.upload-progress-container:not(.hidden)');
+                if (pendingUploads.length > 0) {
+                    e.preventDefault();
+                    alert('Aguarde o término dos uploads em andamento.');
+                    return;
+                }
+
+                // Valida declaracao do responsavel para menores
+                const isAdultEl = document.getElementById('is_adult');
+                if (!isAdultEl.checked) {
+                    const guardianInputs = document.querySelectorAll('#guardian-temp-files-container input[type="hidden"]');
+                    if (guardianInputs.length === 0) {
                         e.preventDefault();
-                        alert('Aguarde o término dos uploads em andamento.');
+                        alert('Por favor, anexe a Declaração de Ciência do Responsável assinada via Gov.br.');
+                        document.getElementById('guardian-section').scrollIntoView({ behavior: 'smooth' });
                         return;
                     }
-
-                    // Valida declaracao do responsavel para menores
-                    const isAdultEl = document.getElementById('is_adult');
-                    if (!isAdultEl.checked) {
-                        const guardianInputs = document.querySelectorAll('#guardian-temp-files-container input[type="hidden"]');
-                        if (guardianInputs.length === 0) {
-                            e.preventDefault();
-                            alert('Por favor, anexe a Declaração de Ciência do Responsável assinada via Gov.br.');
-                            document.getElementById('guardian-section').scrollIntoView({ behavior: 'smooth' });
-                            return;
-                        }
-                    }
-
-                    submitBtn.disabled = true;
-                    btnText.textContent = 'Enviando...';
-                    btnSpinner.classList.remove('hidden');
                 }
+
+                submitBtn.disabled = true;
+                btnText.textContent = 'Enviando...';
+                btnSpinner.classList.remove('hidden');
             });
 
             // Nova Logica Assincrona de Anexos
