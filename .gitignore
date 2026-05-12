@@ -1,3 +1,6 @@
+# E-mails de dev (gerados em modo de teste local)
+storage/email_log/*.html
+
 # Arquivos Temporarios e Uploads
 public/uploads/*
 !public/uploads/.gitkeep

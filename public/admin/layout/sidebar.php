@@ -152,6 +152,18 @@ if (!isset($isSysAdmin)) {
                 </svg>
                 Configuração de Email
             </a>
+            <?php if (!defined('ENABLE_EMAILS') || !ENABLE_EMAILS): ?>
+            <a href="email_log.php"
+                class="flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 group <?= $currentPage == 'email_log.php' ? 'bg-brand-DEFAULT/10 text-brand-DEFAULT' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' ?>">
+                <svg class="w-5 h-5 mr-3 <?= $currentPage == 'email_log.php' ? 'text-brand-DEFAULT' : 'text-gray-400 group-hover:text-gray-500' ?>"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                    </path>
+                </svg>
+                Log de E-mails (Dev)
+            </a>
+            <?php endif; ?>
         <?php endif; ?>
 
         <?php if (isset($user) && (($user['user_role'] ?? $user['role_id']) == 2 || $isSysAdmin)): ?>

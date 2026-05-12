@@ -24,9 +24,18 @@ class EmailService
 
     public function queue($toEmail, $toName, $subject, $body, $trigger = true)
     {
-        // Se emails estiverem desabilitados via config (ex: localhost), retorna sucesso cego para nao travar fluxos
+        // Em modo de desenvolvimento, salva o e-mail em arquivo para inspeção
         if (!defined('ENABLE_EMAILS') || !ENABLE_EMAILS) {
-            return ['success' => true, 'message' => 'Simulação: E-mail (bloqueado em localhost) foi despachado virtuamente.'];
+            $logDir = dirname(__DIR__) . '/storage/email_log';
+            if (!is_dir($logDir)) mkdir($logDir, 0755, true);
+            $safeName = preg_replace('/[^a-z0-9._\-]/i', '_', $toEmail);
+            $filename = date('Ymd_His') . '_' . $safeName . '.html';
+            $meta = '<div style="background:#1e293b;color:#94a3b8;font-family:monospace;font-size:12px;padding:12px 16px;margin-bottom:0;">'
+                  . '<strong style="color:#e2e8f0;">TO:</strong> ' . htmlspecialchars("$toName <$toEmail>") . '<br>'
+                  . '<strong style="color:#e2e8f0;">SUBJECT:</strong> ' . htmlspecialchars($subject)
+                  . '</div>';
+            file_put_contents("$logDir/$filename", $meta . $body);
+            return ['success' => true, 'message' => 'Dev mode: e-mail salvo em storage/email_log/' . $filename];
         }
 
         try {

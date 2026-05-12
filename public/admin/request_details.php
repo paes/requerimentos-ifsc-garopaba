@@ -175,6 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Envia Email Notification
         require_once '../../src/EmailService.php';
+        require_once '../../src/EmailTemplate.php';
         $emailService = new EmailService($conn);
 
         if ($action === 'approve' && $newStatus === 'pending') {
@@ -222,7 +223,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <br>
                         <p>Atenciosamente,<br>Sistema de Requisições IFSC</p>
                     ";
-                    $emailService->send($recipient['email'], $recipient['name'], $subject, $body, false);
+                    $emailService->send($recipient['email'], $recipient['name'], $subject, EmailTemplate::wrap($body), false);
                 }
                 $emailService->triggerBackgroundProcess();
             }
@@ -241,13 +242,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <br>
                 <p>Atenciosamente,<br>IFSC Câmpus Garopaba</p>
             ";
-            $emailService->send($request['student_email'], $request['student_name'], $subject, $body, false);
+            $emailService->send($request['student_email'], $request['student_name'], $subject, EmailTemplate::wrap($body), false);
 
             // Notifica docente(s) — apenas para 2ª Chamada
             if ($request['request_type_id'] == 2) {
                 $extra2 = json_decode($request['extra_fields'] ?? '{}', true);
                 $teacherIds2 = array_filter((array)($extra2['selected_teachers'] ?? []), 'is_numeric');
                 $actionLabel = ($action === 'reject') ? 'indeferida' : 'deferida';
+                $actionColor = ($action === 'reject') ? '#dc2626' : '#059669';
+
+                // Busca nomes das UCs selecionadas
+                $ucNames2 = '';
+                $subjectIds2 = array_filter((array)($extra2['selected_subjects'] ?? []), 'is_numeric');
+                if (!empty($subjectIds2)) {
+                    $phS2 = implode(',', array_fill(0, count($subjectIds2), '?'));
+                    $sStmt2 = $conn->prepare("SELECT name FROM subjects WHERE id IN ($phS2)");
+                    $sStmt2->execute(array_values($subjectIds2));
+                    $ucNames2 = implode(', ', array_column($sStmt2->fetchAll(PDO::FETCH_ASSOC), 'name'));
+                }
+                if (!empty($extra2['uc_other_name'])) {
+                    $ucNames2 .= ($ucNames2 ? ', ' : '') . htmlspecialchars($extra2['uc_other_name']);
+                }
 
                 if (!empty($teacherIds2)) {
                     $placeholders2 = implode(',', array_fill(0, count($teacherIds2), '?'));
@@ -255,16 +270,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $tStmt2->execute(array_values($teacherIds2));
                     foreach ($tStmt2->fetchAll(PDO::FETCH_ASSOC) as $tRow) {
                         $tSubject = "2ª Chamada – Solicitação {$actionLabel} (Protocolo #{$request['protocol_code']})";
+                        $ucHtml  = $ucNames2 ? "<p><strong>Unidade(s) Curricular(es):</strong> {$ucNames2}</p>" : '';
                         $obsHtml = $observation ? '<p><strong>Observação do coordenador:</strong> ' . nl2br(htmlspecialchars($observation)) . '</p>' : '';
                         $tBody = "
-                            <p>Prezado(a) <strong>{$tRow['name']}</strong>,</p>
+                            <p>Prezado(a) <strong>" . htmlspecialchars($tRow['name']) . "</strong>,</p>
                             <p>A solicitação de <strong>Avaliação de 2ª Chamada</strong> do(a) aluno(a)
-                               <strong>{$request['student_name']}</strong> (Protocolo #{$request['protocol_code']})
-                               foi <strong>{$actionLabel}</strong> pela Coordenadoria de Curso.</p>
+                               <strong>" . htmlspecialchars($request['student_name']) . "</strong>
+                               (Protocolo <strong>#{$request['protocol_code']}</strong>)
+                               foi <strong style='color:{$actionColor};'>{$actionLabel}</strong>
+                               pela Coordenadoria de Curso.</p>
+                            {$ucHtml}
                             {$obsHtml}
-                            <p>Este é um aviso automático do sistema de requerimentos do IFSC Câmpus Garopaba.</p>
                         ";
-                        $emailService->send($tRow['email'], $tRow['name'], $tSubject, $tBody, false);
+                        $emailService->send($tRow['email'], $tRow['name'], $tSubject, EmailTemplate::wrap($tBody), false);
                     }
                 }
             }
@@ -639,6 +657,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
             ?>
+            <?php
+            // Info box: notificação automática para 2ª Chamada
+            if ($request['request_type_id'] == 2):
+                $ib_extra = json_decode($request['extra_fields'] ?? '{}', true);
+                $ib_ids   = array_filter((array)($ib_extra['selected_teachers'] ?? []), 'is_numeric');
+                $ib_other = trim($ib_extra['teacher_other_name'] ?? '');
+                $ib_rows  = [];
+                if (!empty($ib_ids)) {
+                    $ib_ph = implode(',', array_fill(0, count($ib_ids), '?'));
+                    $ib_s  = $conn->prepare("SELECT name, email FROM teachers WHERE id IN ($ib_ph)");
+                    $ib_s->execute(array_values($ib_ids));
+                    $ib_rows = $ib_s->fetchAll(PDO::FETCH_ASSOC);
+                }
+            ?>
+            <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-4">
+                <p class="text-sm font-bold text-blue-800 mb-2 flex items-center gap-2">
+                    <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    Notificação automática ao(s) docente(s)
+                </p>
+                <?php if (empty($ib_rows) && !$ib_other): ?>
+                    <p class="text-sm text-blue-700">Nenhum docente vinculado a este requerimento.</p>
+                <?php else: ?>
+                <ul class="space-y-1 mb-2">
+                    <?php foreach ($ib_rows as $ib_t): ?>
+                    <li class="text-sm flex items-center gap-2">
+                        <?php if ($ib_t['email']): ?>
+                            <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="font-medium text-gray-800"><?= htmlspecialchars($ib_t['name']) ?></span>
+                            <span class="text-gray-400 text-xs"><?= htmlspecialchars($ib_t['email']) ?></span>
+                        <?php else: ?>
+                            <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="font-medium text-gray-800"><?= htmlspecialchars($ib_t['name']) ?></span>
+                            <span class="text-amber-600 text-xs font-medium">sem e-mail — não será notificado</span>
+                        <?php endif; ?>
+                    </li>
+                    <?php endforeach; ?>
+                    <?php if ($ib_other): ?>
+                    <li class="text-sm flex items-center gap-2">
+                        <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="font-medium text-gray-800"><?= htmlspecialchars($ib_other) ?></span>
+                        <span class="text-amber-600 text-xs font-medium">não cadastrado — não será notificado</span>
+                    </li>
+                    <?php endif; ?>
+                </ul>
+                <p class="text-xs text-blue-700">Ao deferir ou indeferir, os docentes acima serão notificados automaticamente por e-mail.</p>
+                <?php endif; ?>
+            </div>
+            <?php endif; ?>
+
             <?php if ($canAnalyze): ?>
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-1 h-full bg-brand-DEFAULT"></div>
