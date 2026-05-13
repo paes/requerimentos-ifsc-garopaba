@@ -367,7 +367,7 @@ $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(
                                 <?php endforeach; ?>
                             </select>
 
-                            <div id="type_info_container" class="hidden animate-fade-in-down">
+                            <div id="tipo-info" class="hidden animate-fade-in-down">
                                 <div class="bg-blue-50 border border-blue-100 rounded-md p-6 shadow-sm">
                                     <div id="info_content" class="text-[#293087] prose prose-sm prose-blue max-w-none leading-relaxed mb-4"></div>
                                     <div id="attention_box" class="hidden bg-red-50 border border-red-100 rounded-md p-4 mt-6">
@@ -1780,13 +1780,15 @@ $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(
                 const selectedOption = this.options[this.selectedIndex];
                 const info = selectedOption.dataset.info || '';
                 const attention = selectedOption.dataset.attention || '';
-                const infoContainer = document.getElementById('type_info_container');
+                const infoContainer = document.getElementById('tipo-info');
                 const infoContent = document.getElementById('info_content');
                 const attentionBox = document.getElementById('attention_box');
                 const attentionContent = document.getElementById('attention_content');
 
                 if (info || attention) {
                     infoContainer.classList.remove('hidden');
+                    history.replaceState(null, '', '#tipo-info');
+                    infoContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     infoContent.innerHTML = info;
                     infoContent.classList.toggle('hidden', !info);
                     if (attention) {
