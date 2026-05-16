@@ -51,7 +51,8 @@ mysql -u ifsc -pifsc1234 ifsc_requests
 - [x] `EMAIL_LDAP_DTIC.md` atualizado (pedido LDAP + hospedagem CTIC)
 - [x] `SIPAC_SUBMISSAO.md` rascunhado (processo formal)
 - [x] Script de limpeza de logs de e-mail (`scripts/limpar_logs_email.php`)
-- [ ] TODO-LGPD: criptografia do campo `student_phone` (varbinary sem encrypt)
+- [x] Criptografia AES-256-CBC para `student_phone` e `guardian_phone` (`src/CryptoHelper.php`)
+- [x] Documentação SIPAC completa (`docs/sipac/`): Visão, Regras de Negócio, Releases, Backlog
 
 ### Fase 2 — Aguardando comissão de implantação
 - [ ] Abrir processo SIPAC → PROEN → DTIC → CGD (usar `SIPAC_SUBMISSAO.md`)
@@ -76,8 +77,10 @@ mysql -u ifsc -pifsc1234 ifsc_requests
 | `src/EmailService.php` | Envio de e-mails via PHPMailer |
 | `src/EmailTemplate.php` | Template institucional IFSC para e-mails |
 | `config/database.php` | Conexão PDO (lê credenciais do .env) |
+| `src/CryptoHelper.php` | Criptografia AES-256-CBC para campos de telefone (LGPD) |
 | `config/config.php` | Constantes globais (BASE_URL, flags de produção) |
 | `dump/ifsc_requests.sql` | Schema e dados do banco |
+| `docs/sipac/` | Documentação SIPAC: Visão, Regras de Negócio, Releases, Backlog |
 
 ---
 

@@ -11,6 +11,7 @@ session_write_close();
 require_once '../config/database.php';
 require_once '../config/config.php';
 require_once '../src/Helpers.php';
+require_once '../src/CryptoHelper.php';
 
 // Verificacoes Anti-Bot
 if (ENABLE_TURNSTILE) {
@@ -31,12 +32,12 @@ try {
 
     $studentName = $_POST['student_name'];
     $studentEmail = $_POST['student_email'];
-    $studentPhone = $_POST['student_phone'] ?? null; // TODO-LGPD: telefone armazenado sem criptografia (varbinary bruto) — avaliar openssl_encrypt antes do go-live
+    $studentPhone  = CryptoHelper::encrypt($_POST['student_phone'] ?? null);
     $studentId = $_POST['student_id'];
     $courseId = $_POST['course_id'];
     $isMinor = !isset($_POST['is_adult']);
-    $guardianName = $isMinor ? $_POST['guardian_name'] : null;
-    $guardianPhone = $isMinor ? $_POST['guardian_phone'] : null;
+    $guardianName  = $isMinor ? $_POST['guardian_name'] : null;
+    $guardianPhone = $isMinor ? CryptoHelper::encrypt($_POST['guardian_phone'] ?? null) : null;
     $requestTypeId = $_POST['request_type_id'];
     $description = $_POST['description'];
     $classInfo = $_POST['class_info'] ?? null;

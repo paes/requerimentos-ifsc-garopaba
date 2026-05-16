@@ -8,6 +8,7 @@ require_once '../../config/database.php';
 require_once '../../config/config.php';
 require_once '../../src/Auth.php';
 require_once '../../src/Helpers.php';
+require_once '../../src/CryptoHelper.php';
 
 Auth::check();
 $user = Auth::user();
@@ -36,6 +37,9 @@ $request = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$request) {
     die("Requerimento não encontrado.");
 }
+
+$request['student_phone']  = CryptoHelper::decrypt($request['student_phone']);
+$request['guardian_phone'] = CryptoHelper::decrypt($request['guardian_phone']);
 
 // Busca Arquivos
 $filesStmt = $conn->prepare("SELECT * FROM request_files WHERE request_id = :id");
