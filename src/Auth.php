@@ -11,7 +11,7 @@ class Auth
 {
     public static function login($email, $password, $conn)
     {
-        // BYPASS P/ DESENVOLVIMENTO: Senha Mestre (Ignora LDAP)
+        // TODO-PRODUÇÃO: REMOVER este bloco antes de ir ao ar — bypass exclusivo para dev local
         if (!ENABLE_TURNSTILE && $password === 'dev123') {
             $stmtLocal = $conn->prepare("SELECT email FROM users WHERE email = :email OR email LIKE CONCAT(:email, '@%') LIMIT 1");
             $stmtLocal->execute([':email' => $email]);

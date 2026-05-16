@@ -1,3 +1,6 @@
+# Variáveis de ambiente com credenciais — NUNCA comitar
+.env
+
 # E-mails de dev (gerados em modo de teste local)
 storage/email_log/*.html
 

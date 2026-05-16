@@ -31,7 +31,7 @@ try {
 
     $studentName = $_POST['student_name'];
     $studentEmail = $_POST['student_email'];
-    $studentPhone = $_POST['student_phone'] ?? null;
+    $studentPhone = $_POST['student_phone'] ?? null; // TODO-LGPD: telefone armazenado sem criptografia (varbinary bruto) — avaliar openssl_encrypt antes do go-live
     $studentId = $_POST['student_id'];
     $courseId = $_POST['course_id'];
     $isMinor = !isset($_POST['is_adult']);

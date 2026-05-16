@@ -691,6 +691,7 @@ $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(
                                     <div class="ml-3 text-sm">
                                         <p class="font-medium text-gray-800">Declaração</p>
                                         <p class="text-gray-600 leading-relaxed text-xs">Declaro que as informações fornecidas são verdadeiras e estou ciente de que a aprovação está sujeita à análise da coordenação do curso. Comprometo-me também a cumprir os horários aqui solicitados.</p>
+                                        <p class="text-gray-500 leading-relaxed text-xs mt-1">Estou ciente de que meus dados pessoais serão tratados pelo IFSC Câmpus Garopaba para fins de análise deste requerimento, com base no cumprimento de obrigação legal (Lei nº 13.709/2018 — LGPD, Art. 7º, II).</p>
                                     </div>
                                 </label>
                             </div>
@@ -1186,6 +1187,7 @@ $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(
             <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="IFSC Logo"
                 class="h-8 mx-auto mb-4 opacity-50 grayscale hover:grayscale-0 transition-all">
             <p class="text-sm text-gray-500">&copy; <?= date('Y') ?> Instituto Federal de Santa Catarina - Câmpus Garopaba | Desenvolvido pelo Prof. Eduardo Gomes (Câmpus Canoinhas), gentilmente cedido ao Câmpus Garopaba &middot; Customizado e expandido pelo Prof. Thiago Paes</p>
+            <p class="text-xs text-gray-400 mt-2">Seus dados são tratados pelo IFSC Câmpus Garopaba com base em obrigação legal (LGPD, Art. 7º, II). Acesso restrito à equipe pedagógica/administrativa. Dúvidas: <a href="mailto:thiago.paes@ifsc.edu.br" class="underline hover:text-gray-600">thiago.paes@ifsc.edu.br</a></p>
         </div>
     </footer>
 
