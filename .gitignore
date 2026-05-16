@@ -1,6 +1,9 @@
 # Variáveis de ambiente com credenciais — NUNCA comitar
 .env
 
+# Dados locais do Claude Code (memória, planos, configurações de sessão)
+.claude/
+
 # E-mails de dev (gerados em modo de teste local)
 storage/email_log/*.html
 
