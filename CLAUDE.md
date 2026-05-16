@@ -53,6 +53,7 @@ mysql -u ifsc -pifsc1234 ifsc_requests
 - [x] Script de limpeza de logs de e-mail (`scripts/limpar_logs_email.php`)
 - [x] Criptografia AES-256-CBC para `student_phone` e `guardian_phone` (`src/CryptoHelper.php`)
 - [x] Documentação SIPAC completa (`docs/sipac/`): Visão, Regras de Negócio, Releases, Backlog
+- [x] Guia de testes UAT para equipes do câmpus (`docs/sipac/guia_de_testes_equipes.md`)
 
 ### Fase 2 — Aguardando comissão de implantação
 - [ ] Abrir processo SIPAC → PROEN → DTIC → CGD (usar `SIPAC_SUBMISSAO.md`)
@@ -62,6 +63,16 @@ mysql -u ifsc -pifsc1234 ifsc_requests
 - [ ] Preencher TODOs de produção em `config/config.php`
 - [ ] Remover bypass dev123 de `src/Auth.php`
 - [ ] Configurar SMTP Garopaba no painel admin
+- [ ] Executar UAT com secretaria e coordenadores (`docs/sipac/guia_de_testes_equipes.md`)
+- [ ] Registrar resultados dos testes na Seção 4 do guia (aprovação antes do go-live)
+
+### Fase 3 — Pós go-live
+- [ ] Ativar cron de limpeza de logs (`scripts/limpar_logs_email.php`) no servidor de produção
+- [ ] Documentar política formal de retenção de dados (LGPD — prazo de guarda dos requerimentos)
+- [ ] Treinamento dos servidores (secretaria e coordenadores)
+- [ ] Varredura de segurança pela DTIC (requisito CGD 03/2025)
+- [ ] Revisão bienal do sistema (junho/2027 conforme política)
+- [ ] Avaliar necessidade de testes automatizados (unitários/integração) conforme volume do sistema
 
 ---
 
