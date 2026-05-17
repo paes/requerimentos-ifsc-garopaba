@@ -1,6 +1,7 @@
 <?php
 /**
- * Relatório unificado de justificativas de faltas (tipo 1).
+ * Relatório unificado de justificativas de faltas.
+ * Inclui tipo 1 (Justificativa de Falta) e tipo 2 (Segunda Chamada com "justificar falta tb").
  * Exibe datas com dia da semana e quadro resumo por dia ao final.
  *
  * @author Prof. Eduardo Gomes / Prof. Thiago Paes (revisão)
@@ -22,10 +23,15 @@ $semester = $_GET['semester']  ?? Helpers::getCurrentSemester();
 $courseId = $_GET['course_id'] ?? '';
 
 $query = "
-    SELECT r.*, c.name as course_name
+    SELECT r.*, c.name as course_name,
+           (r.request_type_id = 2) AS is_segunda_chamada
     FROM requests r
     LEFT JOIN courses c ON r.course_id = c.id
-    WHERE r.request_type_id = 1 AND r.status IN ('approved', 'concluded')
+    WHERE (
+        r.request_type_id = 1
+        OR (r.request_type_id = 2 AND JSON_EXTRACT(r.extra_fields, '$.also_justify_absence') = true)
+    )
+    AND r.status IN ('approved', 'concluded')
 ";
 $params = [];
 
@@ -171,6 +177,9 @@ require_once 'layout/header.php';
                                         <td class="px-6 py-4 text-xs font-mono text-gray-500">
                                             <a href="request_details.php?id=<?= $r['id'] ?>&source=absence_report"
                                                class="text-[#1CBB9B] hover:underline"><?= htmlspecialchars($r['protocol_code']) ?></a>
+                                            <?php if ($r['is_segunda_chamada']): ?>
+                                                <span class="ml-1 px-1.5 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px] font-semibold">2ª Chamada</span>
+                                            <?php endif; ?>
                                         </td>
                                         <td class="px-6 py-4 text-sm font-medium text-gray-900">
                                             <?= htmlspecialchars($r['student_name']) ?>
@@ -237,7 +246,10 @@ require_once 'layout/header.php';
         <tbody>
             <?php foreach ($requests as $r): ?>
                 <tr>
-                    <td class="border border-gray-300 px-3 py-2 font-mono text-xs"><?= htmlspecialchars($r['protocol_code']) ?></td>
+                    <td class="border border-gray-300 px-3 py-2 font-mono text-xs">
+                        <?= htmlspecialchars($r['protocol_code']) ?>
+                        <?php if ($r['is_segunda_chamada']): ?><br><span style="font-size:9px;color:#555">(2ª Chamada)</span><?php endif; ?>
+                    </td>
                     <td class="border border-gray-300 px-3 py-2">
                         <?= htmlspecialchars($r['student_name']) ?>
                         <div class="text-[10px] text-gray-500"><?= htmlspecialchars($r['course_name'] ?? '') ?></div>
