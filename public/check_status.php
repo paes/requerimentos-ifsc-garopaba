@@ -49,14 +49,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($result) {
             // Busca Historico
             $histStmt = $conn->prepare("
-                SELECT rh.*, u.name as user_name 
-                FROM request_history rh 
-                LEFT JOIN users u ON rh.user_id = u.id 
-                WHERE rh.request_id = :id 
+                SELECT rh.*, u.name as user_name
+                FROM request_history rh
+                LEFT JOIN users u ON rh.user_id = u.id
+                WHERE rh.request_id = :id
                 ORDER BY rh.created_at DESC
             ");
             $histStmt->execute([':id' => $result['id']]);
             $history = $histStmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Busca etapas do workflow para exibição visual
+            $stmtSteps = $conn->prepare("
+                SELECT ws.step_order, ro.name as role_name
+                FROM workflow_steps ws
+                JOIN roles ro ON ws.role_id = ro.id
+                WHERE ws.request_type_id = :type_id
+                ORDER BY ws.step_order ASC
+            ");
+            $stmtSteps->execute([':type_id' => $result['request_type_id']]);
+            $workflowSteps = $stmtSteps->fetchAll(PDO::FETCH_ASSOC);
+
+            $roleLabels = [
+                'Coordenador de Curso'     => 'Aguardando resposta da Coordenação de Curso',
+                'Secretaria'               => 'Com a Secretaria Acadêmica',
+                'Coordenador Pedagógico'   => 'Aguardando resposta da Coordenadoria Pedagógica',
+                'Assistência Estudantil'   => 'Aguardando resposta da Assistência Estudantil',
+                'Administrador'            => 'Em análise administrativa',
+            ];
         } else {
             $error = 'Requerimento não encontrado. Verifique os dados informados.';
         }
@@ -158,6 +177,94 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?= Helpers::translateStatus($result['status']) ?>
                     </span>
                 </div>
+
+                <?php if (!empty($workflowSteps)): ?>
+                <div class="mb-8">
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-5">Fluxo do Requerimento</h4>
+                    <?php
+                        $currentStep = (int)($result['current_step_order'] ?? 1);
+                        $reqStatus   = $result['status'];
+                        $activeLabel = '';
+                        $totalSteps  = count($workflowSteps);
+                    ?>
+                    <div class="flex items-start justify-center gap-0">
+                        <?php foreach ($workflowSteps as $i => $step):
+                            $order = (int)$step['step_order'];
+
+                            if ($reqStatus === 'rejected') {
+                                if ($order < $currentStep)  $state = 'done';
+                                elseif ($order === $currentStep) $state = 'rejected';
+                                else $state = 'future';
+                            } elseif (in_array($reqStatus, ['approved', 'concluded'])) {
+                                $state = 'done';
+                            } else {
+                                if ($order < $currentStep)  $state = 'done';
+                                elseif ($order === $currentStep) $state = 'current';
+                                else $state = 'future';
+                            }
+
+                            $shortLabel = $step['role_name'];
+                            if ($state === 'current') {
+                                $activeLabel = $roleLabels[$step['role_name']] ?? ('Aguardando análise — ' . $step['role_name']);
+                            }
+
+                            $circleClass = match($state) {
+                                'done'     => 'bg-green-500 border-green-500',
+                                'current'  => 'bg-amber-400 border-amber-400 animate-pulse',
+                                'rejected' => 'bg-red-500 border-red-500',
+                                default    => 'bg-white border-gray-300',
+                            };
+                            $textClass = match($state) {
+                                'done'     => 'text-green-600',
+                                'current'  => 'text-amber-600 font-semibold',
+                                'rejected' => 'text-red-600',
+                                default    => 'text-gray-400',
+                            };
+                        ?>
+                            <div class="flex items-center">
+                                <div class="flex flex-col items-center w-20">
+                                    <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center <?= $circleClass ?>">
+                                        <?php if ($state === 'done'): ?>
+                                            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                        <?php elseif ($state === 'rejected'): ?>
+                                            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                                        <?php elseif ($state === 'current'): ?>
+                                            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        <?php else: ?>
+                                            <span class="w-2 h-2 rounded-full bg-gray-300"></span>
+                                        <?php endif; ?>
+                                    </div>
+                                    <p class="text-xs text-center mt-2 leading-tight <?= $textClass ?>"><?= htmlspecialchars($shortLabel) ?></p>
+                                </div>
+                                <?php if ($i < $totalSteps - 1): ?>
+                                    <div class="h-0.5 w-8 flex-shrink-0 -mt-5 <?= $state === 'done' ? 'bg-green-400' : 'bg-gray-200' ?>"></div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <?php if ($activeLabel): ?>
+                        <p class="text-center text-sm text-amber-700 font-medium mt-4 bg-amber-50 border border-amber-200 rounded-xl py-2 px-4">
+                            <?= htmlspecialchars($activeLabel) ?>
+                        </p>
+                    <?php elseif (in_array($reqStatus, ['approved', 'concluded'])): ?>
+                        <p class="text-center text-sm text-green-700 font-medium mt-4 bg-green-50 border border-green-200 rounded-xl py-2 px-4">
+                            Requerimento concluído — todas as etapas foram cumpridas.
+                        </p>
+                    <?php elseif ($reqStatus === 'rejected'): ?>
+                        <p class="text-center text-sm text-red-700 font-medium mt-4 bg-red-50 border border-red-200 rounded-xl py-2 px-4">
+                            Requerimento indeferido. Veja o histórico abaixo para mais detalhes.
+                        </p>
+                    <?php endif; ?>
+
+                    <?php if ((int)$result['request_type_id'] === 2): ?>
+                        <div class="mt-4 bg-blue-50 border border-blue-200 rounded-xl py-2.5 px-4 flex items-start gap-2">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <p class="text-xs text-blue-700">Em caso de deferimento ou indeferimento, os professores indicados na solicitação serão notificados automaticamente por e-mail.</p>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
 
                 <div class="mb-4">
                     <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-6">Linha do Tempo</h4>

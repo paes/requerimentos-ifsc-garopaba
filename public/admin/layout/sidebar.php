@@ -166,29 +166,46 @@ if (!isset($isSysAdmin)) {
             <?php endif; ?>
         <?php endif; ?>
 
-        <?php if (isset($user) && (($user['user_role'] ?? $user['role_id']) == 2 || $isSysAdmin)): ?>
+        <?php
+            // Verifica se o usuário tem perfil que deve ver as seções de curso/relatórios
+            $showCourseSection = isset($user) && ($isSysAdmin || !empty($user['user_courses']));
+        ?>
+        <?php if ($showCourseSection): ?>
             <div class="mt-8 mb-2 px-4">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Curso</p>
+            </div>
+            <a href="course_requests.php"
+                class="flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 group <?= $currentPage == 'course_requests.php' ? 'bg-brand-DEFAULT/10 text-brand-DEFAULT' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' ?>">
+                <svg class="w-5 h-5 mr-3 <?= $currentPage == 'course_requests.php' ? 'text-brand-DEFAULT' : 'text-gray-400 group-hover:text-gray-500' ?>"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                    </path>
+                </svg>
+                Requerimentos do Curso
+            </a>
+            <a href="student_report.php"
+                class="flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 group <?= $currentPage == 'student_report.php' ? 'bg-brand-DEFAULT/10 text-brand-DEFAULT' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' ?>">
+                <svg class="w-5 h-5 mr-3 <?= $currentPage == 'student_report.php' ? 'text-brand-DEFAULT' : 'text-gray-400 group-hover:text-gray-500' ?>"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
+                    </path>
+                </svg>
+                Histórico por Aluno
+            </a>
+            <div class="mt-6 mb-2 px-4">
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Relatórios</p>
             </div>
             <a href="absence_report.php"
-                class="flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 group <?= $currentPage == 'absence_report.php' ? 'bg-brand-DEFAULT/10 text-brand-DEFAULT' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' ?>">
-                <svg class="w-5 h-5 mr-3 <?= $currentPage == 'absence_report.php' ? 'text-brand-DEFAULT' : 'text-gray-400 group-hover:text-gray-500' ?>"
+                class="flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 group <?= in_array($currentPage, ['absence_report.php','absence_report_teacher.php']) ? 'bg-brand-DEFAULT/10 text-brand-DEFAULT' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' ?>">
+                <svg class="w-5 h-5 mr-3 <?= in_array($currentPage, ['absence_report.php','absence_report_teacher.php']) ? 'text-brand-DEFAULT' : 'text-gray-400 group-hover:text-gray-500' ?>"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
                     </path>
                 </svg>
                 Justificativas de Faltas
-            </a>
-            <a href="absence_report_teacher.php"
-                class="flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 group <?= $currentPage == 'absence_report_teacher.php' ? 'bg-brand-DEFAULT/10 text-brand-DEFAULT' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' ?>">
-                <svg class="w-5 h-5 mr-3 <?= $currentPage == 'absence_report_teacher.php' ? 'text-brand-DEFAULT' : 'text-gray-400 group-hover:text-gray-500' ?>"
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                    </path>
-                </svg>
-                Justificativas de Faltas (Professor)
             </a>
             <a href="schedule_report.php"
                 class="flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 group <?= $currentPage == 'schedule_report.php' ? 'bg-brand-DEFAULT/10 text-brand-DEFAULT' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' ?>">
@@ -198,6 +215,16 @@ if (!isset($isSysAdmin)) {
                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 Horários Diferenciados
+            </a>
+            <a href="class_report.php"
+                class="flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 group <?= $currentPage == 'class_report.php' ? 'bg-brand-DEFAULT/10 text-brand-DEFAULT' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' ?>">
+                <svg class="w-5 h-5 mr-3 <?= $currentPage == 'class_report.php' ? 'text-brand-DEFAULT' : 'text-gray-400 group-hover:text-gray-500' ?>"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z">
+                    </path>
+                </svg>
+                Relatório por Turma
             </a>
         <?php endif; ?>
     </nav>
