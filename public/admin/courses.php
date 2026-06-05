@@ -30,12 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
 
     if ($action === 'create') {
-        $name = $_POST['name'];
-        $level = $_POST['level'];
+        $name         = trim($_POST['name'] ?? '');
+        $level        = $_POST['level'] ?? '';
+        $abbreviation = trim($_POST['abbreviation'] ?? '') ?: null;
+        $isEad        = isset($_POST['is_ead']) ? 1 : 0;
 
         try {
-            $stmt = $conn->prepare("INSERT INTO courses (name, level) VALUES (:name, :level)");
-            $stmt->execute([':name' => $name, ':level' => $level]);
+            $stmt = $conn->prepare("INSERT INTO courses (name, abbreviation, is_ead, level) VALUES (:name, :abbr, :ead, :level)");
+            $stmt->execute([':name' => $name, ':abbr' => $abbreviation, ':ead' => $isEad, ':level' => $level]);
             $message = 'Curso criado com sucesso!';
         } catch (PDOException $e) {
             $error = 'Erro ao criar curso: ' . $e->getMessage();
@@ -50,14 +52,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = 'Erro ao excluir curso. Verifique se não há solicitações vinculadas.';
         }
     } elseif ($action === 'update') {
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-        $level = $_POST['level'];
-        $active = isset($_POST['active']) ? 1 : 0;
+        $id           = (int)$_POST['id'];
+        $name         = trim($_POST['name'] ?? '');
+        $level        = $_POST['level'] ?? '';
+        $active       = isset($_POST['active']) ? 1 : 0;
+        $abbreviation = trim($_POST['abbreviation'] ?? '') ?: null;
+        $isEad        = isset($_POST['is_ead']) ? 1 : 0;
 
         try {
-            $stmt = $conn->prepare("UPDATE courses SET name = :name, level = :level, active = :active WHERE id = :id");
-            $stmt->execute([':name' => $name, ':level' => $level, ':active' => $active, ':id' => $id]);
+            $stmt = $conn->prepare("UPDATE courses SET name = :name, abbreviation = :abbr, is_ead = :ead, level = :level, active = :active WHERE id = :id");
+            $stmt->execute([':name' => $name, ':abbr' => $abbreviation, ':ead' => $isEad, ':level' => $level, ':active' => $active, ':id' => $id]);
             $message = 'Curso atualizado com sucesso!';
         } catch (PDOException $e) {
             $error = 'Erro ao atualizar curso: ' . $e->getMessage();
@@ -111,11 +115,18 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </svg>
             Novo Curso
         </h3>
-        <form method="POST" class="flex flex-col md:flex-row gap-4 items-end">
+        <form method="POST" class="flex flex-col md:flex-row gap-4 items-end flex-wrap">
             <input type="hidden" name="action" value="create">
-            <div class="flex-1 w-full">
+            <div class="flex-1 min-w-48">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Nome do Curso</label>
                 <input type="text" name="name" required
+                    class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 focus:ring-2 focus:ring-[#1CBB9B] focus:border-transparent outline-none transition-all">
+            </div>
+            <div class="w-full md:w-28">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Abreviação
+                    <span class="text-gray-400 font-normal text-xs">(ex: ADM, SI)</span>
+                </label>
+                <input type="text" name="abbreviation" maxlength="20" placeholder="ex: ADM"
                     class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 focus:ring-2 focus:ring-[#1CBB9B] focus:border-transparent outline-none transition-all">
             </div>
             <div class="w-full md:w-48">
@@ -130,6 +141,11 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <option value="Formação Continuada">Formação Continuada</option>
                     <option value="PROEJA">PROEJA</option>
                 </select>
+            </div>
+            <div class="flex items-center gap-2 pb-2">
+                <input type="checkbox" name="is_ead" id="create_ead" value="1"
+                    class="w-4 h-4 text-[#1CBB9B] rounded border-gray-300 focus:ring-[#1CBB9B]">
+                <label for="create_ead" class="text-sm font-medium text-gray-700">EAD</label>
             </div>
             <button type="submit"
                 class="w-full md:w-auto bg-[#1CBB9B] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#169C80] transition-all shadow-sm hover:shadow-md">Adicionar</button>
@@ -146,29 +162,38 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <thead class="bg-gray-50/50">
                     <tr>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">ID</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Nome
-                        </th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Nível
-                        </th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Status
-                        </th>
-                        <th class="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">Ações
-                        </th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Nome</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Abrev.</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Nível</th>
+                        <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase tracking-wider">EAD</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">Ações</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-100">
                     <?php foreach ($courses as $c): ?>
                         <tr class="hover:bg-gray-50/80 transition-colors group">
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400 font-mono"><?= $c['id'] ?></td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                <?= htmlspecialchars($c['name']) ?></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><?= htmlspecialchars($c['name']) ?></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <?php if ($c['abbreviation']): ?>
+                                <code class="px-1.5 py-0.5 bg-gray-100 rounded text-xs"><?= htmlspecialchars($c['abbreviation']) ?></code>
+                                <?php else: ?>
+                                <span class="text-gray-300 text-xs">—</span>
+                                <?php endif; ?>
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 capitalize">
-                                <span
-                                    class="px-2 py-1 rounded-lg bg-gray-100 text-gray-600 text-xs font-medium"><?= htmlspecialchars($c['level']) ?></span>
+                                <span class="px-2 py-1 rounded-lg bg-gray-100 text-gray-600 text-xs font-medium"><?= htmlspecialchars($c['level']) ?></span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm">
+                                <?php if ($c['is_ead']): ?>
+                                <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold">EAD</span>
+                                <?php else: ?>
+                                <span class="text-gray-300 text-xs">—</span>
+                                <?php endif; ?>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                <span
-                                    class="px-2 py-1 rounded-lg text-xs font-bold <?= $c['active'] ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' ?>">
+                                <span class="px-2 py-1 rounded-lg text-xs font-bold <?= $c['active'] ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' ?>">
                                     <?= $c['active'] ? 'Ativo' : 'Inativo' ?>
                                 </span>
                             </td>
@@ -226,6 +251,15 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Abreviação
+                    <span class="text-gray-400 font-normal text-xs ml-1">prefixo usado em class_group (ex: ADM, SI)</span>
+                </label>
+                <input type="text" name="abbreviation" id="edit_abbreviation" maxlength="20" placeholder="ex: ADM"
+                    class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 focus:ring-2 focus:ring-[#1CBB9B] focus:border-transparent outline-none transition-all">
+            </div>
+
+            <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Nível</label>
                 <select name="level" id="edit_level"
                     class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 focus:ring-2 focus:ring-[#1CBB9B] focus:border-transparent outline-none transition-all">
@@ -235,21 +269,31 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <option value="Graduação">Graduação</option>
                     <option value="Pós Graduação">Pós Graduação</option>
                     <option value="Formação Continuada">Formação Continuada</option>
+                    <option value="PROEJA">PROEJA</option>
                 </select>
             </div>
 
-            <div class="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-100">
-                <input type="checkbox" name="active" id="edit_active" value="1"
-                    class="w-5 h-5 text-[#1CBB9B] rounded focus:ring-[#1CBB9B] border-gray-300">
-                <label for="edit_active" class="ml-3 block text-sm font-medium text-gray-700">Curso Ativo</label>
+            <div class="flex flex-col gap-2 p-4 bg-gray-50 rounded-xl border border-gray-100">
+                <div class="flex items-center">
+                    <input type="checkbox" name="active" id="edit_active" value="1"
+                        class="w-5 h-5 text-[#1CBB9B] rounded focus:ring-[#1CBB9B] border-gray-300">
+                    <label for="edit_active" class="ml-3 block text-sm font-medium text-gray-700">Curso Ativo</label>
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" name="is_ead" id="edit_ead" value="1"
+                        class="w-5 h-5 text-blue-500 rounded focus:ring-blue-400 border-gray-300">
+                    <label for="edit_ead" class="ml-3 block text-sm font-medium text-gray-700">
+                        Curso EAD
+                        <span class="text-gray-400 font-normal text-xs ml-1">— aulas presenciais pontuam 0,5× no Justiceiro do Tempo</span>
+                    </label>
+                </div>
             </div>
 
             <div class="flex justify-end gap-3 pt-4">
                 <button type="button" onclick="closeEditModal()"
                     class="px-4 py-2 text-gray-500 hover:text-gray-700 font-bold transition-colors">Cancelar</button>
                 <button type="submit"
-                    class="bg-[#1CBB9B] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#169C80] transition-all shadow-sm hover:shadow-md">Salvar
-                    Alterações</button>
+                    class="bg-[#1CBB9B] text-white px-6 py-2 rounded-xl font-bold hover:bg-[#169C80] transition-all shadow-sm hover:shadow-md">Salvar Alterações</button>
             </div>
         </form>
     </div>
@@ -259,8 +303,10 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
     function openEditModal(course) {
         document.getElementById('edit_id').value = course.id;
         document.getElementById('edit_name').value = course.name;
+        document.getElementById('edit_abbreviation').value = course.abbreviation || '';
         document.getElementById('edit_level').value = course.level;
         document.getElementById('edit_active').checked = course.active == 1;
+        document.getElementById('edit_ead').checked = course.is_ead == 1;
 
         const modal = document.getElementById('editModal');
         modal.classList.remove('hidden');

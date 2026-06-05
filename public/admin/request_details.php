@@ -9,6 +9,8 @@ require_once '../../config/config.php';
 require_once '../../src/Auth.php';
 require_once '../../src/Helpers.php';
 require_once '../../src/CryptoHelper.php';
+require_once '../../src/EmailService.php';
+require_once '../../src/EmailTemplate.php';
 
 Auth::check();
 $user = Auth::user();
@@ -119,20 +121,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $conn->commit();
 
             // Notifica o Aluno about the reversal
-            require_once '../../src/EmailService.php';
             $emailService = new EmailService($conn);
-            $subject = "Aviso: Requisição Retornou para Análise - Protocolo: " . $request['protocol_code'];
-            $body = "
-                <h2>Olá, {$request['student_name']}!</h2>
+            $subject = 'Aviso: Requisição Retornou para Análise — Protocolo: ' . $request['protocol_code'];
+            $body = EmailTemplate::wrap('
+                <p>Olá, <strong>' . htmlspecialchars($request['student_name']) . '</strong>!</p>
                 <p>O status da sua requisição precisou ser revertido para reanálise devido a um equívoco operacional.</p>
-                <p><strong>Protocolo:</strong> {$request['protocol_code']}</p>
-                <p><strong>Novo Status:</strong> Pendente de Análise</p>
+                <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:13px;">
+                    <tr style="background:#f9fafb;">
+                        <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:bold;width:40%;">Protocolo</td>
+                        <td style="padding:8px 12px;border:1px solid #e5e7eb;font-family:monospace;">' . htmlspecialchars($request['protocol_code']) . '</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:8px 12px;border:1px solid #e5e7eb;font-weight:bold;">Novo Status</td>
+                        <td style="padding:8px 12px;border:1px solid #e5e7eb;">Pendente de Análise</td>
+                    </tr>
+                </table>
                 <p>Você será notificado novamente assim que houver um novo parecer.</p>
-                <p>Para mais detalhes, acesse:</p>
-                <p><a href='" . BASE_URL . "/check_status.php' style='color: #1CBB9B; font-weight: bold;'>Consultar Protocolo</a></p>
-                <br>
-                <p>Atenciosamente,<br>IFSC Câmpus Garopaba</p>
-            ";
+                <p><a href="' . BASE_URL . '/check_status.php" style="display:inline-block;background:#1CBB9B;color:#fff;padding:10px 24px;border-radius:6px;text-decoration:none;font-weight:bold;">Consultar Protocolo</a></p>
+            ');
             $emailService->send($request['student_email'], $request['student_name'], $subject, $body, false);
             $emailService->triggerBackgroundProcess();
 

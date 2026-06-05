@@ -56,6 +56,30 @@ $stmt = $conn->prepare($query);
 $stmt->execute($params);
 $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// --- Requerimentos de substituição de docentes ---
+$teacherStepMap = [2 => 1, 14 => 2, 6 => 3]; // role_id → step
+$myTeacherStep  = $teacherStepMap[(int)$user['user_role']] ?? null;
+
+$tQuery  = "SELECT tr.*, c.name AS course_name FROM teacher_requests tr JOIN courses c ON c.id = tr.course_id WHERE tr.status = 'pending'";
+$tParams = [];
+
+if ($isSysAdmin) {
+    // vê tudo
+} elseif ($myTeacherStep !== null) {
+    $tQuery .= " AND tr.current_step_order = :tstep";
+    $tParams[':tstep'] = $myTeacherStep;
+    if ($isCourseBound && !empty($user['user_courses'])) {
+        $inList = implode(',', array_map('intval', $user['user_courses']));
+        $tQuery .= " AND tr.course_id IN ($inList)";
+    }
+} else {
+    $tQuery .= " AND 1=0"; // outros roles não veem
+}
+$tQuery .= " ORDER BY tr.created_at ASC";
+$tStmt = $conn->prepare($tQuery);
+$tStmt->execute($tParams);
+$teacherRequests = $tStmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <?php require_once 'layout/header.php'; ?>
 <?php require_once 'layout/sidebar.php'; ?>
@@ -146,6 +170,42 @@ $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         <?php endif; ?>
+
+        <!-- Seção: Substituição de Aulas (Docentes) -->
+        <?php if (!empty($teacherRequests)): ?>
+        <div class="mt-8 bg-white rounded-xl shadow-sm border border-amber-100 overflow-hidden">
+            <div class="px-6 py-5 border-b border-amber-100 flex justify-between items-center bg-amber-50/50">
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800">Substituição de Aulas — Docentes</h3>
+                    <p class="text-xs text-gray-500 mt-0.5">Requerimentos submetidos pelos docentes aguardando sua análise</p>
+                </div>
+                <a href="teacher_requests.php" class="text-sm text-brand-DEFAULT hover:text-brand-dark font-medium">Ver todos →</a>
+            </div>
+            <div class="divide-y divide-gray-100">
+                <?php foreach ($teacherRequests as $tr): ?>
+                    <?php
+                    $dates = json_decode($tr['absence_dates'] ?? '[]', true);
+                    $datesStr = implode(', ', array_map(fn($d) => date('d/m/Y', strtotime($d)), $dates));
+                    ?>
+                    <div class="px-6 py-4 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors">
+                        <div class="flex-1 min-w-0">
+                            <span class="font-mono text-xs font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded mr-2">
+                                <?= htmlspecialchars($tr['protocol_code']) ?>
+                            </span>
+                            <span class="text-sm font-semibold text-gray-900"><?= htmlspecialchars($tr['teacher_name']) ?></span>
+                            <span class="text-sm text-gray-500"> — <?= htmlspecialchars($tr['course_name']) ?></span>
+                            <p class="text-xs text-gray-400 mt-0.5"><?= htmlspecialchars($datesStr) ?> · Enviado <?= date('d/m/Y', strtotime($tr['created_at'])) ?></p>
+                        </div>
+                        <a href="teacher_requests.php?status=pending"
+                            class="flex-shrink-0 inline-flex items-center px-4 py-2 bg-amber-500 text-white text-xs font-bold uppercase tracking-wide rounded-lg hover:bg-amber-600 transition-all shadow-sm">
+                            Analisar
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+
     </main>
 
 <?php require_once 'layout/footer.php'; ?>

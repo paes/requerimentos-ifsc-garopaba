@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<timetable importtype="database" options="export:idprefix:%CHRID,import:idprefix:%TEMPID,groupstype1,decimalseparatordot,lessonsincludeclasseswithoutstudents,handlestudentsafterlessons" defaultexport="1" displayname="aSc Timetables 2012 XML" displaycountries="">
+  <periods options="canadd,export:silent" columns="period,name,short,starttime,endtime">
+    <period name="Manhã 12" short="M12" period="1" starttime="8:00" endtime="9:50"/>
+    <period name="Manhã 34" short="M34" period="2" starttime="10:10" endtime="12:00"/>
+    <period name="Tarde 12" short="T12" period="3" starttime="13:30" endtime="15:20"/>
+    <period name="Tarde 34" short="T34" period="4" starttime="15:40" endtime="17:30"/>
+    <period name="Noite 12" short="N12" period="5" starttime="18:00" endtime="19:50"/>
+    <period name="Noite 34" short="N34" period="6" starttime="20:10" endtime="22:00"/>
+    <period name="Noite 123" short="N123" period="7" starttime="19:00" endtime="22:00"/>
+  </periods>
+  <breaks options="canadd,export:silent" columns="break,name,short,starttime,endtime"/>
+  <daysdefs options="canadd,export:silent" columns="id,days,name,short">
+    <daysdef id="F832F251D65F7852" name="Segunda" short="Seg" days="10000"/>
+    <daysdef id="C46041BB46E8EA37" name="Terça" short="Ter" days="01000"/>
+    <daysdef id="7BB8A1B860BCB466" name="Quarta" short="Qua" days="00100"/>
+    <daysdef id="6A8B662F791D41EE" name="Quinta" short="Qui" days="00010"/>
+    <daysdef id="41EE0B6B70CCDC22" name="Sexta" short="Sex" days="00001"/>
+    <daysdef id="CFF5A0C223F92D9D" name="Qualquer dia" short="X" days="10000,01000,00100,00010,00001"/>
+    <daysdef id="6228E7F9F92C4F91" name="Cada dia" short="E" days="11111"/>
+  </daysdefs>
+  <weeksdefs options="canadd,export:silent" columns="id,weeks,name,short">
+    <weeksdef id="74EADA2E00C4A529" name="Todas as semanas" short="Todas" weeks="1"/>
+  </weeksdefs>
+  <termsdefs options="canadd,export:silent" columns="id,terms,name,short">
+    <termsdef id="75D4D16305708BF9" name="Duração 1" short="D1" terms="1000"/>
+    <termsdef id="25E42938AB94634A" name="Duração 2" short="D2" terms="0100"/>
+    <termsdef id="399E9D60C86A4B80" name="Duração 3" short="D3" terms="0010"/>
+    <termsdef id="AF165A698042C646" name="Duração 4" short="D4" terms="0001"/>
+    <termsdef id="405F57268CF94DA9" name="Qualquer duração" short="Qualquer" terms="1000,0100,0010,0001"/>
+    <termsdef id="F267ADFCDD75EEEA" name="Todo o ano" short="ANO" terms="1111"/>
+    <termsdef id="DCBA87DE29C29B5A" name="Duração 1Duração 2Duração 3" short="D1D2D3" terms="1110"/>
+    <termsdef id="04F247347BDF9747" name="D1D2" short="D1D2" terms="1100"/>
+    <termsdef id="9F267BB6E9ACDE56" name="Duração 1Duração 2" short="D1D2" terms="1100"/>
+    <termsdef id="154F2EC6EC53CF84" name="Duração 2Duração 3Duração 4" short="D2D3D4" terms="0111"/>
+    <termsdef id="04EA2CDDD8B13A2B" name="Duração 2Duração 3" short="D2D3" terms="0110"/>
+    <termsdef id="9ED41CB0354DEA9D" name="D3D4" short="D3D4" terms="0011"/>
+    <termsdef id="0524D9B84951D001" name="Duração 3Duração 4" short="D3D4" terms="0011"/>
+    <termsdef id="DDC9A2D640EB83D3" name="Duração 1Duração 2Duração 3|Duração 2Duração 3Duração 4" short="D1D2D3|D2D3D4" terms="1110,0111"/>
+    <termsdef id="8C81F4CB9665AA03" name="D1D2|Duração 1Duração 2|Duração 2Duração 3|D3D4|Duração 3Duração 4" short="D1D2|D1D2|D2D3|D3D4|D3D4" terms="1100,0110,0011"/>
+  </termsdefs>
+  <subjects options="canadd,export:silent" columns="id,name,short,partner_id">
+    <subject id="9EB6E773481C5C3C" name="Língua Portuguesa e Literatura 1" short="LPL 1" partner_id=""/>
+    <subject id="C3EC38BCC1C4939B" name="Espanhol 1" short="Espanhol 1" partner_id=""/>
+    <subject id="03D7A1494E188222" name="Educação Física 1" short="EdF 1" partner_id=""/>
+    <subject id="2B35011F0F079738" name="Matemática 1" short="Matemática 1" partner_id=""/>
+    <subject id="03D468EFA263D8D9" name="Física 1" short="Física 1" partner_id=""/>
+    <subject id="68F086E813D64137" name="Química 1" short="Química 1" partner_id=""/>
+    <subject id="716527A141DB3E04" name="Biologia 1" short="Biologia 1" partner_id=""/>
+    <subject id="437D74396C85E80C" name="História 1" short="História 1" partner_id=""/>
+    <subject id="CBC0337DE455CC4E" name="Organização, Sistemas e Métodos" short="Organização, Sistemas e Métodos" partner_id=""/>
+    <subject id="D48E870DC94AF0E3" name="Fundamentos da ADM" short="Fund. ADM" partner_id=""/>
+    <subject id="A95498D27F3A9FF6" name="Orientação ao Ensino Técnico" short="Orient. Ens. Téc." partner_id=""/>
+    <subject id="523F5E5C08E5FF30" name="Língua Portuguesa e Literatura 2" short="LPL 2" partner_id=""/>
+    <subject id="CAD94C5CA3A546BA" name="Língua Portuguesa e Literatura 3" short="LPL 3" partner_id=""/>
+    <subject id="0845B3F6FA7FBA16" name="Artes 1" short="Artes 1" partner_id=""/>
+    <subject id="592694F6C6881C12" name="Artes 2" short="Artes 2" partner_id=""/>
+    <subject id="06A6A11FC2B66882" name="Educação Física 2" short="EdF 2" partner_id=""/>
+    <subject id="B9BDE760DA1F8011" name="Matemática 2" short="Matemática 2" partner_id=""/>
+    <subject id="058017F98C9A3F31" name="Matemática 3" short="Matemática 3" partner_id=""/>
+    <subject id="8852C66936579364" name="Física 2" short="Física 2" partner_id=""/>
+    <subject id="717ABE3685B2B548" name="Física 3" short="Física 3" partner_id=""/>
+    <subject id="6A7578838413AB27" name="Biologia 2" short="Biologia 2" partner_id=""/>
+    <subject id="3EAFEE80B5698FE1" name="Sociologia 1" short="Sociologia 1" partner_id=""/>
+    <subject id="89D725F9D4A78D6C" name="Sociologia 2" short="Sociologia 2" partner_id=""/>
+    <subject id="48DEC091C0294D76" name="Filosofia 2" short="Filosofia 2" partner_id=""/>
+    <subject id="71C69A92C20A9151" name="Geografia 2" short="Geografia 2" partner_id=""/>
+    <subject id="EBD695FE75A6CD2F" name="Geografia 3" short="Geografia 3" partner_id=""/>
+    <subject id="70C27798E798E3BF" name="ADM da Produção e Logística" short="ADM da Prod. Log." partner_id=""/>
+    <subject id="4EF8524953F3588C" name="ADM de Marketing" short="ADM de Mkt" partner_id=""/>
+    <subject id="3C8BF5FDFA6B000A" name="Espanhol Aplicado" short="Esp. Apl." partner_id=""/>
+    <subject id="C54DA6B0BE9B454F" name="ADM da Qualidade" short="ADM da Qual." partner_id=""/>
+    <subject id="A6B7D852BF764289" name="Química 3" short="Química 3" partner_id=""/>
+    <subject id="B9D7FB8C1B42B07E" name="História 3" short="História 3" partner_id=""/>
+    <subject id="C9693FFC8C1903C7" name="Inglês" short="Inglês" partner_id=""/>
+    <subject id="3632DE0F68129A8E" name="PI 2" short="PI 2" partner_id=""/>
+    <subject id="AA1C9CB736DCD968" name="Resp. Socioambiental e Sustentabilidade/Língua Portuguesa e Literatura 3" short="RSS/LPL 3" partner_id=""/>
+    <subject id="72110FDF790578AA" name="ADM de Pessoas" short="ADM de Pessoas" partner_id=""/>
+    <subject id="EFC09166136597B1" name="Empreendedorismo" short="Empreend." partner_id=""/>
+    <subject id="4B42A5DCC068B3AB" name="ADM Financeira" short="ADM Financ" partner_id=""/>
+    <subject id="22060CC31DC2D048" name="Filosofia 1" short="Filosofia 1" partner_id=""/>
+    <subject id="9E02D617645BB641" name="Introdução à Informática" short="Intro. Info" partner_id=""/>
+    <subject id="255DDF57EAF813EE" name="Algoritmos e Lógica da Programação" short="ALP" partner_id=""/>
+    <subject id="1A1A7CD9C9C8FFEE" name="Redes de Computadores" short="Redes de Computadores" partner_id=""/>
+    <subject id="AAC0D4255C94569E" name="Manutenção e Configuração de Computadores" short="MCC" partner_id=""/>
+    <subject id="48B6004C6BA94259" name="Programação e Engenharia de Software" short="PES" partner_id=""/>
+    <subject id="695E16B8E6323D4E" name="Banco de Dados" short="BD" partner_id=""/>
+    <subject id="5F2E58791AE6963F" name="Inglês Aplicado" short="Ing. Apl" partner_id=""/>
+    <subject id="460D27D8D19152C4" name="Espanhol" short="Espanhol" partner_id=""/>
+    <subject id="F70D261A59FFD838" name="Programação Web" short="Programação Web" partner_id=""/>
+    <subject id="37BC40B4453834BB" name="Tópicos Avançados em Informática" short="TAI" partner_id=""/>
+    <subject id="162AD661D13A3A9A" name="Biologia Aplicada" short="Bio. Apl." partner_id=""/>
+    <subject id="FAC91255CB4DF8F3" name="Gestão de Laboratório" short="Gestão de Laboratório" partner_id=""/>
+    <subject id="9EF4BEDC7B2CD5FB" name="Linguagem e Comunicação" short="Ling. Com." partner_id=""/>
+    <subject id="E8EF7EE18A05C1A9" name="Bioética" short="Bioética" partner_id=""/>
+    <subject id="D4BB20B6EE263D3A" name="Técnicas de Citologia" short="Técnicas de Citologia" partner_id=""/>
+    <subject id="E88AA0215954F06E" name="Técnicas de Microbiologia" short="Técnicas de Microbiologia" partner_id=""/>
+    <subject id="67CC994ED0AC330E" name="Ambientação Profissional 2" short="Ambientação Profissional 2" partner_id=""/>
+    <subject id="1731BD605409C518" name="Bioestatística" short="Bioestatística" partner_id=""/>
+    <subject id="4C4F0E46E6D9A103" name="Técnicas de Bioquímica" short="Técnicas de Bioquímica" partner_id=""/>
+    <subject id="31AD745F9D5F0410" name="Cartografia" short="Cartografia" partner_id=""/>
+    <subject id="007C2843E935730E" name="Espanhol Aplicado ao Guia de Turismo" short="Espanhol Aplicado ao Guia de Turismo" partner_id=""/>
+    <subject id="B8623BB472E381AA" name="Fundamentos do Turismo" short="Fund. Turismo" partner_id=""/>
+    <subject id="E7821A5F71717495" name="História da Arte Ocidental Brasileira" short="História da Arte Ocidental Brasileira" partner_id=""/>
+    <subject id="451189995ED5E48A" name="História de SC no contexto do Brasil e do mundo 1" short="Hist SC Brasil e Mundo 1" partner_id=""/>
+    <subject id="E9EEC30171AD8D55" name="Patrimônio Cultural" short="Patrimônio Cultural" partner_id=""/>
+    <subject id="14461A42EAF2F867" name="Linguagem e Comunicação 1" short="Linguagem e Comunicação 1" partner_id=""/>
+    <subject id="83337050B8EAAC21" name="Primeiros Socorros" short="Primeiros Socorros" partner_id=""/>
+    <subject id="8611B7613B2336D4" name="Técnica Profissional 1" short="Técnica Profissional 1" partner_id=""/>
+    <subject id="676794C6EC62D0EB" name="Fundamentos do Turismo e da Hospitalidade" short="Fundamentos do Turismo e da Hospitalidade" partner_id=""/>
+    <subject id="CBD29A41CC6CC28D" name="Recepção e Reservas" short="Recepção e Reservas" partner_id=""/>
+    <subject id="5041EB46148A4271" name="Governança" short="Governança" partner_id=""/>
+    <subject id="EEF0F01D3F7AE94B" name="Higiene e Manipulação de Alimentos" short="Higiene e Manipulação de Alimentos" partner_id=""/>
+    <subject id="814EF7D83FDA9C92" name="Introdução ao Empreendedorismo" short="Introdução ao Empreendedorismo" partner_id=""/>
+    <subject id="988DBC631B381E43" name="Gestão de estoques e custos em meios de hospedagem" short="Gestão de estoques e custos em meios de hospedagem" partner_id=""/>
+    <subject id="F18815A893C3D0FF" name="Inglês aplicado aos meios de hospedagem" short="Inglês aplicado aos meios de hospedagem" partner_id=""/>
+    <subject id="88972D6ACA1DEBA0" name="Espanhol aplicado aos meios de hospedagem" short="Espanhol aplicado aos meios de hospedagem" partner_id=""/>
+    <subject id="C78C8502D08CC483" name="Marketing de serviços hoteleiros" short="Marketing de serviços hoteleiros" partner_id=""/>
+    <subject id="3ADEAA8A3F9FE901" name="Fundamentos e aplicações da Informática" short="Fundamentos e aplicações da Informática" partner_id=""/>
+    <subject id="B8922469BAD021A0" name="Biologia Aplicada" short="Biologia Aplicada" partner_id=""/>
+    <subject id="B5AB0DBF9048C910" name="Geociências Ambientais" short="Geociências Ambientais" partner_id=""/>
+    <subject id="8FD8F4DE1FCC14B0" name="História da Gestão Ambiental" short="História da Gestão Ambiental" partner_id=""/>
+    <subject id="66ADD9A02F08B3CB" name="Metodologia da Pesquisa" short="Metodologia da Pesquisa" partner_id=""/>
+    <subject id="D42A684280E06A0C" name="Segurança e Saúde Ocupacional" short="Seg. Saúde. Ocup." partner_id=""/>
+    <subject id="B97E3E28DF69672A" name="Gestão Costeira" short="Gestão Costeira" partner_id=""/>
+    <subject id="E5BF54CF8B9B814B" name="Estatística aplicada" short="Estatística aplicada" partner_id=""/>
+    <subject id="279C28275693F75B" name="Ecologia aplicada" short="Ecologia aplicada" partner_id=""/>
+    <subject id="2E86CDBB9D9162DF" name="Tratamento de águas e efluentes" short="Tratamento de águas e efluentes" partner_id=""/>
+    <subject id="82DA52559951DEEB" name="Topografia aplicada ao Georreferenciamento" short="Top. Apl. Georef" partner_id=""/>
+    <subject id="8091E1978C5C9639" name="Legislação Ambiental" short="Legislação Ambiental" partner_id=""/>
+    <subject id="3F4E4B093815E4B1" name="Tópicos Especiais em Gestão Ambiental 1" short="TE em GA 1" partner_id=""/>
+    <subject id="5795C32A468A0F9C" name="Avaliação de Impactos Ambientais" short="Av. Impact. Amb." partner_id=""/>
+    <subject id="BA66638DDD86AF09" name="Licenciamento Ambiental" short="Licenciamento Ambiental" partner_id=""/>
+    <subject id="A981CC7C8B0F37D5" name="Gestão de Projetos" short="Gestão de Projetos" partner_id=""/>
+    <subject id="0DBFF20C0F3250B4" name="Algoritmos e Técnicas de Programação" short="Alg.Téc.Prog" partner_id=""/>
+    <subject id="538E0C5BF8092A71" name="Fundamentos de sistemas para Internet" short="Fund. SI" partner_id=""/>
+    <subject id="00B10FE860575282" name="Fundamentos da Matemática" short="Fund. Mat" partner_id=""/>
+    <subject id="F3C5D350B37D3B0D" name="Organização e operacionalização de eventos" short="Organização e operacionalização de eventos" partner_id=""/>
+    <subject id="8EFC9974AF5A28D6" name="Cerimonial e protocolo" short="Cerimonial e protocolo" partner_id=""/>
+    <subject id="FF77667E4F79F521" name="Espanhol A1" short="Espanhol A1" partner_id=""/>
+    <subject id="985136E1D9A04806" name="Introdução a Língua Espanhola" short="Introdução a Língua Espanhola" partner_id=""/>
+    <subject id="A8777D5815F43707" name="Turismo e Viagens" short="Turismo e Viagens" partner_id=""/>
+    <subject id="4F2AAFFD908DE952" name="Meios de Hospedagem" short="Meios de Hospedagem" partner_id=""/>
+    <subject id="E340FBB155EF0FED" name="Serviços Turísticos e Comércio" short="Serviços Turísticos e Comércio" partner_id=""/>
+    <subject id="45CAAD3341FD35AC" name="Inglês A2" short="Inglês A2" partner_id=""/>
+    <subject id="77716835A0B2B52C" name="Inglês B1" short="Inglês B1" partner_id=""/>
+    <subject id="AD2C76DA72C47598" name="Ambientação Profissional 1" short="Ambientação Profissional 1" partner_id=""/>
+    <subject id="E44EF058D44F98E5" name="PI 1" short="PI 1" partner_id=""/>
+    <subject id="4998D2FC0EBC6A96" name="QUÍMICA AMBIENTAL" short="QUÍMICA AMBIENTAL" partner_id=""/>
+    <subject id="AA45308506EEC472" name="MICROBIOLOGIA AMBIENTAL" short="MICROBIOLOGIA AMBIENTAL" partner_id=""/>
+    <subject id="99F996C325B754F4" name="Gerenciamento e Tratamento de Resíduos" short="Gerenciamento e Tratamento de Resíduos" partner_id=""/>
+    <subject id="33D83BB519CFA21D" name="Solos" short="Solos" partner_id=""/>
+    <subject id="CEE35E194FB22E7A" name="Responsabilidade Socioambiental e Sustentabilidade" short="RSS" partner_id=""/>
+    <subject id="C93E4F2B6542496A" name="LÍNGUA PORTUGUESA E LITERATURA 3/ TÓPICOS AVANÇADOS" short="LÍNGUA PORTUGUESA E LITERATURA 3/ TÓPICOS AVANÇADOS" partner_id=""/>
+    <subject id="15FE2C28785F88E4" name="Biologia aplicada/ Gestão de Laboratório" short="Biologia aplicada/ Gestão de Laboratório" partner_id=""/>
+    <subject id="440B3689CAEAA231" name="Biologia aplicada/ Linguagem e Comunicação" short="Biologia aplicada/ Linguagem e Comunicação" partner_id=""/>
+    <subject id="863B49F8CC68BD50" name="História de SC no contexto do Brasil e do mundo/ Primeiros Socorros" short="História de SC no contexto do Brasil e do mundo/ Primeiros Socorros" partner_id=""/>
+    <subject id="7B5DFD3038B7760A" name="Técnicas de citologia/Técnicas de Microbiologia" short="Técnicas de citologia/Técnicas de Microbiologia" partner_id=""/>
+    <subject id="79C70426B4993FAD" name="Espanhol Aplicado/ Técnicas de Microbiologia" short="Espanhol Aplicado/Técnicas de Microbiologia" partner_id=""/>
+    <subject id="08702E371AC62192" name="PI2/Técnicas de Bioquímica" short="PI2/Técnicas de Bioquímica" partner_id=""/>
+    <subject id="F0AFC42CE677DA44" name="Introdução/Turismo/Meios/Serviços" short="Introdução/Turismo/Meios/Serviços" partner_id=""/>
+    <subject id="BE682258318F527A" name="Química 2" short="Química 2" partner_id=""/>
+    <subject id="4E718F34C9025448" name="Geografia 1" short="Geografia 1" partner_id=""/>
+    <subject id="A3150E29120DBF5B" name="História 2" short="História 2" partner_id=""/>
+    <subject id="AA896333459DCE9D" name="Artes 2 / Responsabilidade Socio Ambiental" short="Artes 2 / Responsabilidade Socio Ambiental" partner_id=""/>
+    <subject id="27E90A1309EEE298" name="Programação p/ dispositivos móveis" short="Programação p/ dispositivos móveis" partner_id=""/>
+    <subject id="791D39E977D6F080" name="Organização, sistemas e métodos / Informática aplicada" short="Organização, sistemas e métodos / Informática aplicada" partner_id=""/>
+    <subject id="287EE2241013FB42" name="Informática Aplicada" short="Informática Aplicada" partner_id=""/>
+    <subject id="422B96021C4D026A" name="Comunicação e Linguagem" short="Comunicação e Linguagem" partner_id=""/>
+    <subject id="04000CDC10C94EDE" name="Matemática para Administradores" short="Matemática para Administradores" partner_id=""/>
+    <subject id="3D5FD580F5E2AE70" name="Adm. da Prod. e Logística / Matemática p/ Administradores" short="Adm. da Prod. e Logística / Matemática p/ Administradores" partner_id=""/>
+    <subject id="740C29DE99D90D14" name="Líng. Port. e Literatura 3 / Artes 2" short="Líng. Port. e Literatura 3 / Artes 2" partner_id=""/>
+    <subject id="271A7CE6E11CD4A2" name="Geomática" short="Geomática" partner_id=""/>
+    <subject id="ACABABA13570A1AC" name="Química Ambiental" short="Química Ambiental" partner_id=""/>
+    <subject id="4AA8ECDAA7267439" name="Linguagem e Comunicação 2" short="Linguagem e Comunicação 2" partner_id=""/>
+    <subject id="212E4D3344F6D1A9" name="Microbiologia Ambiental" short="Microbiologia Ambiental" partner_id=""/>
+    <subject id="7C304F0F150C2B0E" name="Gestão de Resíduos Sólidos" short="Gestão de Resíduos Sólidos" partner_id=""/>
+    <subject id="8AC1F0015DA0D81F" name="Gestão da Qualidade" short="Gestão da Qualidade" partner_id=""/>
+    <subject id="A867BB9CD547C0D8" name="Gestão de Recursos Hídricos" short="Gestão de Recursos Hídricos" partner_id=""/>
+    <subject id="D8D74543F321D110" name="Ferramentas de Gestão Ambiental" short="Ferramentas de Gestão Ambiental" partner_id=""/>
+    <subject id="B6C3502B557D3BBF" name="Gestão de Áreas Protegidas" short="Gestão de Áreas Protegidas" partner_id=""/>
+    <subject id="0FCE944571E64956" name="Atividades de Extensão" short="Atividades de Extensão" partner_id=""/>
+    <subject id="6F799916EB473037" name="Tópicos Especiais em Gestão Ambiental 2" short="Tópicos Especiais em Gestão Ambiental 2" partner_id=""/>
+    <subject id="BDF3406C05914311" name="TCC" short="TCC" partner_id=""/>
+    <subject id="8DBA6DFCB26FC2E8" name="Sociedade e Trabalho (EAD)" short="Sociedade e Trabalho (EAD)" partner_id=""/>
+    <subject id="483C557CF5A3E7CD" name="Iniciação Científica e Extensionista" short="Iniciação Científica e Extensionista" partner_id=""/>
+    <subject id="002ADF2367CA79BE" name="Programação Orientada a Objetos" short="Programação Orientada a Objetos" partner_id=""/>
+    <subject id="B3EFC035A13F8114" name="Sistemas Operacionais" short="Sistemas Operacionais" partner_id=""/>
+    <subject id="E119230260714ED8" name="Ecossistems Regionais de SC" short="Ecossistems Regionais de SC" partner_id=""/>
+    <subject id="AACD51CE20AEADD3" name="Educação e Responsabilidade Ambiental" short="Ed. e RSS" partner_id=""/>
+    <subject id="119C801E9F2F053B" name="Espanhol Aplicado ao Guia de Turismo 2" short="Espanhol Aplicado ao Guia de Turismo 2" partner_id=""/>
+    <subject id="148A9DE8157200A0" name="Geografia de SC" short="Geografia de SC" partner_id=""/>
+    <subject id="9774E35CCA584B20" name="História da Arte Catarinense" short="História da Arte Catarinense" partner_id=""/>
+    <subject id="12808246A6162D34" name="História de SC 2" short="História de SC 2" partner_id=""/>
+    <subject id="D6D2BA22BD84E179" name="Projeto Integrador" short="Projeto Integrador" partner_id=""/>
+    <subject id="7E7AA45A8A2F2A94" name="Relações Interpessoais" short="Relações Interpessoais" partner_id=""/>
+    <subject id="D4CC1A5839499556" name="Técnica Profissional 2" short="Técnica Profissional 2" partner_id=""/>
+    <subject id="D7BABC4AC48C0973" name="Serviço de Alimentos e Bebidas" short="Serviço de Alimentos e Bebidas" partner_id=""/>
+    <subject id="DB9034851BD822DB" name="Empreendedorismo e Inovação" short="Empreend. Inov." partner_id=""/>
+    <subject id="5F6C7381E3711B3B" name="Inglês Aplicado aos Meios de Hospedagem 2" short="Inglês Aplicado aos Meios de Hospedagem 2" partner_id=""/>
+    <subject id="F135A02E2B2617A4" name="Espanhol Aplicado aos Meios de Hospedagem 2" short="Espanhol Aplicado aos Meios de Hospedagem 2" partner_id=""/>
+    <subject id="9EB9F46FCF875683" name="Sustentabilidade em meios de Hospedagem" short="Sustentabilidade em meios de Hospedagem" partner_id=""/>
+    <subject id="1FD7A95175E80224" name="Eventos em meios de Hospedagem" short="Eventos em meios de Hospedagem" partner_id=""/>
+    <subject id="25BE93295D23F18F" name="Técnicas de Lazer e Recreação" short="Técnicas de Lazer e Recreação" partner_id=""/>
+    <subject id="555598AF96B69C25" name="Primeiros Socorros" short="Primeiros Socorros" partner_id=""/>
+    <subject id="2B50A16175C10E84" name="Ambientação Profissional 1" short="Ambientação Profissional 1" partner_id=""/>
+    <subject id="BBCDD94C97246EA0" name="Técnicas de Parasitologia" short="Técnicas de Parasitologia" partner_id=""/>
+    <subject id="5644F764E77D4AC7" name="Bioprospecção" short="Bioprospecção" partner_id=""/>
+    <subject id="19BCCC97F64A035D" name="Biotecnologia Ambiental" short="Biotecnologia Ambiental" partner_id=""/>
+    <subject id="1B0C945A7C5B840F" name="Técnicas de Histologia" short="Técnicas de Histologia" partner_id=""/>
+    <subject id="2D3889349D0A6245" name="Técnicas de Biologia Celular e Molecular" short="Técnicas de Biologia Celular e Molecular" partner_id=""/>
+    <subject id="1F273405E2A69C7E" name="Toxicologia " short="Toxicologia " partner_id=""/>
+    <subject id="729B68E214C802BD" name="Plano de Negócios" short="Plano de Negócios" partner_id=""/>
+    <subject id="BCCC6C2E6BF727FD" name="Responsabilidade Socioambiental" short="Responsabilidade Socioambiental" partner_id=""/>
+    <subject id="73D6A9AECB3E064B" name="Fundamentos do Empreendedorismo" short="Fundamentos do Empreendedorismo" partner_id=""/>
+    <subject id="D04CACF427D6FF9C" name="Atividade Integradora: Simulação Empresarial" short="Atividade Integradora: Simulação Empresarial" partner_id=""/>
+    <subject id="424D9AC5528620FD" name="Trabalho colaborativo c/ aplicativos de escritório em nuvem" short="Trabalho colaborativo c/ aplicativos de escritório em nuvem" partner_id=""/>
+    <subject id="4148523FC6057E5A" name="Educação Ambiental" short="Educação Ambiental" partner_id=""/>
+    <subject id="8C2ADB43E546F1F0" name="Química Aplicada" short="Química Aplicada" partner_id=""/>
+    <subject id="E6B32FAE44FA35F5" name="Amb. Prof./Química Aplicada" short="Amb. Prof./Química Aplicada" partner_id=""/>
+    <subject id="47735F39D6F96C80" name="Bioprospecção / Biotecnologia Ambiental" short="Bioprospecção / Biotecnologia Ambiental" partner_id=""/>
+    <subject id="E6BABAF6A5B55181" name="Biotec Ambiental / PI1" short="Biotec Ambiental / PI1" partner_id=""/>
+    <subject id="B221FA1A73009F86" name="Bioprospecção / Téc. de Histologia" short="Bioprospecção / Téc. de Histologia" partner_id=""/>
+    <subject id="C7A8FED59E5C269C" name="Empreendedorismo / Toxicologia" short="Empreendedorismo / Toxicologia" partner_id=""/>
+    <subject id="94A2BD4767EE7EA1" name="Técnicas de BMC / Toxicologia" short="Técnicas de BMC / Toxicologia" partner_id=""/>
+    <subject id="75F49AAD190E18B8" name="Técnicas de BMC " short="TdB" partner_id=""/>
+    <subject id="3F84D04AF497D3BE" name="Atividades de Extensão" short="Atividades de Extensão" partner_id=""/>
+    <subject id="5DE80F4606911C9C" name="Técnicas de Amostragem" short="Técnicas de Amostragem" partner_id=""/>
+    <subject id="4B0D22F6DCB99D36" name="Ética e Responsabilidade Socio Ambiental" short="Ética e Responsabilidade Socio Ambiental" partner_id=""/>
+    <subject id="D173126B75AD2E4C" name="Educação e Resp. Socio Amb./ Relações Interpessoais" short="Educação e Resp. Socio Amb./ Relações Interpessoais" partner_id=""/>
+    <subject id="366A2063B8453E1A" name="Inglês Aplicado / Ambientação Profissional" short="Inglês Aplicado / Ambientação Profissional" partner_id=""/>
+    <subject id="B78A8B44EC95D1E7" name="Banco de Dados 2" short="BD 2" partner_id=""/>
+    <subject id="2D467E5B7FE0E690" name="Engenharia de Software" short="Engenharia de Software" partner_id=""/>
+    <subject id="C4E0345B406DD95C" name="Estrutura de Dados" short="Estrutura de Dados" partner_id=""/>
+    <subject id="A99D60DECC90D0A0" name="Interfaces e Experiência do Usuário (EAD)" short="Interfaces e Experiência do Usuário (EAD)" partner_id=""/>
+    <subject id="A5B548F069195547" name="Programação para Intenet 1" short="Programação para Intenet 1" partner_id=""/>
+    <subject id="03D176170D5A88EF" name="Engenharia de Software I" short="Engenharia de Software I" partner_id=""/>
+    <subject id="2BB823075E939A17" name="Programação para Internet II" short="Programação para Internet II" partner_id=""/>
+    <subject id="7DACAF75FC7D5E24" name="Redes de Computadores" short="Redes de Computadores" partner_id=""/>
+    <subject id="A0FA87760C59F177" name="Atividades de Extensão" short="Atividades de Extensão" partner_id=""/>
+    <subject id="6471D88006273154" name="Empreendedorismo e Inovação" short="Empreendedorismo e Inovação" partner_id=""/>
+    <subject id="456F612021E9375F" name="Gerenciamento e serviços para Internet" short="Ger. Serv. Int." partner_id=""/>
+    <subject id="EFE6DFD9DF372237" name="Programação para dispositivos móveis I" short="Programação para dispositivos móveis I" partner_id=""/>
+    <subject id="2DA6CF9C9BBFE5E7" name="Ética, Sociedade e Informática" short="Ética, Sociedade e Informática" partner_id=""/>
+    <subject id="1FA295BC0FF64F3C" name="Gestão e Segurança de Tecnologia da Informação" short="Gestão e Segurança de Tecnologia da Informação" partner_id=""/>
+    <subject id="1A2D96C4752A2CC4" name="Programação para dispositivos móveis II" short="Programação para dispositivos móveis II" partner_id=""/>
+    <subject id="C7B1EB06198B6BA3" name="Tópicos Especiais em Sistemas para Internet" short="Tópicos Especiais em Sistemas para Internet" partner_id=""/>
+    <subject id="74A0E00FF0427AEC" name="Banco de dados I" short="Banco de dados I" partner_id=""/>
+    <subject id="6D20C87498A0233E" name="Iniciação Científica e Extensionista" short="Iniciação Científica e Extensionista" partner_id=""/>
+    <subject id="90CF966AC9C5AB03" name="Programação orientada à objetos" short="Programação orientada à objetos" partner_id=""/>
+    <subject id="0E343B9F4D4121BF" name="Sistemas Operacionais" short="Sistemas Operacionais" partner_id=""/>
+    <subject id="C6DFDAD9B9486CB5" name="Sociedade e Trabalho" short="Soc e Trab" partner_id=""/>
+    <subject id="5DF1E627B7D8E876" name="Desenvolvimento de Jogos (EAD)" short="Desenvolvimento de Jogos (EAD)" partner_id=""/>
+    <subject id="F4EA62924E036F78" name="Engenharia de Software II" short="Engenharia de Software II" partner_id=""/>
+    <subject id="61BC00A52A3D063F" name="Programação para Internet II" short="Programação para Internet II" partner_id=""/>
+    <subject id="D209E3513EEA3DC6" name="Sistemas de gerenciamento de conteúdo (EAD)" short="Sistemas de gerenciamento de conteúdo (EAD)" partner_id=""/>
+    <subject id="D8CAC43ABD0D3FF7" name="Inglês 2" short="Inglês 2" partner_id=""/>
+    <subject id="5D7F6ED42CF9A760" name="Inglês 3 - 14h às 17h" short="Inglês 3 - 14h às 17h" partner_id=""/>
+    <subject id="C29B08A3896C9707" name="Inglês 5" short="Inglês 5" partner_id=""/>
+    <subject id="F6057C69F2B1A5FA" name="Inglês 6" short="Inglês 6" partner_id=""/>
+    <subject id="433924758FBF43C3" name="Conversação em Espanhol - 14h às 17h" short="Conversação em Espanhol - 14h às 17h" partner_id=""/>
+    <subject id="9DC178DFEF7287C7" name="Planejamento de Marketing - 14 às 17h" short="Planejamento de Marketing - 14 às 17h" partner_id=""/>
+    <subject id="BC2D3C0416AB495E" name="Ecologia e Meio Ambiente" short="Ecologia e Meio Ambiente" partner_id=""/>
+    <subject id="300AF9A52036BDEA" name="Geografia e Cartografia" short="Geografia e Cartografia" partner_id=""/>
+    <subject id="A7AAC5480BF1CA1B" name="História Local" short="História Local" partner_id=""/>
+    <subject id="AA98E3118234C580" name="Prática Profissional" short="Prática Profissional" partner_id=""/>
+    <subject id="9ACDEC23F2210FD3" name="Campo" short="Campo " partner_id=""/>
+    <subject id="BABF2643EB41E9FB" name="Informática e Autonomia Digital" short="Informática e Autonomia Digital" partner_id=""/>
+    <subject id="A893B3ECC66C8931" name="Inglês 4" short="Inglês 4" partner_id=""/>
+    <subject id="DE4EC291987E499E" name="Espanhol 2 - 9h - 12h" short="Espanhol 2 - 9h - 12h" partner_id=""/>
+    <subject id="EEB782D0C39D1118" name="Língua Portuguesa 1" short="Língua Portuguesa 1" partner_id=""/>
+    <subject id="2C6393AB18FFC9D5" name="Filosofia" short="Filosofia" partner_id=""/>
+    <subject id="5F8B0F56CE2F9922" name="Espanhol 1 - 09h às 12h" short="Espanhol 1 - 09h às 12h" partner_id=""/>
+    <subject id="CD5ACF3E44981A03" name="Pendência Microbiologia Biotec" short="Pendência Microbiologia Biotec" partner_id=""/>
+    <subject id="B03F2BF1F1FEBE1B" name="Téc. Parasito /Química Aplicada" short="Téc. Parasito /Química Aplicada" partner_id=""/>
+    <subject id="16E9450F4A98B7C2" name="Planejamento de Marketing" short="Planejamento de Marketing" partner_id=""/>
+    <subject id="354C840A5C9200A2" name="Sociedade e Trabalho (EAD)" short="Sociedade e Trabalho (EAD)" partner_id=""/>
+    <subject id="4BB357512DF9B819" name="Sistemas de Gerenciamento de Conteúdo (EAD)" short="Sistemas de Gerenciamento de Conteúdo (EAD)" partner_id=""/>
+    <subject id="EDDCD6DF0025CF40" name="Sistemas Operacionais - 9h às 12h" short="Sistemas Operacionais - 9h às 12h" partner_id=""/>
+    <subject id="1076F446C2B7F162" name="Prog. Orientada a objetos - 9h às 12h" short="Prog. Orientada a objetos - 9h às 12h" partner_id=""/>
+    <subject id="D20CFB55337DF40B" name="Prog. Orientada a objetos - 14h às 17h" short="Prog. Orientada a objetos - 14h às 17h" partner_id=""/>
+    <subject id="E42C8B4FE04E5A28" name="Inic. Cient. e Extensionista 9h às 12h" short="Inic. Cient. e Extensionista 9h às 12h" partner_id=""/>
+    <subject id="F99AE4EA50AE00C5" name="Banco de dados I - 14h às 17h" short="Banco de dados I - 14h às 17h" partner_id=""/>
+    <subject id="2A9E86AE03005C9E" name="Inic. Cient. e Extensionista 14h às 17h" short="Inic. Cient. e Extensionista 14h às 17h" partner_id=""/>
+    <subject id="7285F426AD5B14F1" name="Sistemas Operacionais - 14h às 17h" short="Sistemas Operacionais - 14h às 17h" partner_id=""/>
+    <subject id="0C224C0581C6B227" name="Atividades de Extensão - 9h às 12h" short="Atividades de Extensão - 9h às 12h" partner_id=""/>
+    <subject id="9B19E7522D9A35E6" name="Atividades de Extensão - 14h às 17h" short="Atividades de Extensão - 14h às 17h" partner_id=""/>
+    <subject id="A7C46D8AFB83FCD0" name="Redes de Computadores - 14h às 17h" short="Redes de Computadores - 14h às 17h" partner_id=""/>
+    <subject id="E7503818D30D2A2F" name="Empreendedorismo e Inovação - 14h às 17h" short="Empreendedorismo e Inovação - 14h às 17h" partner_id=""/>
+    <subject id="202D5D4B34E75DEB" name="Empreendedorismo e Inovação - 9h às 12h" short="Empreendedorismo e Inovação - 9h às 12h" partner_id=""/>
+    <subject id="35B462066042E501" name="Engenharia de Software - 9h às 17h" short="Engenharia de Software - 9h às 17h" partner_id=""/>
+    <subject id="2BB5AFF71D092765" name="Engenharia de Software - 14h às 17h" short="Engenharia de Software - 14h às 17h" partner_id=""/>
+    <subject id="3F8925641D634BE9" name="Filosofia - 9h às 12h" short="Filosofia - 9h às 12h" partner_id=""/>
+    <subject id="B36B672E3C0E392D" name="Língua Portuguesa - 14h às 17h" short="Língua Portuguesa - 14h às 17h" partner_id=""/>
+    <subject id="8064A176F0A1187A" name="Matemática - 9h às 12h" short="Matemática - 9h às 12h" partner_id=""/>
+    <subject id="2DE8F5B89502575A" name="Matemática - 14h às 17h" short="Matemática - 14h às 17h" partner_id=""/>
+    <subject id="FB141F0C9658F158" name="Fund. do Turismo - 9h às 12h" short="Fund. do Turismo - 9h às 12h" partner_id=""/>
+    <subject id="6B6601B8AB2628DF" name="Informática - 9h às 12h" short="Informática - 9h às 12h" partner_id=""/>
+    <subject id="D2101AD603C02286" name="Filosofia - 14h às 17h" short="Filosofia - 14h às 17h" partner_id=""/>
+    <subject id="E7C0E43BF7F612EF" name="Informática - 14h às 17h" short="Informática - 14h às 17h" partner_id=""/>
+    <subject id="867E9082DA1F5432" name="Téc. de Parasitologia/QMC Aplicada" short="Téc. de Parasitologia/QMC Aplicada" partner_id=""/>
+    <subject id="5043C3C23756485A" name="Ciências de Dados I (EAD)" short="Ciê. Dados 1 (EAD)" partner_id=""/>
+    <subject id="9963D82902C26A3D" name="Programação para Internet II" short="Programação para Internet II" partner_id=""/>
+    <subject id="B0A320DCF31F64A6" name="Gerenciamento e Serviços para Internet" short="Gerenciamento e Serviços para Internet" partner_id=""/>
+    <subject id="FB8525B7FD615F84" name="Programação para dispositivos móveis I" short="Programação para dispositivos móveis I" partner_id=""/>
+    <subject id="21E149B846BD1A48" name="Artes" short="Artes" partner_id=""/>
+    <subject id="1DFA45E59318891A" name="Sociologia" short="Sociologia" partner_id=""/>
+    <subject id="B4F63E2714639764" name="Química 1 / Biologia 1" short="Química 1 / Biologia 1" partner_id=""/>
+    <subject id="A5B3FD1CB23D9AE2" name="Gestão da Prestação de Serviços" short="Gestão da Prestação de Serviços" partner_id=""/>
+    <subject id="CD95A97F93DBFBE9" name="Gestão de Pessoas" short="Gestão de Pessoas" partner_id=""/>
+    <subject id="292F5A1035894C21" name="Gestão Financeira" short="Gestão Financeira" partner_id=""/>
+    <subject id="125443947803B8AF" name="Sustentabilidade" short="Sustentabilidade" partner_id=""/>
+    <subject id="57D5E75C956AAF58" name="Gestão do Marketing" short="Gestão do Marketing" partner_id=""/>
+    <subject id="21216E8570F7E069" name="Espanhol 3" short="Espanhol 3" partner_id=""/>
+    <subject id="F62CA53CE6CD892E" name="Inglês 1 - 14h - 17h" short="Inglês 1 - 14h - 17h" partner_id=""/>
+    <subject id="8CD55D673192F268" name="Inglês 2 - 14h às 17h" short="Inglês 2 - 14h às 17h" partner_id=""/>
+    <subject id="6C73D983A42846D0" name="Inglês 3" short="Inglês 3" partner_id=""/>
+    <subject id="3240BEFEC58722BB" name="Inglês 4" short="Inglês 4" partner_id=""/>
+    <subject id="12A5DAD4B9E19754" name="Inglês 5" short="Inglês 5" partner_id=""/>
+    <subject id="BF90CFDE9078A69D" name="Inglês 6" short="Inglês 6" partner_id=""/>
+    <subject id="A1311C2BDF1A794A" name="Espanhol 2 - 09h-12h" short="Espanhol 2 - 09h-12h" partner_id=""/>
+    <subject id="628378F15EA3664B" name="Espanhol 3" short="Espanhol 3" partner_id=""/>
+    <subject id="E7A4D3D683D2AD3E" name="Química 1 / Biologia 1" short="Química 1 / Biologia 1" partner_id=""/>
+    <subject id="E13FC69EC6EF5D19" name="Química 2 / Biologia 2" short="Química 2 / Biologia 2" partner_id=""/>
+    <subject id="E0EC87FA17808186" name="Química 3 / Biologia 3" short="Química 3 / Biologia 3" partner_id=""/>
+    <subject id="4CF33157728AF661" name="Biologia 1 / Química 1" short="Biologia 1 / Química 1" partner_id=""/>
+    <subject id="D35D20CC0B9E8777" name="Língua Portuguesa 2" short="Língua Portuguesa 2" partner_id=""/>
+    <subject id="DA1D7D8C74C210F0" name="História" short="História" partner_id=""/>
+    <subject id="3F108B84B73A20BE" name="Geografia" short="Geografia" partner_id=""/>
+    <subject id="178A2EAA81DBF90D" name="Língua Portuguesa 2" short="Língua Portuguesa 2" partner_id=""/>
+    <subject id="D20C162AC5101DF1" name="Inglês 1" short="Inglês 1" partner_id=""/>
+    <subject id="A6264F0CC51E3D24" name="Algoritmos / Introdução a Informática" short="Algoritmos / Introdução a Informática" partner_id=""/>
+    <subject id="F8BE31343C53FA4A" name="Algoritmos / Redes de Computadores" short="Algoritmos / Redes de Computadores" partner_id=""/>
+    <subject id="7F2420A8D5478B5F" name="Ética, Sociedade e Informática" short="Ética, Sociedade e Informática" partner_id=""/>
+    <subject id="2AF7300F50A1A092" name="Gestão e Segurança de T.I" short="Gestão e Segurança de T.I" partner_id=""/>
+    <subject id="7DCE2B5658809B08" name="Ciências de dados II" short="Ciências de dados II" partner_id=""/>
+    <subject id="2442E432E46F74DA" name="Forró - 19h às 20h" short="Forró - 19h às 20h" partner_id=""/>
+    <subject id="2B0340F34D92FE54" name="Samba de Gafieira - 19h às 20h" short="Samba de Gafieira - 19h às 20h" partner_id=""/>
+    <subject id="5472E87B1658F0A2" name="Patrimônio Cultural Material e Imaterial" short="Patrimônio Cultural Material e Imaterial" partner_id=""/>
+    <subject id="E1ECF77DDCDE5F7D" name="Patrimônio Natural" short="Patrimônio Natural" partner_id=""/>
+    <subject id="D7F1C14584C52929" name="Roteiros pedagógicos de Patrimônio Cultural" short="Roteiros pedagógicos de Patrimônio Cultural" partner_id=""/>
+    <subject id="A35900695210772D" name="Educação Patrimonial" short="Educação Patrimonial" partner_id=""/>
+    <subject id="B8E405247D8BFE43" name="Sistemas e Técnicas de Sala e Bar" short="Sistemas e Técnicas de Sala e Bar" partner_id=""/>
+    <subject id="9AD7A0486E0D7CDD" name="Serviços de Coquetelaria e Vinhos" short="Serviços de Coquetelaria e Vinhos" partner_id=""/>
+    <subject id="B8E7906CDE2719D0" name="Espanhol aplicado (EAD)" short="Espanhol aplicado (EAD)" partner_id=""/>
+    <subject id="D5976E1EB1961CFF" name="Ciências de Dados II (EAD)" short="Ciências de Dados II (EAD)" partner_id=""/>
+    <subject id="ADEC01444D5D9CBD" name="PESQUISA / AÇÃO 2" short="PESQUISA / AÇÃO 2" partner_id=""/>
+    <subject id="23AA82EBB0116BBA" name="Redação de Projeto de Pesquisa de 29/09 a 24/11" short="Redação de Projeto de Pesquisa de 29/09 a 24/11" partner_id=""/>
+    <subject id="14F0E5C13D385701" name="RECESSO" short="RECESSO" partner_id=""/>
+    <subject id="467515F95EB13E2B" name="Biologia" short="Biologia" partner_id=""/>
+    <subject id="C24BC008FB05239F" name="Educ.Física" short="Educ.Física" partner_id=""/>
+    <subject id="E6C3E397EE9AE7A7" name="Química" short="Química" partner_id=""/>
+    <subject id="7BF47B0749E67658" name="Técnicas de Bioquímica / Bioestatística" short="Técnicas de Bioquímica / Bioestatística" partner_id=""/>
+    <subject id="6DD819D5260F38AA" name="Empreendedorismo / PI 2" short="Empreendedorismo / PI 2" partner_id=""/>
+    <subject id="E006CC5119B8C35C" name="Inglês 7" short="Inglês 7" partner_id=""/>
+    <subject id="CC8E2243B09F5F74" name="Técnicas de Microbiologia/Espanhol Aplicado" short="Técnicas de Microbiologia/Espanhol Aplicado" partner_id=""/>
+    <subject id="7BCE3655052298EE" name="Introdução ao Turismo" short="Introdução ao Turismo" partner_id=""/>
+    <subject id="223E6B087BF1FA09" name="O Produto Turístico" short="O Produto Turístico" partner_id=""/>
+    <subject id="B936E773121C810B" name="O Turismo no Brasil" short="O Turismo no Brasil" partner_id=""/>
+    <subject id="AD5EE16ADB26F78A" name="Elaboração de Roteiros Turísticos" short="Elaboração de Roteiros Turísticos" partner_id=""/>
+    <subject id="AB694CBF3B66A145" name="Introdução ao Turístico" short="Introdução ao Turístico" partner_id=""/>
+    <subject id="F65059EC6FC78D93" name="Formalização de Coletivos de Preservação do Patrimônio e TBC" short="Formalização de Coletivos de Preservação do Patrimônio e TBC" partner_id=""/>
+    <subject id="6C3A5C8B1D5BF760" name="Oficina Literaria Transvendo Escolas" short="Oficina Literaria Transvendo Escolas" partner_id=""/>
+    <subject id="81C5614648D77E76" name="Mestrado Clima e Ambiente" short="Mestrado Clima e Ambiente" partner_id=""/>
+    <subject id="DFF9064A7B4067AC" name="Especialização Ensino de Línguas" short="Especialização Ensino de Línguas" partner_id=""/>
+    <subject id="07EA51400F4BF775" name="Informática e Autonomia Digital" short="Informática e Autonomia Digital" partner_id=""/>
+    <subject id="56FA44F276366FB0" name="Relações Interpessoais no Mundo do Trabalho" short="Relações Interpessoais no Mundo do Trabalho" partner_id=""/>
+    <subject id="2262083F5881366C" name="Arte 1/Espanhol 1" short="Arte 1/Espanhol 1" partner_id=""/>
+    <subject id="CFEE5C80FD22754C" name="Relações Interpessoais/Ling.Port. e Lit. 1" short="Relações Interpessoais/Ling.Port. e Lit. 1" partner_id=""/>
+    <subject id="025F4E48DB6081F6" name="Libras (EAD)" short="Libras (EAD)" partner_id=""/>
+    <subject id="4C453F0449D25F5C" name="Cartografia e as Geotecnologias" short="Cartografia e as Geotecnologias" partner_id=""/>
+    <subject id="F21C3A22967F54AD" name="SIG- Sistemas de Informações Geográficas" short="SIG" partner_id=""/>
+    <subject id="810B51462D135FB3" name="Políticas de Educação Especial de Santa Catarina e Legislações da Educação Inclusiva" short="Políticas de Educação Especial de SC e Legislações" partner_id=""/>
+    <subject id="5FAC74AB20F7411F" name="Os Fundamentos das Deficiências e Síndromes" short="Os Fundamentos das Deficiências e Síndromes" partner_id=""/>
+    <subject id="59E41CDF7956E40D" name="Flexibilização, Avaliação e Adaptação Curricular na Educação Inclusiva" short="Flexibilização, Avaliação e Adaptação Curricular na Educação Inclusiva" partner_id=""/>
+    <subject id="CA570F8BBCDE7424" name="Práticas Pedagógicas para a Educação Inclusiva" short="Práticas Pedagógicas para a Educação Inclusiva" partner_id=""/>
+    <subject id="9750CDFD8670CC29" name="Intervenção Pedagógica" short="Intervenção Pedagógica" partner_id=""/>
+    <subject id="284A02D71C2408E1" name="Seminário de Socialização" short="Seminário de Socialização" partner_id=""/>
+    <subject id="9F0FB74F568670FF" name="História e Cultura da Gastronomia" short="História e Cultura da Gastronomia" partner_id=""/>
+    <subject id="676103CA61BF52DB" name="Arte e Cultura à Mesa" short="Arte e Cultura à Mesa" partner_id=""/>
+    <subject id="CEE3914568F32B0E" name="Alimentação e Sustentabilidade" short="Alimentação e Sustentabilidade" partner_id=""/>
+    <subject id="08313C37A03BA88B" name="Inglês Aplicado aos Serviços de Restaurante e Bar I" short="Inglês Aplicado aos Serviços de Restaurante e Bar I" partner_id=""/>
+    <subject id="E6F10BDD59B5E163" name="Espanhol Aplicado aos Serviços de Restaurante e Bar I" short="Espanhol Aplicado aos Serviços de Restaurante e Bar I" partner_id=""/>
+    <subject id="65EDB8332EAD1ECE" name="Estudo de Bebidas" short="Estudo de Bebidas" partner_id=""/>
+    <subject id="93CC4DB93179C33B" name="Técnicas de Bioquímica / Bioestatística" short="Téc. Bioquímica / Bioestatística" partner_id=""/>
+    <subject id="F22569BAFE94488F" name="Educação e Interpretação Ambiental" short="EeIA" partner_id=""/>
+    <subject id="CB9017CBD65CA85E" name="Atrativos Turísticos Naturais de SC" short="Atrativos Turísticos Naturais de SC" partner_id=""/>
+    <subject id="CFBBBF5AB940E848" name="Aprofundamentos em Suporte Básico de Vida" short="Aprofundamentos em Suporte Básico de Vida" partner_id=""/>
+    <subject id="5770A46ED2FB4586" name="Relações étnico-raciais, meio ambiente e turismo" short="Relações étnico-raciais, meio ambiente e turismo" partner_id=""/>
+    <subject id="12085E5F7AD9521A" name="Bases para o desenvolvimento do turismo sustentável e educação ambiental" short="Bases para o desenvolvimento do turismo sustentável e educação ambiental" partner_id=""/>
+    <subject id="198A115BE14FCA2D" name="Técnicas de limpeza e arrumação de unidades&#xA;habitacionais, controles do setor de governança  e &#xA;hospitalidade" short="Técnicas de limpeza e arrumação de unidades&#xA;habitacionais, controles do setor de governança  e &#xA;hospitalidade" partner_id=""/>
+    <subject id="965C55717DFABC46" name="Instrumentação para Laboratório" short="Instrumentação para Laboratório" partner_id=""/>
+    <subject id="237135FA48A816DC" name="Química: Intensivo para o ENEM e Vestibular" short="Química: Intensivo para o ENEM e Vestibular" partner_id=""/>
+    <subject id="CD7FF52FC0BB6FD4" name="Governança e Gestão de Trilhas de Longo Percurso" short="Gestão de Trilhas " partner_id=""/>
+    <subject id="32F2F549D66C6AF5" name="Oficina de Integração 1" short="Oficina de Integração 1" partner_id=""/>
+    <subject id="0ACA516CCAC56CB0" name="Teorias do Lazer" short="Teorias do Lazer" partner_id=""/>
+    <subject id="C01905BAC535F0CE" name="Teorias do Turismo e Hospitalidade" short="Teorias do Turismo e Hospitalidade" partner_id=""/>
+    <subject id="AAB2119573060B11" name="Sociedade: Trabalho e Tempo Livre" short="Soc: Trab. e Tempo Livre" partner_id=""/>
+    <subject id="835F3ED543F8B217" name="Cultura, Identidade e Patrimônio" short="Cult. Id. e Patr" partner_id=""/>
+    <subject id="033680D6C1248E50" name="Educação Ambiental e Lazer" short="Educação Ambiental e Lazer" partner_id=""/>
+    <subject id="DD40BFE46DC1134C" name="Lazer e Turismo: Inclusão Social e Interseccionalidades" short="Incl. Social e Intersecs." partner_id=""/>
+    <subject id="564B097256EBB65D" name="Organização de Eventos" short="Organização de Eventos" partner_id=""/>
+    <subject id="9810E04C9480CE1E" name="PATRIMÔNIO CULTURAL" short="Patr.Cult" partner_id=""/>
+    <subject id="42E9AADFC95934F4" name="Fic Inglês 7" short="FI7" partner_id=""/>
+    <subject id="31BD2299C906C14C" name="LPL3/TAI" short="LPL3/TAI" partner_id=""/>
+    <subject id="7119F4A88057D7E4" name="LPL3/RSS" short="LPL3/RSS" partner_id=""/>
+    <subject id="CBA97F1B36A95B86" name="Espanhol Aplicado (final) / Educação Física)" short="EA / EF" partner_id=""/>
+    <subject id="251FB46CAA148AFD" name="EDF/GEO" short="EDF/GEO" partner_id=""/>
+    <subject id="145A63716828DA3E" name="FIL/SOC" short="FIL/SOC" partner_id=""/>
+    <subject id="C31CAC24F376492F" name="FIS/ESP" short="FIS/ESP" partner_id=""/>
+    <subject id="8612D10B6464AE03" name="QUI/FIL" short="QUI/FIL" partner_id=""/>
+    <subject id="DC13781FBF89FE86" name="LCO/SOC" short="LCO/SOC" partner_id=""/>
+    <subject id="5469DC982A69BD26" name="Biologia Aplicada/Linguagem e Comunicação" short="BiolApl/Ling.Com" partner_id=""/>
+    <subject id="D9063646F9EEEA4B" name="Técnicas de Bioquímica / Empreendorismo" short="Técnicas de Bioquímica / Empreendorismo" partner_id=""/>
+    <subject id="3721C25F38F2944B" name="Turma Especial_Pend. Mat I" short="Turma Especial_Pend. Mat I" partner_id=""/>
+    <subject id="38133A6F9903114A" name="PMat II" short="PMat II" partner_id=""/>
+    <subject id="82478DC27199D10D" name="PMat III" short="PMat III" partner_id=""/>
+    <subject id="6929F787BADEC7A6" name="PQuim I" short="Qui1" partner_id=""/>
+    <subject id="B8E37164067E18D7" name="PQuim II" short="Qui2" partner_id=""/>
+    <subject id="A700E20FE25ACD51" name="PFísica III" short="Fis3" partner_id=""/>
+    <subject id="78E22AAF9BEA050D" name="PGeo I" short="Geo1" partner_id=""/>
+    <subject id="12993484DC5F1B71" name="PGeo II" short="Geo2" partner_id=""/>
+    <subject id="0B530D357ABFD564" name="PIng I" short="Ing1" partner_id=""/>
+    <subject id="2346E2269FAC297A" name="PBD" short="DB" partner_id=""/>
+    <subject id="51016222AC4B9628" name="PProeja Geo" short="Geo (EJA)" partner_id=""/>
+    <subject id="C4233C8EE54A7CD9" name="PProeja Mat" short="MAT (EJA)" partner_id=""/>
+    <subject id="3C9E8B6C4559094A" name="PHis I" short="His1" partner_id=""/>
+    <subject id="B737032B87001B16" name="PProeja His I" short="His1 (EJA)" partner_id=""/>
+    <subject id="873DA509DD976C68" name="PProeja Bio" short="EJABio" partner_id=""/>
+    <subject id="5BA6CCFC4256E049" name="PProeja His II" short="His2 (EJA)" partner_id=""/>
+    <subject id="701BB12500A5C052" name="PProeja Artes" short="ART (EJA)" partner_id=""/>
+    <subject id="97C4C081F82D0C36" name="PHis II" short="PHis II" partner_id=""/>
+    <subject id="1B5EF406B7A470EA" name="PHis I_II_Proe" short="PHist" partner_id=""/>
+    <subject id="4E966DDA78B14BC1" name="PProejaArtes2" short="EJAArt2" partner_id=""/>
+    <subject id="9F773391D934C92B" name="PProejaLPLit1" short="EJALPL1" partner_id=""/>
+    <subject id="61840891638064F7" name="PGeo1_2" short="PGeo1_2" partner_id=""/>
+    <subject id="37903B031557574E" name="Educação Patrimonial" short="EP" partner_id=""/>
+  </subjects>
+  <teachers options="canadd,export:silent" columns="id,name,short,gender,color,email,mobile,partner_id,firstname,lastname">
+    <teacher id="29D2B6B77FD57D24" firstname="" lastname="ADRIANA MURARA" name="ADRIANA MURARA" short="ADRIANA" gender="" color="#8000C0" email="" mobile="" partner_id=""/>
+    <teacher id="F9B68AC4EFDE15CA" firstname="" lastname="ALBERTO FELIPE FRIDERICHS BARROS" name="ALBERTO FELIPE FRIDERICHS BARROS" short="ALBERTO" gender="" color="#FF9933" email="" mobile="" partner_id=""/>
+    <teacher id="9A61A1051D045086" firstname="" lastname="ANDRE LUIZ SILVA DE MORAES" name="ANDRE LUIZ SILVA DE MORAES" short="ANDRÉ" gender="" color="#C08000" email="" mobile="" partner_id=""/>
+    <teacher id="C969D86058FC16A3" firstname="" lastname="ANDREA CRISTIANE MACHADO MORAES" name="ANDREA CRISTIANE MACHADO MORAES" short="ANDREA" gender="" color="#CCCC00" email="" mobile="" partner_id=""/>
+    <teacher id="5115B88977F180C5" firstname="" lastname="CLÁUDIA TELES DA SILVA" name="CLÁUDIA TELES DA SILVA" short="CLÁUDIA" gender="" color="#0000FF" email="" mobile="" partner_id=""/>
+    <teacher id="68456E186F538ECB" firstname="" lastname="CARMINE INÊS ACKER" name="CARMINE INÊS ACKER" short="CARMINE" gender="" color="#66FFFF" email="" mobile="" partner_id=""/>
+    <teacher id="6A80CF80F35D0494" firstname="" lastname="CRISTIANE OLIVEIRA DA SILVA" name="CRISTIANE OLIVEIRA DA SILVA" short="CRISTIANE" gender="" color="#FFC0A0" email="" mobile="" partner_id=""/>
+    <teacher id="0D69C3F0F195CF23" firstname="" lastname="DIEGO MARLON DE CASTRO" name="DIEGO MARLON DE CASTRO" short="DIEGO" gender="" color="#66FF66" email="" mobile="" partner_id=""/>
+    <teacher id="E552E33940581D67" firstname="" lastname="EDUARDO BATISTA VON BOROWSKI" name="EDUARDO BATISTA VON BOROWSKI" short="EDUARDO  BOROWSKI" gender="" color="#004BC0" email="" mobile="" partner_id=""/>
+    <teacher id="B32125CBEE11DB0E" firstname="" lastname="EDUARDO CARGNIN FERREIRA" name="EDUARDO CARGNIN FERREIRA" short="EDUARDO CARGNIN" gender="" color="#C3DAED" email="" mobile="" partner_id=""/>
+    <teacher id="4C9BAB9B8D9B2105" firstname="" lastname="ELISA SERENA GANDOLFO MARTINS" name="ELISA SERENA GANDOLFO MARTINS" short="ELISA" gender="" color="#FFCCFF" email="" mobile="" partner_id=""/>
+    <teacher id="6634BAEC9A70CD26" firstname="" lastname="FABIANA DE AGAPITO KANGERSKI" name="FABIANA DE AGAPITO KANGERSKI" short="FABI" gender="" color="#C0A0FF" email="" mobile="" partner_id=""/>
+    <teacher id="B78644B44DEDD18B" firstname="" lastname="FÉLIX LOZANO MEDINA" name="FÉLIX LOZANO MEDINA" short="FÉLIX" gender="" color="#FFCC66" email="" mobile="" partner_id=""/>
+    <teacher id="DE44A932CAA67390" firstname="" lastname="FRANCIELE ROCHA DE OLIVEIRA" name="FRANCIELE ROCHA DE OLIVEIRA" short="FRANCIELE" gender="" color="#C0FF57" email="" mobile="" partner_id=""/>
+    <teacher id="12E06DC8F73411AC" firstname="" lastname="IGNÁCIO SUBST INFO" name="IGNÁCIO SUBST INFO" short="IGNÁCIO INFO" gender="" color="#003D80" email="" mobile="" partner_id=""/>
+    <teacher id="53A34801DD318BEE" firstname="" lastname="JACIARA ZARPELLON MAZO" name="JACIARA ZARPELLON MAZO" short="JACIARA" gender="" color="#FF57C0" email="" mobile="" partner_id=""/>
+    <teacher id="5CB63660FA736242" firstname="" lastname="JEAN MARCEL DE ALMEIDA ESPINOZA" name="JEAN MARCEL DE ALMEIDA ESPINOZA" short="JEAN" gender="" color="#808080" email="" mobile="" partner_id=""/>
+    <teacher id="BDF80909975F23CB" firstname="" lastname="JOÃO EDUARDO NAVACHI DA SILVEIRA" name="JOÃO EDUARDO NAVACHI DA SILVEIRA" short="JOÃO EDUARDO" gender="" color="#A3C000" email="" mobile="" partner_id=""/>
+    <teacher id="C60C6EA6F50DB582" firstname="" lastname="JOÃO HENRIQUE QUOOS" name="JOÃO HENRIQUE QUOOS" short="JOÃO QUOOS" gender="" color="#008080" email="" mobile="" partner_id=""/>
+    <teacher id="5AC25A0758F57842" firstname="" lastname="JORGE SELL" name="JORGE SELL" short="JORGE" gender="" color="#33CCCC" email="" mobile="" partner_id=""/>
+    <teacher id="0DEAB24520BBE89E" firstname="" lastname="JOSE RODRIGO BARTH ADAMS" name="JOSE RODRIGO BARTH ADAMS" short="JOSE RODRIGO" gender="" color="#803B00" email="" mobile="" partner_id=""/>
+    <teacher id="3F723D1483EF16D4" firstname="" lastname="JOSIMARA MARTINS KRAUSEN" name="JOSIMARA MARTINS KRAUSEN" short="JOSI" gender="" color="#FFCCCC" email="" mobile="" partner_id=""/>
+    <teacher id="9782E9CF1AEF8655" firstname="" lastname="JULIANO DA CUNHA GOMES" name="JULIANO DA CUNHA GOMES" short="JULIANO" gender="" color="#009933" email="" mobile="" partner_id=""/>
+    <teacher id="4453E0860794F64C" firstname="" lastname="KARYNA LANDRA MARCELINO" name="KARYNA LANDRA MARCELINO" short="KARYNA" gender="" color="#00FF00" email="" mobile="" partner_id=""/>
+    <teacher id="03B3EAE7F274B40D" firstname="" lastname="LUANA DE GUSMÃO SILVEIRA" name="LUANA DE GUSMÃO SILVEIRA" short="LUANA DE GUSMÃO" gender="" color="#FF0042" email="" mobile="" partner_id=""/>
+    <teacher id="FDB02C585851761A" firstname="" lastname="LUANA DOS SANTOS DE SOUZA" name="LUANA DOS SANTOS DE SOUZA" short="LUANA  DE SOUZA" gender="" color="#FF0000" email="" mobile="" partner_id=""/>
+    <teacher id="27FB159A0199B4C2" firstname="" lastname="LUANA WRITZL" name="LUANA WRITZL" short="LUANA WRITZL" gender="" color="#FF9999" email="" mobile="" partner_id=""/>
+    <teacher id="9EC9B3012E1B6A5D" firstname="" lastname="LUCAS DE CASTRO" name="LUCAS DE CASTRO" short="LUCAS" gender="" color="#1414C0" email="" mobile="" partner_id=""/>
+    <teacher id="E3D94B7CDC110A23" firstname="" lastname="LUIZ ANTÔNIO SCHALATA PACHECO" name="LUIZ ANTÔNIO SCHALATA PACHECO" short="SCHALATA" gender="" color="#0080C0" email="" mobile="" partner_id=""/>
+    <teacher id="D6DA808290218BDE" firstname="" lastname="MARIA ROSA DA SILVA COSTA" name="MARIA ROSA DA SILVA COSTA" short="ROSA" gender="" color="#C04B00" email="" mobile="" partner_id=""/>
+    <teacher id="A2E2ED8F54C7E96E" firstname="" lastname="MICHELINE SARTORI" name="MICHELINE SARTORI" short="MICHELINE" gender="" color="#C000C0" email="" mobile="" partner_id=""/>
+    <teacher id="28904A15DFB6C3FD" firstname="" lastname="NAUBER GAVSKI DA SILVA" name="NAUBER GAVSKI DA SILVA" short="NAUBER" gender="" color="#FF3300" email="" mobile="" partner_id=""/>
+    <teacher id="FFB9D00BAF9E22C9" firstname="" lastname="PAULA MAYARA ZUANAZZI" name="PAULA MAYARA ZUANAZZI" short="PAULA" gender="" color="#FFFF00" email="" mobile="" partner_id=""/>
+    <teacher id="15650B4E6CCF4DA6" firstname="" lastname="RENATA WALESKA DE SOUZA PIMENTA" name="RENATA WALESKA DE SOUZA PIMENTA" short="RENATA" gender="" color="#C0004B" email="" mobile="" partner_id=""/>
+    <teacher id="4F10F9CD00D39EBF" firstname="" lastname="RENATO DA SILVA ROSA RODRIGUES" name="RENATO DA SILVA ROSA RODRIGUES" short="RENATO" gender="" color="#5F5F5F" email="" mobile="" partner_id=""/>
+    <teacher id="5E810D524CD52EEB" firstname="AQUINO" lastname="ROSANE" name="ROSANE, AQUINO" short="ROSANE" gender="" color="#A0C0FF" email="" mobile="" partner_id=""/>
+    <teacher id="57E625AA0EB2ED73" firstname="" lastname="RYAN MARCOS FRAGNANI CARDOSO" name="RYAN MARCOS FRAGNANI CARDOSO" short="RYAN" gender="" color="#FFFF66" email="" mobile="" partner_id=""/>
+    <teacher id="1E4A507B5A5A35F9" firstname="" lastname="SABRINA MORO VILLELA PACHECO" name="SABRINA MORO VILLELA PACHECO" short="SABRINA" gender="" color="#FF6666" email="" mobile="" partner_id=""/>
+    <teacher id="8AC922068A094ED5" firstname="" lastname="SANDRA BEATRIZ KOELLING" name="SANDRA BEATRIZ KOELLING" short="SANDRA" gender="" color="#FFFFFF" email="" mobile="" partner_id=""/>
+    <teacher id="8C4A9DAF389B406D" firstname="" lastname="SCHIRLEI VON DENTZ" name="SCHIRLEI VON DENTZ" short="SCHIRLEI" gender="" color="#FFFFA0" email="" mobile="" partner_id=""/>
+    <teacher id="5E834367C96EC60D" firstname="" lastname="MARÍLIA RIBAS MACHADO" name="MARÍLIA RIBAS MACHADO" short="MARÍLIA" gender="" color="#A0A0FF" email="" mobile="" partner_id=""/>
+    <teacher id="FA891A3A352EE352" firstname="" lastname="ALINE_ING" name="ALINE_ING" short="ALINE_ING" gender="" color="#C0A0FF" email="" mobile="" partner_id=""/>
+    <teacher id="8C2099D47A10D080" firstname="" lastname="THIAGO LIPINSKI PAES" name="THIAGO LIPINSKI PAES" short="THIAGO PAES" gender="" color="#6B9768" email="" mobile="" partner_id=""/>
+    <teacher id="B8D7440A3A4123F0" firstname="" lastname="THIAGO WALTRIK" name="THIAGO WALTRIK" short="THIAGO WALTRIK" gender="" color="#5757FF" email="" mobile="" partner_id=""/>
+    <teacher id="6084853CDF98EAB6" firstname="" lastname="UESLEI PATERNO - FPOLIS" name="UESLEI PATERNO - FPOLIS" short="UESLEI PATERNO - FPOLIS" gender="" color="#FF8080" email="" mobile="" partner_id=""/>
+  </teachers>
+  <buildings options="canadd,export:silent" columns="id,name,partner_id"/>
+  <classrooms options="canadd,export:silent" columns="id,name,short,capacity,buildingid,partner_id">
+    <classroom id="F76D022140284128" name="A-202" short="A-202" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="DF7757DC1C3FEB4F" name="A-203 (Peq) - Entulho" short="A-203  (Peq) - Entulho" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="E1DFA97CA6739144" name="A-204" short="A-204" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="188BFDDA4A69EFE7" name="A-205" short="A-205" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="D64BA6C27A2CCCFB" name="A-206 (Nova Sala)" short="A-206" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="19B0AADE7C1B125E" name="A-207 (EDF)" short="A-207 (EDF)" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="9127CE71F7C8287F" name="B-204" short="B-204" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="C971498D4F1E2B8C" name="B-205" short="B-205" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="5EE00D294B34961A" name="B-206" short="B-206" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="04C3A31A10986E63" name="B-207" short="B-207" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="EE2CCE3AF52FF651" name="B-102 (Multidisciplinar)" short="B-102 (Multidisciplinar)" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="178CB1BC5987D9D1" name="B-103 " short="B-103" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="3E47643868BAB17B" name="B-104" short="B-104" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="A1822E37E6314DF6" name="B-105" short="B-105" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="8DE4742A4E3D917E" name="B-106 - Sala de Artes" short="B-106 - Sala de Artes" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="552A042B3ACB5F70" name="B-107" short="B-107" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="F019F5A43F338B55" name="Lab. A102" short="Lab. A102" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="D93A5AFF6C8E7F2D" name="Lab. A104" short="Lab. A104" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="27175D4EC8BFB11E" name="Lab. A105 (Lab. de Redes)" short="Lab. A105 (Redes)" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="B8E04834E279901A" name="Lab. A106" short="Lab. A106" capacity="*" buildingid="" partner_id=""/>
+    <classroom id="632740086148F802" name="Lab. A107" short="Lab. A107" capacity="*" buildingid="" partner_id=""/>
+  </classrooms>
+  <grades options="canadd,export:silent" columns="grade,name,short">
+    <grade name="Etapa 1" short="E 1" grade="1"/>
+    <grade name="Etapa 2" short="E 2" grade="2"/>
+    <grade name="Etapa 3" short="E 3" grade="3"/>
+    <grade name="Etapa 4" short="E 4" grade="4"/>
+    <grade name="Etapa 5" short="E 5" grade="5"/>
+    <grade name="Etapa 6" short="E 6" grade="6"/>
+    <grade name="Etapa 7" short="E 7" grade="7"/>
+    <grade name="Etapa 8" short="E 8" grade="8"/>
+    <grade name="Etapa 9" short="E 9" grade="9"/>
+    <grade name="Etapa 10" short="E 10" grade="10"/>
+    <grade name="Etapa 11" short="E 11" grade="11"/>
+    <grade name="Etapa 12" short="E 12" grade="12"/>
+    <grade name="Etapa 13" short="E 13" grade="13"/>
+    <grade name="Etapa 14" short="E 14" grade="14"/>
+    <grade name="Etapa 15" short="E 15" grade="15"/>
+    <grade name="Etapa 16" short="E 16" grade="16"/>
+    <grade name="Etapa 17" short="E 17" grade="17"/>
+    <grade name="Etapa 18" short="E 18" grade="18"/>
+    <grade name="Etapa 19" short="E 19" grade="19"/>
+    <grade name="Etapa 20" short="E 20" grade="20"/>
+  </grades>
+  <classes options="canadd,export:silent" columns="id,name,short,classroomids,teacherid,grade,partner_id">
+    <class id="9D41319237921432" name="ADM 1 - 2026 -  Integrado" short="ADM 1 - 2026 " teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="BC2CF24E24A9F41A" name="ADM 3 - 2025 - Integrado " short="ADM 3 - 2025" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="2A7DEDAAF865E605" name="ADM 5 - 2024 - Integrado" short="ADM 5 - 2024" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="E4A654B3CB93D65A" name="Informática 1 -  2026 - Integrado" short="INF 1 -  2026" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="E9232B1CF8FC0BB5" name="Informática 3 - 2025 -  Integrado" short="INF 3 - 2025" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="4C16577F3E66DB9A" name="Informática 5 - 2024 - Integrado" short="INF 5 - 2024" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="700A5FAF19E3B3DA" name="LAZER 1 - 2026 - Integrado" short="LAZ 1 - 2026" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="7F4CF739E594B44F" name="LAZER 2 - 2025 - Integrado" short="LAZ 2 - 2025" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="74E8A174C94BFDA1" name="PROEJA/Tec Serv de Rest.Bar 2024 - Mod 4" short="PROEJA 4 - 2024" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="4DB87CF9F053E6FE" name="Guia de Turismo 1" short="GUIA 1" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="C9E12484D742F6EA" name="Biotec 1 - 2026" short="BTC 1 - 2026" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="991DA08916B9EFEE" name="Biotec 3 - 2025" short="BTC 3 - 2025" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="04559E1FF0FA0D0E" name="Biotec 5 - 2024" short="BTC 5 - 2024" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="F4E647B7776D7114" name="CST GA 1 - 2026" short="GA 1 - 2026" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="1023353F33F22256" name="CST GA 3 - 2025" short="GA 3 - 2025" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="B598C535E4605EEC" name="CST GA 5 - 2024" short="GA 5 - 2024" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="D00164B58F4C7B18" name="CST SI 1 - 2026" short="SI 1 - 2026" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="D1DE6308F71615C3" name="CST SI 3 - 2025" short="SI 3 - 2025" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="733E50CD237622FB" name="CST SI 5 - 2024" short="SI 5 - 2024" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="F336B50D2DDD7F4C" name="FIC INGLÊS I" short="FIC ING 1" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="7C5A2257B065358F" name="Fic Inglês 7" short="FIC ING 7" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="A3A9F0E6CAE16642" name="Pendências" short="Pendências" teacherid="" classroomids="" grade="" partner_id=""/>
+    <class id="48EA34FD78B6F4E3" name="FIC Ed_Patrimonial" short="FIC Ed_Patrimonial" teacherid="" classroomids="" grade="" partner_id=""/>
+  </classes>
+  <groups options="canadd,export:silent" columns="id,classid,name,entireclass,divisiontag,studentcount,studentids">
+    <group id="E66372151B1432C2" name="Turma completa" classid="9D41319237921432" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="77B2C22572CBAEB4" name="Grupo 1" classid="9D41319237921432" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="085ED2D70CFC624C" name="Grupo 2" classid="9D41319237921432" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="697BAD3354480CC6" name="Alunos" classid="9D41319237921432" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="3D95E61554562BF8" name="Alunas" classid="9D41319237921432" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="038EADE3471ED1BA" name="Turma completa" classid="BC2CF24E24A9F41A" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="C2C056671C42495F" name="Grupo 1" classid="BC2CF24E24A9F41A" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="627074C0B782E8E3" name="Grupo 2" classid="BC2CF24E24A9F41A" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="1CA1DFE05968E847" name="Alunos" classid="BC2CF24E24A9F41A" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="CD094CBD89E84945" name="Alunas" classid="BC2CF24E24A9F41A" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="C683EE3928B9D234" name="Turma completa" classid="2A7DEDAAF865E605" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="E7280F8C2E550989" name="Grupo 1" classid="2A7DEDAAF865E605" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="39EEC43440A338A6" name="Grupo 2" classid="2A7DEDAAF865E605" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="D7C88CF5648D77E1" name="Alunos" classid="2A7DEDAAF865E605" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="1F27008D60D0C1B6" name="Alunas" classid="2A7DEDAAF865E605" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="9B773043D5F08AFE" name="Turma completa" classid="E4A654B3CB93D65A" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="52042EDFD242E94C" name="Grupo 1" classid="E4A654B3CB93D65A" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="A9465C6FD34DEADD" name="Grupo 2" classid="E4A654B3CB93D65A" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="F070B2AF52EC75BE" name="Alunos" classid="E4A654B3CB93D65A" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="1454ED0A85351C39" name="Alunas" classid="E4A654B3CB93D65A" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="B0E004BD064EFF2B" name="Turma completa" classid="E9232B1CF8FC0BB5" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="B5E070A87AD8309D" name="Grupo 1" classid="E9232B1CF8FC0BB5" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="C4157E4A1605E3C2" name="Grupo 2" classid="E9232B1CF8FC0BB5" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="0BDD7F624E4CCF25" name="Alunos" classid="E9232B1CF8FC0BB5" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="EA3D55583A989824" name="Alunas" classid="E9232B1CF8FC0BB5" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="1EBFD1DDF5ADA78E" name="Turma completa" classid="4C16577F3E66DB9A" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="69C666321E393382" name="Grupo 1" classid="4C16577F3E66DB9A" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="BAD0D15DC346D817" name="Grupo 2" classid="4C16577F3E66DB9A" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="DF521B05D6BB66EB" name="Alunos" classid="4C16577F3E66DB9A" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="AB8733EB7B9669EA" name="Alunas" classid="4C16577F3E66DB9A" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="0482E9BEB2225A86" name="Turma 1" classid="4C16577F3E66DB9A" studentids="" entireclass="0" divisiontag="3"/>
+    <group id="771D3229E3A7E55A" name="Turma 2" classid="4C16577F3E66DB9A" studentids="" entireclass="0" divisiontag="3"/>
+    <group id="A0A3EA6C7F88B9B1" name="Turma completa" classid="700A5FAF19E3B3DA" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="B5C86DC1215BE6BE" name="Grupo 1" classid="700A5FAF19E3B3DA" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="E411B1273A17203F" name="Grupo 2" classid="700A5FAF19E3B3DA" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="6C0A382806B19137" name="Alunos" classid="700A5FAF19E3B3DA" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="C07F6E4871C31A40" name="Alunas" classid="700A5FAF19E3B3DA" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="0BDDFD69A9D8DA02" name="Turma completa" classid="7F4CF739E594B44F" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="E1D6C9E0792B648B" name="Grupo 1" classid="7F4CF739E594B44F" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="2FB7554A5BAD1AE3" name="Grupo 2" classid="7F4CF739E594B44F" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="E469AEDC8F7495E6" name="Alunos" classid="7F4CF739E594B44F" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="0652399B16935743" name="Alunas" classid="7F4CF739E594B44F" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="0651DA423CCC603A" name="Turma completa" classid="74E8A174C94BFDA1" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="45CD17C7A6D797C6" name="Grupo 1" classid="74E8A174C94BFDA1" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="B8D2D570E11B1F68" name="Grupo 2" classid="74E8A174C94BFDA1" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="67634AC58FA4CE09" name="Alunos" classid="74E8A174C94BFDA1" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="83C3CFA3565F969F" name="Alunas" classid="74E8A174C94BFDA1" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="AB7E43BF1CCB50E7" name="Turma completa" classid="4DB87CF9F053E6FE" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="35D4336D14F48A29" name="Grupo 1" classid="4DB87CF9F053E6FE" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="A37932D1603079B6" name="Grupo 2" classid="4DB87CF9F053E6FE" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="0966B860041EFEFB" name="Alunos" classid="4DB87CF9F053E6FE" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="15731E473679B162" name="Alunas" classid="4DB87CF9F053E6FE" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="DBFC22E167926DB4" name="Turma completa" classid="C9E12484D742F6EA" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="060EAC751143A596" name="Grupo 1" classid="C9E12484D742F6EA" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="AD307DCF2E7AF624" name="Grupo 2" classid="C9E12484D742F6EA" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="E15DB91379F98D54" name="Alunos" classid="C9E12484D742F6EA" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="40564818FCF7C9E5" name="Alunas" classid="C9E12484D742F6EA" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="944DD4AF6E5ADBCD" name="Turma completa" classid="991DA08916B9EFEE" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="465F032E8ED69C5F" name="Grupo 1" classid="991DA08916B9EFEE" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="F31B2E3157FA5F07" name="Grupo 2" classid="991DA08916B9EFEE" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="B7FB79E11D287D7F" name="Alunos" classid="991DA08916B9EFEE" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="4EB474309AA93A97" name="Alunas" classid="991DA08916B9EFEE" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="A446142ABBA74733" name="Turma completa" classid="04559E1FF0FA0D0E" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="D50DFACE6B9FD38D" name="Grupo 1" classid="04559E1FF0FA0D0E" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="C79422E859584813" name="Grupo 2" classid="04559E1FF0FA0D0E" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="C0856FD9D919FCFE" name="Alunos" classid="04559E1FF0FA0D0E" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="050575F671318245" name="Alunas" classid="04559E1FF0FA0D0E" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="3494EFA7F91C3A36" name="Turma completa" classid="F4E647B7776D7114" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="48E16D59E947FCC9" name="Grupo 1" classid="F4E647B7776D7114" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="42662596A13A0B5E" name="Grupo 2" classid="F4E647B7776D7114" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="34D36D99DE12BC97" name="Alunos" classid="F4E647B7776D7114" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="0C748C9EC46D2F45" name="Alunas" classid="F4E647B7776D7114" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="5A94D5403BD11D07" name="Turma completa" classid="1023353F33F22256" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="FC5FDF6B64E4690A" name="Grupo 1" classid="1023353F33F22256" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="74A113CA00D0601F" name="Grupo 2" classid="1023353F33F22256" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="27734979CB2F68BB" name="Alunos" classid="1023353F33F22256" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="9187351572AD91CB" name="Alunas" classid="1023353F33F22256" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="98641EECD6821068" name="Turma completa" classid="B598C535E4605EEC" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="87D35A469E1C811E" name="Grupo 1" classid="B598C535E4605EEC" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="4EB4E652C31A33FE" name="Grupo 2" classid="B598C535E4605EEC" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="A696CF8B03D57EAD" name="Alunos" classid="B598C535E4605EEC" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="301C2556D064C0E2" name="Alunas" classid="B598C535E4605EEC" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="257A16DA75AE61FC" name="Turma completa" classid="D00164B58F4C7B18" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="9CEE9F28F57D6658" name="Grupo 1" classid="D00164B58F4C7B18" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="958640D3617955D1" name="Grupo 2" classid="D00164B58F4C7B18" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="E04353EEBB4EA4DE" name="Alunos" classid="D00164B58F4C7B18" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="C323B0A2689548F6" name="Alunas" classid="D00164B58F4C7B18" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="AEABEEEF252D4E64" name="Turma completa" classid="D1DE6308F71615C3" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="75F146F79F48EA8B" name="Grupo 1" classid="D1DE6308F71615C3" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="014FF0BC5F93F8A3" name="Grupo 2" classid="D1DE6308F71615C3" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="FC90AC3260EF9EFC" name="Alunos" classid="D1DE6308F71615C3" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="2F19B9285F561AAB" name="Alunas" classid="D1DE6308F71615C3" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="D149703E307C2EE5" name="Turma completa" classid="733E50CD237622FB" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="A243A5F80BEE591D" name="Grupo 1" classid="733E50CD237622FB" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="ED2AB325404F456C" name="Grupo 2" classid="733E50CD237622FB" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="5663F2E7602CA9A9" name="Alunos" classid="733E50CD237622FB" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="6C138FF36D2FDA06" name="Alunas" classid="733E50CD237622FB" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="1266731DD545EE73" name="Turma completa" classid="F336B50D2DDD7F4C" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="5A9EF03C0EE4A741" name="Grupo 1" classid="F336B50D2DDD7F4C" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="22992AB50306D0FE" name="Grupo 2" classid="F336B50D2DDD7F4C" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="EC7806F8AE1CF09B" name="Alunos" classid="F336B50D2DDD7F4C" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="40C34A6963DCF371" name="Alunas" classid="F336B50D2DDD7F4C" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="1358E5022AFCB995" name="Turma completa" classid="7C5A2257B065358F" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="C3758601B6802DD6" name="Grupo 1" classid="7C5A2257B065358F" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="EB8D24E40FF7EFDA" name="Grupo 2" classid="7C5A2257B065358F" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="0F20C131BD544F7C" name="Alunos" classid="7C5A2257B065358F" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="7AD4B0137DEF617B" name="Alunas" classid="7C5A2257B065358F" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="EB5DCB04A07419CB" name="Turma completa" classid="A3A9F0E6CAE16642" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="9285528C0A043BB8" name="Grupo 1" classid="A3A9F0E6CAE16642" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="AACA565DCC6A9758" name="Grupo 2" classid="A3A9F0E6CAE16642" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="D82ADAD723644754" name="Alunos" classid="A3A9F0E6CAE16642" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="1D08307655AAAB7B" name="Alunas" classid="A3A9F0E6CAE16642" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="CCE16305EE821B0B" name="A" classid="A3A9F0E6CAE16642" studentids="" entireclass="0" divisiontag="3"/>
+    <group id="76A0609C9E1026F4" name="B" classid="A3A9F0E6CAE16642" studentids="" entireclass="0" divisiontag="3"/>
+    <group id="891A04DFE08AA1C3" name="C" classid="A3A9F0E6CAE16642" studentids="" entireclass="0" divisiontag="3"/>
+    <group id="D118EEED2E3D26A0" name="D" classid="A3A9F0E6CAE16642" studentids="" entireclass="0" divisiontag="3"/>
+    <group id="6F5D138F9FDF06DA" name="Turma completa" classid="48EA34FD78B6F4E3" studentids="" entireclass="1" divisiontag="0"/>
+    <group id="75AA1DDE25878621" name="Grupo 1" classid="48EA34FD78B6F4E3" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="DA39F428D94638D4" name="Grupo 2" classid="48EA34FD78B6F4E3" studentids="" entireclass="0" divisiontag="1"/>
+    <group id="C4553FF1F31D3EE7" name="Alunos" classid="48EA34FD78B6F4E3" studentids="" entireclass="0" divisiontag="2"/>
+    <group id="23269E5ABD740463" name="Alunas" classid="48EA34FD78B6F4E3" studentids="" entireclass="0" divisiontag="2"/>
+  </groups>
+  <students options="canadd,export:silent" columns="id,classid,name,number,email,mobile,partner_id,firstname,lastname"/>
+  <studentsubjects options="canadd,export:silent" columns="studentid,subjectid,seminargroup,importance,alternatefor"/>
+  <lessons options="canadd,export:silent" columns="id,subjectid,classids,groupids,teacherids,classroomids,periodspercard,periodsperweek,daysdefid,weeksdefid,termsdefid,seminargroup,capacity,partner_id">
+    <lesson id="BC714A49D63E3AEF" classids="9D41319237921432" subjectid="03D7A1494E188222" periodspercard="1" periodsperweek="1.0" teacherids="E552E33940581D67" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="45181F1454D2BB62" classids="9D41319237921432" subjectid="460D27D8D19152C4" periodspercard="1" periodsperweek="1.0" teacherids="B78644B44DEDD18B" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="6491E0C159458F9B" classids="E4A654B3CB93D65A" subjectid="03D7A1494E188222" periodspercard="1" periodsperweek="1.0" teacherids="E552E33940581D67" classroomids="9127CE71F7C8287F" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="7F4D317A5D7F9319" classids="B598C535E4605EEC" subjectid="025F4E48DB6081F6" periodspercard="1" periodsperweek="1.0" teacherids="6084853CDF98EAB6" classroomids="5EE00D294B34961A" groupids="98641EECD6821068" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="6081D9A2251E6916" classids="B598C535E4605EEC" subjectid="EFC09166136597B1" periodspercard="1" periodsperweek="1.0" teacherids="6634BAEC9A70CD26" classroomids="5EE00D294B34961A" groupids="98641EECD6821068" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="E32AE7E5E5CE8AED" classids="1023353F33F22256" subjectid="279C28275693F75B" periodspercard="1" periodsperweek="2.0" teacherids="B32125CBEE11DB0E" classroomids="E1DFA97CA6739144" groupids="5A94D5403BD11D07" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="25C19739AD9CCC1B" classids="2A7DEDAAF865E605" subjectid="EFC09166136597B1" periodspercard="1" periodsperweek="1.0" teacherids="6634BAEC9A70CD26" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="A4211369559AF3B5" classids="1023353F33F22256" subjectid="8091E1978C5C9639" periodspercard="1" periodsperweek="1.0" teacherids="4C9BAB9B8D9B2105" classroomids="E1DFA97CA6739144" groupids="5A94D5403BD11D07" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="76E7AE4B34FD3AA5" classids="1023353F33F22256" subjectid="B97E3E28DF69672A" periodspercard="1" periodsperweek="1.0" teacherids="B32125CBEE11DB0E" classroomids="E1DFA97CA6739144" groupids="5A94D5403BD11D07" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="963030C53B0E3D11" classids="9D41319237921432" subjectid="68F086E813D64137" periodspercard="1" periodsperweek="1.0" teacherids="1E4A507B5A5A35F9,68456E186F538ECB" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="43B955EC9E8411A1" classids="2A7DEDAAF865E605" subjectid="A6B7D852BF764289" periodspercard="1" periodsperweek="1.0" teacherids="1E4A507B5A5A35F9" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="1AB78E5EE3124D64" classids="4DB87CF9F053E6FE" subjectid="007C2843E935730E" periodspercard="1" periodsperweek="1.0" teacherids="B78644B44DEDD18B" classroomids="5EE00D294B34961A" groupids="AB7E43BF1CCB50E7" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="2AC421316728576D" classids="4DB87CF9F053E6FE" subjectid="B8623BB472E381AA" periodspercard="1" periodsperweek="1.0" teacherids="A2E2ED8F54C7E96E" classroomids="5EE00D294B34961A" groupids="AB7E43BF1CCB50E7" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="35EB70744323A8A2" classids="BC2CF24E24A9F41A" subjectid="6A7578838413AB27" periodspercard="1" periodsperweek="1.0" teacherids="6A80CF80F35D0494" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="83A8718614174D20" classids="E4A654B3CB93D65A" subjectid="716527A141DB3E04" periodspercard="1" periodsperweek="1.0" teacherids="6A80CF80F35D0494" classroomids="9127CE71F7C8287F" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="5DA7B779F089719D" classids="9D41319237921432" subjectid="716527A141DB3E04" periodspercard="1" periodsperweek="1.0" teacherids="6A80CF80F35D0494" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="3BE75B1680E1FA69" classids="7F4CF739E594B44F" subjectid="C3EC38BCC1C4939B" periodspercard="1" periodsperweek="1.0" teacherids="B78644B44DEDD18B" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="AC1F38FB6ABA818B" classids="700A5FAF19E3B3DA" subjectid="C3EC38BCC1C4939B" periodspercard="1" periodsperweek="1.0" teacherids="B78644B44DEDD18B" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="A2FB66C6514E4C71" classids="700A5FAF19E3B3DA" subjectid="C01905BAC535F0CE" periodspercard="1" periodsperweek="1.0" teacherids="A2E2ED8F54C7E96E" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="19D53970BD8FF13A" classids="7F4CF739E594B44F" subjectid="68F086E813D64137" periodspercard="1" periodsperweek="1.0" teacherids="68456E186F538ECB,1E4A507B5A5A35F9" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="EC148C50591C434B" classids="7F4CF739E594B44F" subjectid="03D7A1494E188222" periodspercard="1" periodsperweek="1.0" teacherids="E552E33940581D67" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="A7136ADBAEAB3913" classids="700A5FAF19E3B3DA" subjectid="03D7A1494E188222" periodspercard="1" periodsperweek="1.0" teacherids="E552E33940581D67" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="EA0965CFD61593DA" classids="7F4CF739E594B44F" subjectid="033680D6C1248E50" periodspercard="1" periodsperweek="1.0" teacherids="4C9BAB9B8D9B2105" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="C48D22D85CEB357A" classids="BC2CF24E24A9F41A" subjectid="C54DA6B0BE9B454F" periodspercard="1" periodsperweek="1.0" teacherids="6634BAEC9A70CD26" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="66A588E94472F63B" classids="2A7DEDAAF865E605" subjectid="717ABE3685B2B548" periodspercard="1" periodsperweek="1.0" teacherids="5CB63660FA736242" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="E958229AEDBEDF8E" classids="9D41319237921432" subjectid="03D468EFA263D8D9" periodspercard="1" periodsperweek="1.0" teacherids="5CB63660FA736242" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="A8078C9946B308F7" classids="7F4CF739E594B44F" subjectid="03D468EFA263D8D9" periodspercard="1" periodsperweek="1.0" teacherids="4F10F9CD00D39EBF" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="6508FB571DB7ED57" classids="4DB87CF9F053E6FE" subjectid="148A9DE8157200A0" periodspercard="1" periodsperweek="1.0" teacherids="C60C6EA6F50DB582" classroomids="5EE00D294B34961A" groupids="AB7E43BF1CCB50E7" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="B85F58E1D0344D58" classids="2A7DEDAAF865E605" subjectid="89D725F9D4A78D6C" periodspercard="1" periodsperweek="1.0" teacherids="0DEAB24520BBE89E" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="EC5F316B5CF07D9F" classids="BC2CF24E24A9F41A" subjectid="3EAFEE80B5698FE1" periodspercard="1" periodsperweek="1.0" teacherids="0DEAB24520BBE89E" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="AE59FC476887349E" classids="7F4CF739E594B44F" subjectid="3EAFEE80B5698FE1" periodspercard="1" periodsperweek="1.0" teacherids="0DEAB24520BBE89E" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="756D501195DE75C1" classids="700A5FAF19E3B3DA" subjectid="3EAFEE80B5698FE1" periodspercard="1" periodsperweek="1.0" teacherids="0DEAB24520BBE89E" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="2F1EFA2541D50AA1" classids="2A7DEDAAF865E605" subjectid="058017F98C9A3F31" periodspercard="1" periodsperweek="1.0" teacherids="3F723D1483EF16D4" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="A56F1837704DB887" classids="BC2CF24E24A9F41A" subjectid="04000CDC10C94EDE" periodspercard="1" periodsperweek="1.0" teacherids="3F723D1483EF16D4" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="D91FA97A99E93172" classids="7F4CF739E594B44F" subjectid="2B35011F0F079738" periodspercard="1" periodsperweek="1.0" teacherids="0D69C3F0F195CF23" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="D213574DAABE2088" classids="700A5FAF19E3B3DA" subjectid="2B35011F0F079738" periodspercard="1" periodsperweek="1.0" teacherids="3F723D1483EF16D4" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="F6F23A0463F17694" classids="1023353F33F22256" subjectid="E5BF54CF8B9B814B" periodspercard="1" periodsperweek="1.0" teacherids="3F723D1483EF16D4" classroomids="E1DFA97CA6739144" groupids="5A94D5403BD11D07" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="7ACC1DA200958961" classids="F4E647B7776D7114" subjectid="D42A684280E06A0C" periodspercard="1" periodsperweek="1.0" teacherids="9782E9CF1AEF8655" classroomids="178CB1BC5987D9D1" groupids="3494EFA7F91C3A36" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="55B2FAF825A4CE3E" classids="B598C535E4605EEC" subjectid="5795C32A468A0F9C" periodspercard="1" periodsperweek="1.0" teacherids="9782E9CF1AEF8655" classroomids="5EE00D294B34961A" groupids="98641EECD6821068" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="03BD6ACE920DCA35" classids="B598C535E4605EEC" subjectid="BA66638DDD86AF09" periodspercard="1" periodsperweek="1.0" teacherids="9782E9CF1AEF8655" classroomids="5EE00D294B34961A" groupids="98641EECD6821068" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="9D7489EC64FADB26" classids="9D41319237921432" subjectid="9EB6E773481C5C3C" periodspercard="1" periodsperweek="1.0" teacherids="4453E0860794F64C" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="C53775AA198BE424" classids="E4A654B3CB93D65A" subjectid="9EB6E773481C5C3C" periodspercard="1" periodsperweek="1.0" teacherids="4453E0860794F64C" classroomids="9127CE71F7C8287F" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="4D85F7A7FFCE4F96" classids="7F4CF739E594B44F" subjectid="9EB6E773481C5C3C" periodspercard="1" periodsperweek="1.0" teacherids="4453E0860794F64C" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="F14D21A09234CEC1" classids="D1DE6308F71615C3" subjectid="9EF4BEDC7B2CD5FB" periodspercard="1" periodsperweek="1.0" teacherids="4453E0860794F64C" classroomids="C971498D4F1E2B8C" groupids="AEABEEEF252D4E64" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="5FB947C337F210CA" classids="2A7DEDAAF865E605" subjectid="CAD94C5CA3A546BA" periodspercard="1" periodsperweek="1.0" teacherids="03B3EAE7F274B40D" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="7A43E650801A7D59" classids="7F4CF739E594B44F" subjectid="716527A141DB3E04" periodspercard="1" periodsperweek="1.0" teacherids="FDB02C585851761A" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="84DA3B87AD2B6B26" classids="700A5FAF19E3B3DA" subjectid="716527A141DB3E04" periodspercard="1" periodsperweek="1.0" teacherids="FDB02C585851761A" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="0CB832CD35D2E095" classids="F4E647B7776D7114" subjectid="66ADD9A02F08B3CB" periodspercard="1" periodsperweek="1.0" teacherids="FDB02C585851761A" classroomids="178CB1BC5987D9D1" groupids="3494EFA7F91C3A36" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="961CDCBEB7BE4FC9" classids="2A7DEDAAF865E605" subjectid="EBD695FE75A6CD2F" periodspercard="1" periodsperweek="1.0" teacherids="27FB159A0199B4C2" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="1ADB0031FAEF96E5" classids="BC2CF24E24A9F41A" subjectid="71C69A92C20A9151" periodspercard="1" periodsperweek="1.0" teacherids="27FB159A0199B4C2" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="C391F962E63170E3" classids="9D41319237921432" subjectid="4E718F34C9025448" periodspercard="1" periodsperweek="1.0" teacherids="27FB159A0199B4C2" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="A61B1C0461630CAB" classids="7F4CF739E594B44F" subjectid="DD40BFE46DC1134C" periodspercard="1" periodsperweek="1.0" teacherids="9EC9B3012E1B6A5D" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="5E816FF6056DB14A" classids="D00164B58F4C7B18" subjectid="0DBFF20C0F3250B4" periodspercard="1" periodsperweek="2.0" teacherids="E3D94B7CDC110A23" classroomids="188BFDDA4A69EFE7" groupids="257A16DA75AE61FC" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="38A357D4CD97C8D5" classids="D1DE6308F71615C3" subjectid="C4E0345B406DD95C" periodspercard="1" periodsperweek="1.0" teacherids="E3D94B7CDC110A23" classroomids="C971498D4F1E2B8C" groupids="AEABEEEF252D4E64" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="597B83A534325C65" classids="733E50CD237622FB" subjectid="5043C3C23756485A" periodspercard="1" periodsperweek="1.0" teacherids="E3D94B7CDC110A23" classroomids="9127CE71F7C8287F" groupids="D149703E307C2EE5" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="F7E921E3450C8010" classids="D00164B58F4C7B18" subjectid="5F2E58791AE6963F" periodspercard="1" periodsperweek="1.0" teacherids="D6DA808290218BDE" classroomids="188BFDDA4A69EFE7" groupids="257A16DA75AE61FC" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="06AF1E3AB884943B" classids="" subjectid="DFF9064A7B4067AC" periodspercard="1" periodsperweek="1.0" teacherids="D6DA808290218BDE" classroomids="" groupids="" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="622BF704CCC92826" classids="9D41319237921432" subjectid="437D74396C85E80C" periodspercard="1" periodsperweek="1.0" teacherids="28904A15DFB6C3FD" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="1C25EEE3374B94B4" classids="E4A654B3CB93D65A" subjectid="437D74396C85E80C" periodspercard="1" periodsperweek="1.0" teacherids="28904A15DFB6C3FD" classroomids="9127CE71F7C8287F" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="3B4CAEFFCA8CB85E" classids="F4E647B7776D7114" subjectid="8FD8F4DE1FCC14B0" periodspercard="1" periodsperweek="1.0" teacherids="28904A15DFB6C3FD" classroomids="178CB1BC5987D9D1" groupids="3494EFA7F91C3A36" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="3B56FDE87D6FC517" classids="BC2CF24E24A9F41A" subjectid="06A6A11FC2B66882" periodspercard="1" periodsperweek="1.0" teacherids="FFB9D00BAF9E22C9" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="A1BAFEE0742EFA2F" classids="700A5FAF19E3B3DA" subjectid="0ACA516CCAC56CB0" periodspercard="1" periodsperweek="1.0" teacherids="FFB9D00BAF9E22C9" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="A6168AD59D5B47E7" classids="BC2CF24E24A9F41A" subjectid="0845B3F6FA7FBA16" periodspercard="1" periodsperweek="1.0" teacherids="C969D86058FC16A3" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="871116C1C3520F83" classids="7F4CF739E594B44F" subjectid="0845B3F6FA7FBA16" periodspercard="1" periodsperweek="1.0" teacherids="C969D86058FC16A3" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="83E0622333E3D8F9" classids="700A5FAF19E3B3DA" subjectid="0845B3F6FA7FBA16" periodspercard="1" periodsperweek="1.0" teacherids="C969D86058FC16A3" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="9D54E5722F053CC2" classids="2A7DEDAAF865E605" subjectid="0845B3F6FA7FBA16" periodspercard="1" periodsperweek="1.0" teacherids="C969D86058FC16A3" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="5100DE2D77356A7D" classids="2A7DEDAAF865E605" subjectid="B9D7FB8C1B42B07E" periodspercard="1" periodsperweek="1.0" teacherids="DE44A932CAA67390" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="C242C1D94419E1C8" classids="7F4CF739E594B44F" subjectid="437D74396C85E80C" periodspercard="1" periodsperweek="1.0" teacherids="DE44A932CAA67390" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="6265F1D40646A81B" classids="700A5FAF19E3B3DA" subjectid="437D74396C85E80C" periodspercard="1" periodsperweek="1.0" teacherids="DE44A932CAA67390" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="7745BE1BC54CB681" classids="4DB87CF9F053E6FE" subjectid="451189995ED5E48A" periodspercard="1" periodsperweek="1.0" teacherids="DE44A932CAA67390" classroomids="5EE00D294B34961A" groupids="AB7E43BF1CCB50E7" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="C003658B80C0E43F" classids="E4A654B3CB93D65A" subjectid="03D468EFA263D8D9" periodspercard="1" periodsperweek="1.0" teacherids="4F10F9CD00D39EBF" classroomids="9127CE71F7C8287F" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="6C812AE3D88AEF23" classids="D1DE6308F71615C3" subjectid="B78A8B44EC95D1E7" periodspercard="1" periodsperweek="1.0" teacherids="57E625AA0EB2ED73" classroomids="C971498D4F1E2B8C" groupids="AEABEEEF252D4E64" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="001BEB3A0039E61F" classids="E4A654B3CB93D65A" subjectid="68F086E813D64137" periodspercard="1" periodsperweek="1.0" teacherids="1E4A507B5A5A35F9,68456E186F538ECB" classroomids="9127CE71F7C8287F" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="0E8777D79D9589C8" classids="BC2CF24E24A9F41A" subjectid="BE682258318F527A" periodspercard="1" periodsperweek="1.0" teacherids="1E4A507B5A5A35F9" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="320B0512D561A8C2" classids="2A7DEDAAF865E605" subjectid="4B42A5DCC068B3AB" periodspercard="1" periodsperweek="1.0" teacherids="8C4A9DAF389B406D" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="6F0EEAB767CA115A" classids="BC2CF24E24A9F41A" subjectid="4EF8524953F3588C" periodspercard="1" periodsperweek="1.0" teacherids="8C4A9DAF389B406D" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="C1F8BDFB9ACB2DE1" classids="9D41319237921432" subjectid="22060CC31DC2D048" periodspercard="1" periodsperweek="1.0" teacherids="8C4A9DAF389B406D" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="8025C11CB5D3458A" classids="9D41319237921432" subjectid="A95498D27F3A9FF6" periodspercard="1" periodsperweek="1.0" teacherids="8C4A9DAF389B406D" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="5D5A508F40172589" classids="E4A654B3CB93D65A" subjectid="22060CC31DC2D048" periodspercard="1" periodsperweek="1.0" teacherids="8C4A9DAF389B406D" classroomids="9127CE71F7C8287F" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="09BE1CEEED7DAA46" classids="7F4CF739E594B44F" subjectid="22060CC31DC2D048" periodspercard="1" periodsperweek="1.0" teacherids="8C4A9DAF389B406D" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="FBEFD190C77018C5" classids="700A5FAF19E3B3DA" subjectid="22060CC31DC2D048" periodspercard="1" periodsperweek="1.0" teacherids="8C4A9DAF389B406D" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="7AD7C48D77B8CBF2" classids="D1DE6308F71615C3" subjectid="03D176170D5A88EF" periodspercard="1" periodsperweek="1.0" teacherids="12E06DC8F73411AC" classroomids="C971498D4F1E2B8C" groupids="AEABEEEF252D4E64" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="483621E02FEAD38C" classids="2A7DEDAAF865E605" subjectid="C9693FFC8C1903C7" periodspercard="1" periodsperweek="1.0" teacherids="FA891A3A352EE352" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="3357A14F7F16F828" classids="E4A654B3CB93D65A" subjectid="C9693FFC8C1903C7" periodspercard="1" periodsperweek="1.0" teacherids="FA891A3A352EE352" classroomids="9127CE71F7C8287F" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="61424EB0739E3B28" classids="7F4CF739E594B44F" subjectid="D20C162AC5101DF1" periodspercard="1" periodsperweek="1.0" teacherids="FA891A3A352EE352" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="0AF6C7634284E531" classids="700A5FAF19E3B3DA" subjectid="D20C162AC5101DF1" periodspercard="1" periodsperweek="1.0" teacherids="FA891A3A352EE352" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="492CF0463DEF6250" classids="F336B50D2DDD7F4C" subjectid="D20C162AC5101DF1" periodspercard="1" periodsperweek="1.0" teacherids="FA891A3A352EE352" classroomids="178CB1BC5987D9D1" groupids="1266731DD545EE73" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="E46BF2744450DFDC" classids="2A7DEDAAF865E605" subjectid="72110FDF790578AA" periodspercard="1" periodsperweek="1.0" teacherids="5E834367C96EC60D" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="4D353F1831B456AF" classids="BC2CF24E24A9F41A" subjectid="70C27798E798E3BF" periodspercard="1" periodsperweek="1.0" teacherids="5E834367C96EC60D" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="8C5F3F76CA8E26D7" classids="9D41319237921432" subjectid="D48E870DC94AF0E3" periodspercard="1" periodsperweek="1.0" teacherids="5E834367C96EC60D" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="CF90F5A2A1E100B4" classids="F4E647B7776D7114" subjectid="D48E870DC94AF0E3" periodspercard="1" periodsperweek="1.0" teacherids="5E834367C96EC60D" classroomids="178CB1BC5987D9D1" groupids="3494EFA7F91C3A36" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="9FC8384E56F9F6ED" classids="B598C535E4605EEC" subjectid="A981CC7C8B0F37D5" periodspercard="1" periodsperweek="1.0" teacherids="5E834367C96EC60D" classroomids="5EE00D294B34961A" groupids="98641EECD6821068" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="3CD9E188C19E73F7" classids="D1DE6308F71615C3" subjectid="A5B548F069195547" periodspercard="1" periodsperweek="1.0" teacherids="9A61A1051D045086" classroomids="C971498D4F1E2B8C" groupids="AEABEEEF252D4E64" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="1C7B6F26E97A03C0" classids="733E50CD237622FB" subjectid="A0FA87760C59F177" periodspercard="1" periodsperweek="1.0" teacherids="9A61A1051D045086" classroomids="B8E04834E279901A,632740086148F802,D93A5AFF6C8E7F2D,F019F5A43F338B55" groupids="D149703E307C2EE5" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="2D8E6F44DEF8BDAF" classids="D00164B58F4C7B18" subjectid="538E0C5BF8092A71" periodspercard="1" periodsperweek="1.0" teacherids="F9B68AC4EFDE15CA" classroomids="188BFDDA4A69EFE7" groupids="257A16DA75AE61FC" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="D33C6E7FB8972615" classids="D00164B58F4C7B18" subjectid="00B10FE860575282" periodspercard="1" periodsperweek="1.0" teacherids="0D69C3F0F195CF23" classroomids="188BFDDA4A69EFE7" groupids="257A16DA75AE61FC" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="457772DF627DB50C" classids="2A7DEDAAF865E605" subjectid="CEE35E194FB22E7A" periodspercard="1" periodsperweek="0.5" teacherids="4C9BAB9B8D9B2105" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="9ED41CB0354DEA9D" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="E707B3D8A817EF79" classids="BC2CF24E24A9F41A" subjectid="48DEC091C0294D76" periodspercard="1" periodsperweek="1.0" teacherids="5AC25A0758F57842,BDF80909975F23CB" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="04DE366E5F17700E" classids="BC2CF24E24A9F41A" subjectid="B9BDE760DA1F8011" periodspercard="1" periodsperweek="1.0" teacherids="3F723D1483EF16D4" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="9CA73953B8E11304" classids="700A5FAF19E3B3DA" subjectid="835F3ED543F8B217" periodspercard="1" periodsperweek="1.0" teacherids="DE44A932CAA67390,9EC9B3012E1B6A5D" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="194C28EFE9B6ABB0" classids="7F4CF739E594B44F" subjectid="4E718F34C9025448" periodspercard="1" periodsperweek="1.0" teacherids="27FB159A0199B4C2" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="4FCB91AA845106F1" classids="BC2CF24E24A9F41A" subjectid="8852C66936579364" periodspercard="1" periodsperweek="1.0" teacherids="5CB63660FA736242" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="6FD16E41D0415F8B" classids="D1DE6308F71615C3" subjectid="A99D60DECC90D0A0" periodspercard="1" periodsperweek="1.0" teacherids="12E06DC8F73411AC" classroomids="C971498D4F1E2B8C" groupids="AEABEEEF252D4E64" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="CE3D1B031F4C54BC" classids="733E50CD237622FB" subjectid="EFE6DFD9DF372237" periodspercard="1" periodsperweek="1.0" teacherids="57E625AA0EB2ED73" classroomids="9127CE71F7C8287F" groupids="D149703E307C2EE5" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="1530C1DAD1DAE090" classids="733E50CD237622FB" subjectid="456F612021E9375F" periodspercard="1" periodsperweek="1.0" teacherids="B8D7440A3A4123F0" classroomids="9127CE71F7C8287F" groupids="D149703E307C2EE5" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="8CBF4B3EA6D755F3" classids="733E50CD237622FB" subjectid="025F4E48DB6081F6" periodspercard="1" periodsperweek="1.0" teacherids="6084853CDF98EAB6" classroomids="9127CE71F7C8287F" groupids="D149703E307C2EE5" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="1C3F06FE6B275A03" classids="1023353F33F22256" subjectid="7C304F0F150C2B0E" periodspercard="2" periodsperweek="2.0" teacherids="9782E9CF1AEF8655" classroomids="E1DFA97CA6739144" groupids="5A94D5403BD11D07" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="6B9D3FE7E9574091" classids="E4A654B3CB93D65A" subjectid="2B35011F0F079738" periodspercard="1" periodsperweek="2.0" teacherids="0D69C3F0F195CF23" classroomids="9127CE71F7C8287F" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="38277DF36EF55E2F" classids="74E8A174C94BFDA1" subjectid="03D468EFA263D8D9" periodspercard="1" periodsperweek="0.5" teacherids="5CB63660FA736242" classroomids="3E47643868BAB17B" groupids="0651DA423CCC603A" seminargroup="" termsdefid="8C81F4CB9665AA03" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="96C2B5415A67D13D" classids="74E8A174C94BFDA1" subjectid="71C69A92C20A9151" periodspercard="1" periodsperweek="0.5" teacherids="27FB159A0199B4C2" classroomids="552A042B3ACB5F70" groupids="0651DA423CCC603A" seminargroup="" termsdefid="8C81F4CB9665AA03" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="CEC125F637B2B2FB" classids="74E8A174C94BFDA1" subjectid="564B097256EBB65D" periodspercard="1" periodsperweek="0.5" teacherids="29D2B6B77FD57D24" classroomids="552A042B3ACB5F70" groupids="0651DA423CCC603A" seminargroup="" termsdefid="8C81F4CB9665AA03" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="AD96AA0BE4427F48" classids="74E8A174C94BFDA1" subjectid="DC13781FBF89FE86" periodspercard="1" periodsperweek="0.3" teacherids="03B3EAE7F274B40D,0DEAB24520BBE89E" classroomids="3E47643868BAB17B" groupids="0651DA423CCC603A" seminargroup="" termsdefid="405F57268CF94DA9" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="F978624CA1C791A8" classids="74E8A174C94BFDA1" subjectid="9EF4BEDC7B2CD5FB" periodspercard="1" periodsperweek="0.5" teacherids="03B3EAE7F274B40D" classroomids="3E47643868BAB17B" groupids="0651DA423CCC603A" seminargroup="" termsdefid="8C81F4CB9665AA03" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="2BA720DD5993E9CD" classids="74E8A174C94BFDA1" subjectid="68F086E813D64137" periodspercard="1" periodsperweek="0.5" teacherids="68456E186F538ECB" classroomids="3E47643868BAB17B" groupids="0651DA423CCC603A" seminargroup="" termsdefid="8C81F4CB9665AA03" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="4DA1E3C0997FF17C" classids="74E8A174C94BFDA1" subjectid="3C8BF5FDFA6B000A" periodspercard="1" periodsperweek="0.8" teacherids="B78644B44DEDD18B" classroomids="3E47643868BAB17B" groupids="0651DA423CCC603A" seminargroup="" termsdefid="DDC9A2D640EB83D3" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="8D835F16DFAD59B8" classids="74E8A174C94BFDA1" subjectid="C6DFDAD9B9486CB5" periodspercard="1" periodsperweek="0.3" teacherids="0DEAB24520BBE89E" classroomids="3E47643868BAB17B" groupids="0651DA423CCC603A" seminargroup="" termsdefid="405F57268CF94DA9" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="AA9D213501F70112" classids="4DB87CF9F053E6FE" subjectid="E7821A5F71717495" periodspercard="1" periodsperweek="1.0" teacherids="C969D86058FC16A3" classroomids="5EE00D294B34961A" groupids="AB7E43BF1CCB50E7" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="8CC6E71E0488308F" classids="4DB87CF9F053E6FE" subjectid="9810E04C9480CE1E" periodspercard="1" periodsperweek="1.0" teacherids="9EC9B3012E1B6A5D,29D2B6B77FD57D24" classroomids="5EE00D294B34961A" groupids="AB7E43BF1CCB50E7" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="D56B41FCE5138454" classids="4DB87CF9F053E6FE" subjectid="8611B7613B2336D4" periodspercard="2" periodsperweek="2.0" teacherids="9EC9B3012E1B6A5D" classroomids="5EE00D294B34961A" groupids="AB7E43BF1CCB50E7" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="527B3E760C96DE87" classids="F4E647B7776D7114" subjectid="9EF4BEDC7B2CD5FB" periodspercard="1" periodsperweek="1.0" teacherids="4453E0860794F64C" classroomids="178CB1BC5987D9D1" groupids="3494EFA7F91C3A36" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="DDE93AD9C2294088" classids="" subjectid="81C5614648D77E76" periodspercard="1" periodsperweek="1.0" teacherids="9782E9CF1AEF8655" classroomids="" groupids="" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="217F865351305B5D" classids="74E8A174C94BFDA1" subjectid="03D7A1494E188222" periodspercard="1" periodsperweek="0.5" teacherids="FFB9D00BAF9E22C9" classroomids="552A042B3ACB5F70" groupids="0651DA423CCC603A" seminargroup="" termsdefid="8C81F4CB9665AA03" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="936A7F3FF2010465" classids="F4E647B7776D7114" subjectid="B5AB0DBF9048C910" periodspercard="2" periodsperweek="2.0" teacherids="C60C6EA6F50DB582" classroomids="178CB1BC5987D9D1" groupids="3494EFA7F91C3A36" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="0D2ADD1A0FBDB9D7" classids="74E8A174C94BFDA1" subjectid="C31CAC24F376492F" periodspercard="1" periodsperweek="0.3" teacherids="B78644B44DEDD18B,5CB63660FA736242" classroomids="3E47643868BAB17B" groupids="0651DA423CCC603A" seminargroup="" termsdefid="405F57268CF94DA9" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="C4AE1292B7051BE9" classids="74E8A174C94BFDA1" subjectid="48DEC091C0294D76" periodspercard="1" periodsperweek="0.3" teacherids="BDF80909975F23CB" classroomids="3E47643868BAB17B" groupids="0651DA423CCC603A" seminargroup="" termsdefid="405F57268CF94DA9" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="6BD76850B7FD1BBC" classids="74E8A174C94BFDA1" subjectid="8612D10B6464AE03" periodspercard="1" periodsperweek="0.3" teacherids="68456E186F538ECB,BDF80909975F23CB" classroomids="3E47643868BAB17B" groupids="0651DA423CCC603A" seminargroup="" termsdefid="405F57268CF94DA9" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="67AD522CE3B12A3F" classids="700A5FAF19E3B3DA" subjectid="9EB6E773481C5C3C" periodspercard="1" periodsperweek="1.0" teacherids="4453E0860794F64C" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="EE29F8FE956D7023" classids="9D41319237921432" subjectid="2B35011F0F079738" periodspercard="1" periodsperweek="2.0" teacherids="0D69C3F0F195CF23" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="0113D3E61800BD9E" classids="7C5A2257B065358F" subjectid="E006CC5119B8C35C" periodspercard="1" periodsperweek="1.0" teacherids="D6DA808290218BDE" classroomids="F76D022140284128" groupids="1358E5022AFCB995" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="E9DF213D6B85D594" classids="991DA08916B9EFEE" subjectid="E8EF7EE18A05C1A9" periodspercard="2" periodsperweek="1.5" teacherids="8C4A9DAF389B406D" classroomids="E1DFA97CA6739144" groupids="944DD4AF6E5ADBCD" seminargroup="" termsdefid="DDC9A2D640EB83D3" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="180A38D3F5791DDD" classids="991DA08916B9EFEE" subjectid="3C8BF5FDFA6B000A" periodspercard="1" periodsperweek="1.0" teacherids="B78644B44DEDD18B" classroomids="E1DFA97CA6739144" groupids="944DD4AF6E5ADBCD" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="859BE2190B5D4125" classids="991DA08916B9EFEE" subjectid="7B5DFD3038B7760A" periodspercard="2" periodsperweek="2.0" teacherids="53A34801DD318BEE,5E810D524CD52EEB" classroomids="E1DFA97CA6739144" groupids="944DD4AF6E5ADBCD" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="42CC1F4D4C24BD58" classids="991DA08916B9EFEE" subjectid="E88AA0215954F06E" periodspercard="1" periodsperweek="1.0" teacherids="53A34801DD318BEE" classroomids="E1DFA97CA6739144" groupids="944DD4AF6E5ADBCD" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="1575ACA302A38C7E" classids="E9232B1CF8FC0BB5" subjectid="48B6004C6BA94259" periodspercard="2" periodsperweek="2.0" teacherids="12E06DC8F73411AC,B8D7440A3A4123F0" classroomids="F019F5A43F338B55,D93A5AFF6C8E7F2D,B8E04834E279901A,632740086148F802" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="5BF5F0621A953562" classids="E9232B1CF8FC0BB5" subjectid="B9BDE760DA1F8011" periodspercard="1" periodsperweek="1.0" teacherids="3F723D1483EF16D4" classroomids="04C3A31A10986E63" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="4658A855B32FEA21" classids="E9232B1CF8FC0BB5" subjectid="AAC0D4255C94569E" periodspercard="1" periodsperweek="1.0" teacherids="9A61A1051D045086,F9B68AC4EFDE15CA" classroomids="B8E04834E279901A,632740086148F802,D93A5AFF6C8E7F2D" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="1C5A21CF68637C22" classids="E9232B1CF8FC0BB5" subjectid="523F5E5C08E5FF30" periodspercard="1" periodsperweek="1.0" teacherids="4453E0860794F64C" classroomids="04C3A31A10986E63" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="053A468E00AF7A48" classids="E9232B1CF8FC0BB5" subjectid="5F2E58791AE6963F" periodspercard="1" periodsperweek="1.0" teacherids="D6DA808290218BDE" classroomids="04C3A31A10986E63" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="A27F9740A4DE08A1" classids="E9232B1CF8FC0BB5" subjectid="71C69A92C20A9151" periodspercard="1" periodsperweek="1.0" teacherids="27FB159A0199B4C2" classroomids="04C3A31A10986E63" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="498CED86FF95B57B" classids="E9232B1CF8FC0BB5" subjectid="8852C66936579364" periodspercard="1" periodsperweek="1.0" teacherids="4F10F9CD00D39EBF" classroomids="04C3A31A10986E63" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="0D868026A4366E1A" classids="E9232B1CF8FC0BB5" subjectid="06A6A11FC2B66882" periodspercard="1" periodsperweek="1.0" teacherids="FFB9D00BAF9E22C9" classroomids="04C3A31A10986E63" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="615BD846B2746035" classids="E9232B1CF8FC0BB5" subjectid="48DEC091C0294D76" periodspercard="1" periodsperweek="1.0" teacherids="5AC25A0758F57842,BDF80909975F23CB" classroomids="04C3A31A10986E63" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="1C9660D38A6B9100" classids="E9232B1CF8FC0BB5" subjectid="6A7578838413AB27" periodspercard="1" periodsperweek="1.0" teacherids="6A80CF80F35D0494" classroomids="04C3A31A10986E63" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="C4133BD27564586E" classids="E9232B1CF8FC0BB5" subjectid="0845B3F6FA7FBA16" periodspercard="1" periodsperweek="1.0" teacherids="C969D86058FC16A3" classroomids="04C3A31A10986E63" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="F9EE81C6CB3EDDC7" classids="4C16577F3E66DB9A" subjectid="0845B3F6FA7FBA16" periodspercard="1" periodsperweek="1.0" teacherids="C969D86058FC16A3" classroomids="D64BA6C27A2CCCFB" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="6A4DE7A9AA5C3A71" classids="4C16577F3E66DB9A" subjectid="460D27D8D19152C4" periodspercard="1" periodsperweek="1.0" teacherids="B78644B44DEDD18B" classroomids="D64BA6C27A2CCCFB" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="71AD6FEFB98CCFEC" classids="4C16577F3E66DB9A" subjectid="717ABE3685B2B548" periodspercard="1" periodsperweek="1.0" teacherids="4F10F9CD00D39EBF" classroomids="D64BA6C27A2CCCFB" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="61BB3C8DC21DEF8E" classids="4C16577F3E66DB9A" subjectid="CAD94C5CA3A546BA" periodspercard="1" periodsperweek="0.5" teacherids="03B3EAE7F274B40D" classroomids="D64BA6C27A2CCCFB" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="9ED41CB0354DEA9D" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="5CE004E756468D81" classids="4C16577F3E66DB9A" subjectid="CAD94C5CA3A546BA" periodspercard="1" periodsperweek="1.0" teacherids="03B3EAE7F274B40D" classroomids="D64BA6C27A2CCCFB" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="EFF9AC2F9B22C996" classids="4C16577F3E66DB9A" subjectid="058017F98C9A3F31" periodspercard="1" periodsperweek="1.0" teacherids="3F723D1483EF16D4" classroomids="D64BA6C27A2CCCFB" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="B87B3C7A62EA703F" classids="4C16577F3E66DB9A" subjectid="A6B7D852BF764289" periodspercard="1" periodsperweek="2.0" teacherids="68456E186F538ECB" classroomids="D64BA6C27A2CCCFB" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="68C76EE1F77758ED" classids="4C16577F3E66DB9A" subjectid="CEE35E194FB22E7A" periodspercard="1" periodsperweek="1.0" teacherids="4C9BAB9B8D9B2105" classroomids="D64BA6C27A2CCCFB" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="CE8172C86A11042C" classids="1023353F33F22256" subjectid="82DA52559951DEEB" periodspercard="1" periodsperweek="1.0" teacherids="C60C6EA6F50DB582" classroomids="D93A5AFF6C8E7F2D" groupids="5A94D5403BD11D07" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="D0D2D2E3BC7814A6" classids="E4A654B3CB93D65A" subjectid="9E02D617645BB641" periodspercard="1" periodsperweek="1.0" teacherids="12E06DC8F73411AC,F9B68AC4EFDE15CA" classroomids="B8E04834E279901A,632740086148F802,D93A5AFF6C8E7F2D" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="C55567EA1115C105" classids="E4A654B3CB93D65A" subjectid="7DACAF75FC7D5E24" periodspercard="1" periodsperweek="1.0" teacherids="57E625AA0EB2ED73,F9B68AC4EFDE15CA" classroomids="B8E04834E279901A,632740086148F802" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="52D04647E74316F6" classids="9D41319237921432" subjectid="287EE2241013FB42" periodspercard="1" periodsperweek="1.0" teacherids="F9B68AC4EFDE15CA" classroomids="C971498D4F1E2B8C" groupids="E66372151B1432C2" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="7994ED80B5CE5EA1" classids="4C16577F3E66DB9A" subjectid="F70D261A59FFD838" periodspercard="2" periodsperweek="2.0" teacherids="8C2099D47A10D080,B8D7440A3A4123F0" classroomids="F019F5A43F338B55,B8E04834E279901A,632740086148F802,D93A5AFF6C8E7F2D" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="BC76273B23AB7927" classids="E4A654B3CB93D65A" subjectid="255DDF57EAF813EE" periodspercard="2" periodsperweek="2.0" teacherids="57E625AA0EB2ED73,E3D94B7CDC110A23" classroomids="D93A5AFF6C8E7F2D,632740086148F802" groupids="9B773043D5F08AFE" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="08B2B15B336F8FF7" classids="4C16577F3E66DB9A" subjectid="3632DE0F68129A8E" periodspercard="1" periodsperweek="0.5" teacherids="9A61A1051D045086,28904A15DFB6C3FD" classroomids="F019F5A43F338B55,B8E04834E279901A,632740086148F802,D93A5AFF6C8E7F2D" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="04F247347BDF9747" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="9D867C1F4A5A432C" classids="2A7DEDAAF865E605" subjectid="3632DE0F68129A8E" periodspercard="1" periodsperweek="1.0" teacherids="6634BAEC9A70CD26,5CB63660FA736242" classroomids="D93A5AFF6C8E7F2D,B8E04834E279901A,632740086148F802" groupids="C683EE3928B9D234" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="1B215444D1512063" classids="E9232B1CF8FC0BB5" subjectid="3EAFEE80B5698FE1" periodspercard="1" periodsperweek="1.0" teacherids="0DEAB24520BBE89E" classroomids="04C3A31A10986E63" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="7EB5F21F4EFF16BB" classids="700A5FAF19E3B3DA" subjectid="AAB2119573060B11" periodspercard="1" periodsperweek="1.0" teacherids="0DEAB24520BBE89E" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="CF6CA6524F7427EF" classids="4C16577F3E66DB9A" subjectid="89D725F9D4A78D6C" periodspercard="1" periodsperweek="1.0" teacherids="0DEAB24520BBE89E" classroomids="D64BA6C27A2CCCFB" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="553638C60ADB4EE9" classids="E9232B1CF8FC0BB5" subjectid="695E16B8E6323D4E" periodspercard="1" periodsperweek="1.0" teacherids="8C2099D47A10D080" classroomids="B8E04834E279901A,632740086148F802" groupids="B0E004BD064EFF2B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="B4FB4EE77819E5C7" classids="4C16577F3E66DB9A" subjectid="27E90A1309EEE298" periodspercard="1" periodsperweek="1.0" teacherids="57E625AA0EB2ED73,8C2099D47A10D080" classroomids="F019F5A43F338B55" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="44E5D123FDD8DD3C" classids="4C16577F3E66DB9A" subjectid="37BC40B4453834BB" periodspercard="1" periodsperweek="1.0" teacherids="9A61A1051D045086,12E06DC8F73411AC" classroomids="F019F5A43F338B55,D93A5AFF6C8E7F2D,B8E04834E279901A,632740086148F802" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="9C007255D0FE6480" classids="733E50CD237622FB" subjectid="DB9034851BD822DB" periodspercard="1" periodsperweek="0.8" teacherids="5E834367C96EC60D" classroomids="9127CE71F7C8287F" groupids="D149703E307C2EE5" seminargroup="" termsdefid="DDC9A2D640EB83D3" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="90E8D5CA03512B8A" classids="733E50CD237622FB" subjectid="DB9034851BD822DB" periodspercard="1" periodsperweek="0.3" teacherids="6634BAEC9A70CD26" classroomids="9127CE71F7C8287F" groupids="D149703E307C2EE5" seminargroup="" termsdefid="405F57268CF94DA9" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="AAC2970E1C73C3B5" classids="F336B50D2DDD7F4C" subjectid="D20C162AC5101DF1" periodspercard="1" periodsperweek="1.0" teacherids="FA891A3A352EE352" classroomids="178CB1BC5987D9D1" groupids="1266731DD545EE73" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="720E7B3A0C4AE341" classids="2A7DEDAAF865E605" subjectid="CAD94C5CA3A546BA" periodspercard="1" periodsperweek="0.5" teacherids="03B3EAE7F274B40D" classroomids="552A042B3ACB5F70" groupids="C683EE3928B9D234" seminargroup="" termsdefid="04F247347BDF9747" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="F9E2431374D4F36D" classids="B598C535E4605EEC" subjectid="3F4E4B093815E4B1" periodspercard="1" periodsperweek="2.0" teacherids="FDB02C585851761A" classroomids="5EE00D294B34961A" groupids="98641EECD6821068" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="969231812C5BF02D" classids="7F4CF739E594B44F" subjectid="32F2F549D66C6AF5" periodspercard="1" periodsperweek="1.0" teacherids="29D2B6B77FD57D24,FFB9D00BAF9E22C9,A2E2ED8F54C7E96E" classroomids="3E47643868BAB17B" groupids="0BDDFD69A9D8DA02" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="4E9CCAB2E64ED2F6" classids="700A5FAF19E3B3DA" subjectid="32F2F549D66C6AF5" periodspercard="1" periodsperweek="1.0" teacherids="29D2B6B77FD57D24,A2E2ED8F54C7E96E,FFB9D00BAF9E22C9" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="2CACE038B374635C" classids="BC2CF24E24A9F41A" subjectid="523F5E5C08E5FF30" periodspercard="1" periodsperweek="1.0" teacherids="03B3EAE7F274B40D" classroomids="A1822E37E6314DF6" groupids="038EADE3471ED1BA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="33D1CAE68CBC08A0" classids="4DB87CF9F053E6FE" subjectid="9EF4BEDC7B2CD5FB" periodspercard="1" periodsperweek="1.0" teacherids="4453E0860794F64C" classroomids="" groupids="AB7E43BF1CCB50E7" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="94BCA89DB5EB9C66" classids="4DB87CF9F053E6FE" subjectid="AACD51CE20AEADD3" periodspercard="1" periodsperweek="0.8" teacherids="4C9BAB9B8D9B2105" classroomids="5EE00D294B34961A" groupids="AB7E43BF1CCB50E7" seminargroup="" termsdefid="DCBA87DE29C29B5A" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="194F9A2EA936C068" classids="" subjectid="81C5614648D77E76" periodspercard="2" periodsperweek="2.0" teacherids="C60C6EA6F50DB582" classroomids="" groupids="" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="0A581D3D4B597738" classids="700A5FAF19E3B3DA" subjectid="4E718F34C9025448" periodspercard="1" periodsperweek="1.0" teacherids="27FB159A0199B4C2" classroomids="188BFDDA4A69EFE7" groupids="A0A3EA6C7F88B9B1" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="337EC29A22C9C5F9" classids="F4E647B7776D7114" subjectid="162AD661D13A3A9A" periodspercard="1" periodsperweek="1.0" teacherids="FDB02C585851761A" classroomids="178CB1BC5987D9D1" groupids="3494EFA7F91C3A36" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="2D22560A82D9463C" classids="04559E1FF0FA0D0E" subjectid="EFC09166136597B1" periodspercard="1" periodsperweek="1.0" teacherids="5E834367C96EC60D" classroomids="178CB1BC5987D9D1" groupids="A446142ABBA74733" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="2C8293268B2E8749" classids="4C16577F3E66DB9A" subjectid="37BC40B4453834BB" periodspercard="1" periodsperweek="0.5" teacherids="9A61A1051D045086,12E06DC8F73411AC" classroomids="F019F5A43F338B55,D93A5AFF6C8E7F2D,B8E04834E279901A,632740086148F802" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="9F267BB6E9ACDE56" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="A65C87B663D1BC60" classids="A3A9F0E6CAE16642" subjectid="3721C25F38F2944B" periodspercard="2" periodsperweek="2.0" teacherids="0D69C3F0F195CF23" classroomids="" groupids="EB5DCB04A07419CB" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="E92752674FD5A7EA" classids="A3A9F0E6CAE16642" subjectid="38133A6F9903114A" periodspercard="1" periodsperweek="1.0" teacherids="3F723D1483EF16D4" classroomids="" groupids="76A0609C9E1026F4" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="C1336FCFC1A68C6F" classids="A3A9F0E6CAE16642" subjectid="6929F787BADEC7A6" periodspercard="1" periodsperweek="1.0" teacherids="1E4A507B5A5A35F9" classroomids="" groupids="CCE16305EE821B0B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="B1F0D61D0C27F7EE" classids="A3A9F0E6CAE16642" subjectid="82478DC27199D10D" periodspercard="1" periodsperweek="1.0" teacherids="3F723D1483EF16D4" classroomids="" groupids="EB5DCB04A07419CB" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="697DEC6FAE654C2A" classids="A3A9F0E6CAE16642" subjectid="A700E20FE25ACD51" periodspercard="1" periodsperweek="1.0" teacherids="4F10F9CD00D39EBF" classroomids="" groupids="CCE16305EE821B0B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="E301794360280677" classids="A3A9F0E6CAE16642" subjectid="2346E2269FAC297A" periodspercard="1" periodsperweek="1.0" teacherids="8C2099D47A10D080" classroomids="" groupids="76A0609C9E1026F4" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="DA682F6B04EDC016" classids="A3A9F0E6CAE16642" subjectid="0B530D357ABFD564" periodspercard="2" periodsperweek="2.0" teacherids="D6DA808290218BDE" classroomids="" groupids="891A04DFE08AA1C3" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="F3D0B7E0E5CD1E7C" classids="A3A9F0E6CAE16642" subjectid="873DA509DD976C68" periodspercard="1" periodsperweek="1.0" teacherids="6A80CF80F35D0494" classroomids="" groupids="CCE16305EE821B0B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="885F1710DF7B4F96" classids="A3A9F0E6CAE16642" subjectid="B8E37164067E18D7" periodspercard="1" periodsperweek="1.0" teacherids="68456E186F538ECB" classroomids="9127CE71F7C8287F" groupids="76A0609C9E1026F4" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="D02A3F791FBECFB4" classids="A3A9F0E6CAE16642" subjectid="1B5EF406B7A470EA" periodspercard="1" periodsperweek="1.0" teacherids="28904A15DFB6C3FD" classroomids="178CB1BC5987D9D1" groupids="CCE16305EE821B0B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="ACC8EB40A36EAC99" classids="A3A9F0E6CAE16642" subjectid="4E966DDA78B14BC1" periodspercard="1" periodsperweek="1.0" teacherids="C969D86058FC16A3" classroomids="8DE4742A4E3D917E" groupids="CCE16305EE821B0B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="01F38B9A3D8D99E9" classids="A3A9F0E6CAE16642" subjectid="9F773391D934C92B" periodspercard="1" periodsperweek="1.0" teacherids="03B3EAE7F274B40D" classroomids="" groupids="76A0609C9E1026F4" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="CE5A6391A0C27BF4" classids="A3A9F0E6CAE16642" subjectid="61840891638064F7" periodspercard="1" periodsperweek="1.0" teacherids="27FB159A0199B4C2" classroomids="F76D022140284128" groupids="CCE16305EE821B0B" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="049BBCD5DFE420A1" classids="04559E1FF0FA0D0E" subjectid="7BF47B0749E67658" periodspercard="2" periodsperweek="2.0" teacherids="53A34801DD318BEE,B32125CBEE11DB0E" classroomids="178CB1BC5987D9D1" groupids="A446142ABBA74733" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="44470EA4D89E940A" classids="C9E12484D742F6EA" subjectid="15FE2C28785F88E4" periodspercard="2" periodsperweek="2.0" teacherids="6A80CF80F35D0494,5E810D524CD52EEB,1E4A507B5A5A35F9" classroomids="5EE00D294B34961A" groupids="DBFC22E167926DB4" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="6C83BEE3C3906BB2" classids="04559E1FF0FA0D0E" subjectid="6DD819D5260F38AA" periodspercard="1" periodsperweek="1.0" teacherids="FDB02C585851761A,5E834367C96EC60D" classroomids="178CB1BC5987D9D1" groupids="A446142ABBA74733" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="DE8DEA7A1DA196B8" classids="04559E1FF0FA0D0E" subjectid="3632DE0F68129A8E" periodspercard="1" periodsperweek="1.0" teacherids="FDB02C585851761A" classroomids="178CB1BC5987D9D1" groupids="A446142ABBA74733" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="5ED27C2E691EA38E" classids="C9E12484D742F6EA" subjectid="9EF4BEDC7B2CD5FB" periodspercard="1" periodsperweek="1.0" teacherids="03B3EAE7F274B40D" classroomids="5EE00D294B34961A" groupids="DBFC22E167926DB4" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="E381FF2776E42753" classids="C9E12484D742F6EA" subjectid="162AD661D13A3A9A" periodspercard="1" periodsperweek="0.5" teacherids="6A80CF80F35D0494" classroomids="5EE00D294B34961A" groupids="DBFC22E167926DB4" seminargroup="" termsdefid="9ED41CB0354DEA9D" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="ABA72FD07FB73174" classids="04559E1FF0FA0D0E" subjectid="4C4F0E46E6D9A103" periodspercard="1" periodsperweek="1.0" teacherids="53A34801DD318BEE" classroomids="178CB1BC5987D9D1" groupids="A446142ABBA74733" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="7C53416568B665DC" classids="C9E12484D742F6EA" subjectid="14461A42EAF2F867" periodspercard="1" periodsperweek="0.5" teacherids="03B3EAE7F274B40D" classroomids="5EE00D294B34961A" groupids="DBFC22E167926DB4" seminargroup="" termsdefid="04F247347BDF9747" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="AE055B8987044AFD" classids="4C16577F3E66DB9A" subjectid="3632DE0F68129A8E" periodspercard="1" periodsperweek="0.5" teacherids="9A61A1051D045086,28904A15DFB6C3FD" classroomids="F019F5A43F338B55,632740086148F802,D64BA6C27A2CCCFB" groupids="1EBFD1DDF5ADA78E" seminargroup="" termsdefid="9ED41CB0354DEA9D" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+    <lesson id="48B693C2529E8CAB" classids="48EA34FD78B6F4E3" subjectid="37903B031557574E" periodspercard="2" periodsperweek="4.0" teacherids="9EC9B3012E1B6A5D,4C9BAB9B8D9B2105,C60C6EA6F50DB582" classroomids="04C3A31A10986E63" groupids="6F5D138F9FDF06DA" seminargroup="" termsdefid="F267ADFCDD75EEEA" weeksdefid="74EADA2E00C4A529" daysdefid="CFF5A0C223F92D9D" capacity="*" partner_id=""/>
+  </lessons>
+  <cards options="canadd,export:silent" columns="lessonid,period,days,weeks,terms,classroomids">
+    <card lessonid="BC714A49D63E3AEF" classroomids="C971498D4F1E2B8C" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="45181F1454D2BB62" classroomids="C971498D4F1E2B8C" period="4" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="6491E0C159458F9B" classroomids="9127CE71F7C8287F" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="7F4D317A5D7F9319" classroomids="5EE00D294B34961A" period="1" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="6081D9A2251E6916" classroomids="5EE00D294B34961A" period="1" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="E32AE7E5E5CE8AED" classroomids="E1DFA97CA6739144" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="E32AE7E5E5CE8AED" classroomids="E1DFA97CA6739144" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="25C19739AD9CCC1B" classroomids="552A042B3ACB5F70" period="4" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="A4211369559AF3B5" classroomids="E1DFA97CA6739144" period="2" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="76E7AE4B34FD3AA5" classroomids="E1DFA97CA6739144" period="1" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="963030C53B0E3D11" classroomids="C971498D4F1E2B8C" period="2" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="43B955EC9E8411A1" classroomids="552A042B3ACB5F70" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="1AB78E5EE3124D64" classroomids="5EE00D294B34961A" period="5" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="2AC421316728576D" classroomids="5EE00D294B34961A" period="6" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="35EB70744323A8A2" classroomids="A1822E37E6314DF6" period="4" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="83A8718614174D20" classroomids="9127CE71F7C8287F" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="5DA7B779F089719D" classroomids="C971498D4F1E2B8C" period="3" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="3BE75B1680E1FA69" classroomids="3E47643868BAB17B" period="4" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="AC1F38FB6ABA818B" classroomids="188BFDDA4A69EFE7" period="4" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="A2FB66C6514E4C71" classroomids="188BFDDA4A69EFE7" period="4" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="19D53970BD8FF13A" classroomids="3E47643868BAB17B" period="4" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="EC148C50591C434B" classroomids="3E47643868BAB17B" period="2" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="A7136ADBAEAB3913" classroomids="188BFDDA4A69EFE7" period="1" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="EA0965CFD61593DA" classroomids="3E47643868BAB17B" period="1" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="C48D22D85CEB357A" classroomids="A1822E37E6314DF6" period="3" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="66A588E94472F63B" classroomids="552A042B3ACB5F70" period="3" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="E958229AEDBEDF8E" classroomids="C971498D4F1E2B8C" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="A8078C9946B308F7" classroomids="3E47643868BAB17B" period="3" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="6508FB571DB7ED57" classroomids="5EE00D294B34961A" period="5" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="B85F58E1D0344D58" classroomids="552A042B3ACB5F70" period="2" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="EC5F316B5CF07D9F" classroomids="A1822E37E6314DF6" period="4" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="AE59FC476887349E" classroomids="3E47643868BAB17B" period="2" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="756D501195DE75C1" classroomids="188BFDDA4A69EFE7" period="3" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="2F1EFA2541D50AA1" classroomids="552A042B3ACB5F70" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="A56F1837704DB887" classroomids="A1822E37E6314DF6" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="D91FA97A99E93172" classroomids="3E47643868BAB17B" period="2" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="D213574DAABE2088" classroomids="188BFDDA4A69EFE7" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="F6F23A0463F17694" classroomids="E1DFA97CA6739144" period="1" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="7ACC1DA200958961" classroomids="178CB1BC5987D9D1" period="2" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="55B2FAF825A4CE3E" classroomids="5EE00D294B34961A" period="1" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="03BD6ACE920DCA35" classroomids="5EE00D294B34961A" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="9D7489EC64FADB26" classroomids="C971498D4F1E2B8C" period="4" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="C53775AA198BE424" classroomids="9127CE71F7C8287F" period="3" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="4D85F7A7FFCE4F96" classroomids="3E47643868BAB17B" period="3" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="F14D21A09234CEC1" classroomids="C971498D4F1E2B8C" period="7" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="5FB947C337F210CA" classroomids="552A042B3ACB5F70" period="2" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="7A43E650801A7D59" classroomids="3E47643868BAB17B" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="84DA3B87AD2B6B26" classroomids="188BFDDA4A69EFE7" period="1" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="0CB832CD35D2E095" classroomids="178CB1BC5987D9D1" period="2" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="961CDCBEB7BE4FC9" classroomids="552A042B3ACB5F70" period="1" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="1ADB0031FAEF96E5" classroomids="A1822E37E6314DF6" period="2" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="C391F962E63170E3" classroomids="C971498D4F1E2B8C" period="4" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="A61B1C0461630CAB" classroomids="3E47643868BAB17B" period="4" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="5E816FF6056DB14A" classroomids="188BFDDA4A69EFE7,B8E04834E279901A" period="7" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="5E816FF6056DB14A" classroomids="188BFDDA4A69EFE7,B8E04834E279901A" period="7" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="38A357D4CD97C8D5" classroomids="C971498D4F1E2B8C,B8E04834E279901A" period="7" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="597B83A534325C65" classroomids="9127CE71F7C8287F,F019F5A43F338B55" period="5" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="F7E921E3450C8010" classroomids="188BFDDA4A69EFE7" period="7" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="06AF1E3AB884943B" classroomids="" period="5" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="622BF704CCC92826" classroomids="C971498D4F1E2B8C" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="1C25EEE3374B94B4" classroomids="9127CE71F7C8287F" period="3" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="3B4CAEFFCA8CB85E" classroomids="178CB1BC5987D9D1" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="3B56FDE87D6FC517" classroomids="A1822E37E6314DF6" period="2" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="A1BAFEE0742EFA2F" classroomids="188BFDDA4A69EFE7" period="4" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="A6168AD59D5B47E7" classroomids="A1822E37E6314DF6" period="3" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="871116C1C3520F83" classroomids="3E47643868BAB17B" period="4" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="83E0622333E3D8F9" classroomids="188BFDDA4A69EFE7" period="2" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="9D54E5722F053CC2" classroomids="552A042B3ACB5F70" period="1" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="5100DE2D77356A7D" classroomids="552A042B3ACB5F70" period="2" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="C242C1D94419E1C8" classroomids="3E47643868BAB17B" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="6265F1D40646A81B" classroomids="188BFDDA4A69EFE7" period="3" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="7745BE1BC54CB681" classroomids="5EE00D294B34961A" period="6" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="C003658B80C0E43F" classroomids="9127CE71F7C8287F" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="6C812AE3D88AEF23" classroomids="C971498D4F1E2B8C,632740086148F802" period="7" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="001BEB3A0039E61F" classroomids="9127CE71F7C8287F" period="1" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="0E8777D79D9589C8" classroomids="A1822E37E6314DF6" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="320B0512D561A8C2" classroomids="552A042B3ACB5F70" period="4" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="6F0EEAB767CA115A" classroomids="A1822E37E6314DF6" period="1" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="C1F8BDFB9ACB2DE1" classroomids="C971498D4F1E2B8C" period="3" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="8025C11CB5D3458A" classroomids="C971498D4F1E2B8C" period="2" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="5D5A508F40172589" classroomids="9127CE71F7C8287F" period="2" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="09BE1CEEED7DAA46" classroomids="3E47643868BAB17B" period="1" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="FBEFD190C77018C5" classroomids="188BFDDA4A69EFE7" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="7AD7C48D77B8CBF2" classroomids="C971498D4F1E2B8C,F019F5A43F338B55" period="7" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="483621E02FEAD38C" classroomids="552A042B3ACB5F70" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="3357A14F7F16F828" classroomids="9127CE71F7C8287F" period="4" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="61424EB0739E3B28" classroomids="3E47643868BAB17B" period="3" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="0AF6C7634284E531" classroomids="188BFDDA4A69EFE7" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="492CF0463DEF6250" classroomids="178CB1BC5987D9D1" period="7" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="E46BF2744450DFDC" classroomids="552A042B3ACB5F70" period="3" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="4D353F1831B456AF" classroomids="A1822E37E6314DF6" period="4" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="8C5F3F76CA8E26D7" classroomids="C971498D4F1E2B8C" period="1" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="CF90F5A2A1E100B4" classroomids="178CB1BC5987D9D1" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="9FC8384E56F9F6ED" classroomids="5EE00D294B34961A" period="2" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="3CD9E188C19E73F7" classroomids="C971498D4F1E2B8C,632740086148F802" period="7" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="1C7B6F26E97A03C0" classroomids="632740086148F802,9127CE71F7C8287F,27175D4EC8BFB11E" period="7" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="2D8E6F44DEF8BDAF" classroomids="188BFDDA4A69EFE7,B8E04834E279901A" period="7" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="D33C6E7FB8972615" classroomids="188BFDDA4A69EFE7" period="7" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="457772DF627DB50C" classroomids="552A042B3ACB5F70" period="4" weeks="1" terms="0011" days="00001"/>
+    <card lessonid="E707B3D8A817EF79" classroomids="A1822E37E6314DF6" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="04DE366E5F17700E" classroomids="A1822E37E6314DF6" period="1" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="9CA73953B8E11304" classroomids="188BFDDA4A69EFE7" period="3" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="194C28EFE9B6ABB0" classroomids="3E47643868BAB17B" period="1" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="4FCB91AA845106F1" classroomids="A1822E37E6314DF6" period="4" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="6FD16E41D0415F8B" classroomids="C971498D4F1E2B8C,D93A5AFF6C8E7F2D" period="6" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="CE3D1B031F4C54BC" classroomids="9127CE71F7C8287F,F019F5A43F338B55" period="7" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="1530C1DAD1DAE090" classroomids="9127CE71F7C8287F,F019F5A43F338B55" period="7" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="8CBF4B3EA6D755F3" classroomids="9127CE71F7C8287F" period="7" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="1C3F06FE6B275A03" classroomids="E1DFA97CA6739144" period="1" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="1C3F06FE6B275A03" classroomids="E1DFA97CA6739144" period="2" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="6B9D3FE7E9574091" classroomids="9127CE71F7C8287F" period="1" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="6B9D3FE7E9574091" classroomids="9127CE71F7C8287F" period="2" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="38277DF36EF55E2F" classroomids="3E47643868BAB17B" period="7" weeks="1" terms="0011" days="00010"/>
+    <card lessonid="96C2B5415A67D13D" classroomids="552A042B3ACB5F70" period="7" weeks="1" terms="1100" days="00010"/>
+    <card lessonid="CEC125F637B2B2FB" classroomids="552A042B3ACB5F70" period="7" weeks="1" terms="1100" days="00001"/>
+    <card lessonid="AD96AA0BE4427F48" classroomids="3E47643868BAB17B" period="7" weeks="1" terms="0001" days="00001"/>
+    <card lessonid="F978624CA1C791A8" classroomids="3E47643868BAB17B" period="7" weeks="1" terms="0011" days="10000"/>
+    <card lessonid="2BA720DD5993E9CD" classroomids="3E47643868BAB17B" period="7" weeks="1" terms="1100" days="00100"/>
+    <card lessonid="4DA1E3C0997FF17C" classroomids="3E47643868BAB17B" period="7" weeks="1" terms="1110" days="01000"/>
+    <card lessonid="8D835F16DFAD59B8" classroomids="3E47643868BAB17B" period="7" weeks="1" terms="0010" days="00001"/>
+    <card lessonid="AA9D213501F70112" classroomids="5EE00D294B34961A" period="5" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="8CC6E71E0488308F" classroomids="5EE00D294B34961A" period="5" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="D56B41FCE5138454" classroomids="5EE00D294B34961A" period="5" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="D56B41FCE5138454" classroomids="5EE00D294B34961A" period="6" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="527B3E760C96DE87" classroomids="178CB1BC5987D9D1" period="1" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="DDE93AD9C2294088" classroomids="" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="217F865351305B5D" classroomids="552A042B3ACB5F70" period="7" weeks="1" terms="1100" days="10000"/>
+    <card lessonid="936A7F3FF2010465" classroomids="178CB1BC5987D9D1" period="1" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="936A7F3FF2010465" classroomids="178CB1BC5987D9D1" period="2" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="0D2ADD1A0FBDB9D7" classroomids="3E47643868BAB17B" period="7" weeks="1" terms="0001" days="01000"/>
+    <card lessonid="C4AE1292B7051BE9" classroomids="3E47643868BAB17B" period="7" weeks="1" terms="0001" days="00100"/>
+    <card lessonid="6BD76850B7FD1BBC" classroomids="3E47643868BAB17B" period="7" weeks="1" terms="0010" days="00100"/>
+    <card lessonid="67AD522CE3B12A3F" classroomids="188BFDDA4A69EFE7" period="2" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="EE29F8FE956D7023" classroomids="C971498D4F1E2B8C" period="3" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="EE29F8FE956D7023" classroomids="C971498D4F1E2B8C" period="4" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="0113D3E61800BD9E" classroomids="F76D022140284128" period="4" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="E9DF213D6B85D594" classroomids="E1DFA97CA6739144" period="3" weeks="1" terms="1110" days="00100"/>
+    <card lessonid="E9DF213D6B85D594" classroomids="E1DFA97CA6739144" period="4" weeks="1" terms="1110" days="00100"/>
+    <card lessonid="180A38D3F5791DDD" classroomids="E1DFA97CA6739144" period="3" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="859BE2190B5D4125" classroomids="E1DFA97CA6739144" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="859BE2190B5D4125" classroomids="E1DFA97CA6739144" period="4" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="42CC1F4D4C24BD58" classroomids="E1DFA97CA6739144" period="4" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="1575ACA302A38C7E" classroomids="632740086148F802,F019F5A43F338B55,04C3A31A10986E63" period="3" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="1575ACA302A38C7E" classroomids="632740086148F802,F019F5A43F338B55,04C3A31A10986E63" period="4" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="5BF5F0621A953562" classroomids="04C3A31A10986E63" period="2" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="4658A855B32FEA21" classroomids="632740086148F802,27175D4EC8BFB11E,04C3A31A10986E63" period="2" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="1C5A21CF68637C22" classroomids="04C3A31A10986E63" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="053A468E00AF7A48" classroomids="04C3A31A10986E63" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="A27F9740A4DE08A1" classroomids="04C3A31A10986E63" period="3" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="498CED86FF95B57B" classroomids="04C3A31A10986E63" period="1" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="0D868026A4366E1A" classroomids="04C3A31A10986E63" period="1" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="615BD846B2746035" classroomids="04C3A31A10986E63" period="4" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="1C9660D38A6B9100" classroomids="04C3A31A10986E63" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="C4133BD27564586E" classroomids="04C3A31A10986E63" period="1" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="F9EE81C6CB3EDDC7" classroomids="D64BA6C27A2CCCFB" period="2" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="6A4DE7A9AA5C3A71" classroomids="D64BA6C27A2CCCFB" period="3" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="71AD6FEFB98CCFEC" classroomids="D64BA6C27A2CCCFB" period="2" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="61BB3C8DC21DEF8E" classroomids="D64BA6C27A2CCCFB" period="4" weeks="1" terms="0011" days="00001"/>
+    <card lessonid="5CE004E756468D81" classroomids="D64BA6C27A2CCCFB" period="1" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="EFF9AC2F9B22C996" classroomids="D64BA6C27A2CCCFB" period="2" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="B87B3C7A62EA703F" classroomids="D64BA6C27A2CCCFB" period="4" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="B87B3C7A62EA703F" classroomids="D64BA6C27A2CCCFB" period="3" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="68C76EE1F77758ED" classroomids="D64BA6C27A2CCCFB" period="4" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="CE8172C86A11042C" classroomids="D93A5AFF6C8E7F2D,E1DFA97CA6739144" period="2" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="D0D2D2E3BC7814A6" classroomids="B8E04834E279901A,D93A5AFF6C8E7F2D,9127CE71F7C8287F" period="4" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="C55567EA1115C105" classroomids="B8E04834E279901A,27175D4EC8BFB11E,9127CE71F7C8287F,D93A5AFF6C8E7F2D" period="4" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="52D04647E74316F6" classroomids="C971498D4F1E2B8C,B8E04834E279901A,D93A5AFF6C8E7F2D" period="1" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="7994ED80B5CE5EA1" classroomids="F019F5A43F338B55,B8E04834E279901A,D64BA6C27A2CCCFB" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="7994ED80B5CE5EA1" classroomids="F019F5A43F338B55,B8E04834E279901A,D64BA6C27A2CCCFB" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="BC76273B23AB7927" classroomids="632740086148F802,B8E04834E279901A,9127CE71F7C8287F" period="3" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="BC76273B23AB7927" classroomids="632740086148F802,B8E04834E279901A,9127CE71F7C8287F" period="4" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="08B2B15B336F8FF7" classroomids="F019F5A43F338B55,632740086148F802,D64BA6C27A2CCCFB" period="4" weeks="1" terms="1100" days="00001"/>
+    <card lessonid="9D867C1F4A5A432C" classroomids="D93A5AFF6C8E7F2D,B8E04834E279901A,552A042B3ACB5F70" period="3" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="1B215444D1512063" classroomids="04C3A31A10986E63" period="4" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="7EB5F21F4EFF16BB" classroomids="188BFDDA4A69EFE7" period="1" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="CF6CA6524F7427EF" classroomids="D64BA6C27A2CCCFB" period="1" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="553638C60ADB4EE9" classroomids="B8E04834E279901A,04C3A31A10986E63" period="2" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="B4FB4EE77819E5C7" classroomids="F019F5A43F338B55,632740086148F802,D64BA6C27A2CCCFB" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="44E5D123FDD8DD3C" classroomids="632740086148F802,D64BA6C27A2CCCFB,F019F5A43F338B55" period="1" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="9C007255D0FE6480" classroomids="9127CE71F7C8287F" period="7" weeks="1" terms="0111" days="10000"/>
+    <card lessonid="90E8D5CA03512B8A" classroomids="9127CE71F7C8287F" period="7" weeks="1" terms="1000" days="10000"/>
+    <card lessonid="AAC2970E1C73C3B5" classroomids="178CB1BC5987D9D1" period="3" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="720E7B3A0C4AE341" classroomids="552A042B3ACB5F70" period="4" weeks="1" terms="1100" days="00001"/>
+    <card lessonid="F9E2431374D4F36D" classroomids="5EE00D294B34961A" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="F9E2431374D4F36D" classroomids="5EE00D294B34961A" period="2" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="969231812C5BF02D" classroomids="3E47643868BAB17B" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="4E9CCAB2E64ED2F6" classroomids="188BFDDA4A69EFE7" period="4" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="2CACE038B374635C" classroomids="A1822E37E6314DF6" period="3" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="33D1CAE68CBC08A0" classroomids="" period="6" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="94BCA89DB5EB9C66" classroomids="5EE00D294B34961A" period="6" weeks="1" terms="1110" days="01000"/>
+    <card lessonid="194F9A2EA936C068" classroomids="" period="1" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="194F9A2EA936C068" classroomids="" period="2" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="0A581D3D4B597738" classroomids="188BFDDA4A69EFE7" period="2" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="337EC29A22C9C5F9" classroomids="178CB1BC5987D9D1" period="1" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="2D22560A82D9463C" classroomids="178CB1BC5987D9D1" period="4" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="2C8293268B2E8749" classroomids="F019F5A43F338B55,D64BA6C27A2CCCFB,632740086148F802" period="4" weeks="1" terms="1100" days="00010"/>
+    <card lessonid="A65C87B663D1BC60" classroomids="" period="1" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="A65C87B663D1BC60" classroomids="" period="2" weeks="1" terms="1111" days="00001"/>
+    <card lessonid="E92752674FD5A7EA" classroomids="" period="3" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="C1336FCFC1A68C6F" classroomids="" period="1" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="B1F0D61D0C27F7EE" classroomids="" period="4" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="697DEC6FAE654C2A" classroomids="" period="4" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="DA682F6B04EDC016" classroomids="" period="3" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="DA682F6B04EDC016" classroomids="" period="4" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="F3D0B7E0E5CD1E7C" classroomids="" period="5" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="885F1710DF7B4F96" classroomids="9127CE71F7C8287F" period="1" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="D02A3F791FBECFB4" classroomids="178CB1BC5987D9D1" period="5" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="ACC8EB40A36EAC99" classroomids="8DE4742A4E3D917E" period="5" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="01F38B9A3D8D99E9" classroomids="" period="5" weeks="1" terms="1111" days="10000"/>
+    <card lessonid="CE5A6391A0C27BF4" classroomids="F76D022140284128" period="3" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="049BBCD5DFE420A1" classroomids="178CB1BC5987D9D1" period="3" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="049BBCD5DFE420A1" classroomids="178CB1BC5987D9D1" period="4" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="44470EA4D89E940A" classroomids="5EE00D294B34961A" period="3" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="44470EA4D89E940A" classroomids="5EE00D294B34961A" period="4" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="6C83BEE3C3906BB2" classroomids="178CB1BC5987D9D1" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="DE8DEA7A1DA196B8" classroomids="178CB1BC5987D9D1" period="4" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="5ED27C2E691EA38E" classroomids="5EE00D294B34961A" period="3" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="E381FF2776E42753" classroomids="5EE00D294B34961A" period="4" weeks="1" terms="0011" days="00010"/>
+    <card lessonid="ABA72FD07FB73174" classroomids="178CB1BC5987D9D1" period="3" weeks="1" terms="1111" days="01000"/>
+    <card lessonid="7C53416568B665DC" classroomids="5EE00D294B34961A" period="4" weeks="1" terms="1100" days="00010"/>
+    <card lessonid="AE055B8987044AFD" classroomids="D64BA6C27A2CCCFB" period="4" weeks="1" terms="0011" days="00010"/>
+    <card lessonid="48B693C2529E8CAB" classroomids="04C3A31A10986E63" period="5" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="48B693C2529E8CAB" classroomids="04C3A31A10986E63" period="6" weeks="1" terms="1111" days="00100"/>
+    <card lessonid="48B693C2529E8CAB" classroomids="04C3A31A10986E63" period="5" weeks="1" terms="1111" days="00010"/>
+    <card lessonid="48B693C2529E8CAB" classroomids="04C3A31A10986E63" period="6" weeks="1" terms="1111" days="00010"/>
+  </cards>
+  <classroomsupervisions options="canadd,export:silent" columns="classroomid,teacherid,day,week,term,period,break"/>
+</timetable>

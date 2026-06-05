@@ -85,6 +85,8 @@ $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(
                 </div>
                 <a href="<?= BASE_URL ?>/check_status.php"
                     class="text-sm font-medium text-white/90 hover:text-white transition-colors">Consultar Protocolo</a>
+                <a href="<?= BASE_URL ?>/docentes/index.php"
+                    class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm font-medium transition-all">Portal Docente</a>
                 <a href="<?= BASE_URL ?>/admin/index.php"
                     class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-all backdrop-blur-sm">Área
                     Administrativa</a>

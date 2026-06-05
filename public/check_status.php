@@ -72,9 +72,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $roleLabels = [
                 'Coordenador de Curso'     => 'Aguardando resposta da Coordenação de Curso',
                 'Secretaria'               => 'Com a Secretaria Acadêmica',
-                'Coordenador Pedagógico'   => 'Aguardando resposta da Coordenadoria Pedagógica',
+                'Coordenador Pedagógico'   => 'Aguardando resposta da Coordenação Pedagógica',
                 'Assistência Estudantil'   => 'Aguardando resposta da Assistência Estudantil',
                 'Administrador'            => 'Em análise administrativa',
+            ];
+            $shortLabels = [
+                'Coordenador de Curso'   => 'Coordenação de Curso',
+                'Coordenador Pedagógico' => 'Coordenação Pedagógica',
+                'Secretaria'             => 'Secretaria',
+                'Assistência Estudantil' => 'Assist. Estudantil',
+                'Administrador'          => 'Administração',
             ];
         } else {
             $error = 'Requerimento não encontrado. Verifique os dados informados.';
@@ -188,6 +195,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $totalSteps  = count($workflowSteps);
                     ?>
                     <div class="flex items-start justify-center gap-0">
+                        <!-- Passo fixo: envio do requerimento pelo aluno — sempre concluído -->
+                        <div class="flex items-center">
+                            <div class="flex flex-col items-center w-20">
+                                <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center bg-green-500 border-green-500">
+                                    <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <p class="text-xs text-center mt-2 leading-tight text-green-600">Envio pelo Aluno</p>
+                            </div>
+                            <?php if (!empty($workflowSteps)): ?>
+                                <div class="h-1 w-8 flex-shrink-0 -mt-5 bg-green-500 rounded-full"></div>
+                            <?php endif; ?>
+                        </div>
                         <?php foreach ($workflowSteps as $i => $step):
                             $order = (int)$step['step_order'];
 
@@ -203,7 +222,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 else $state = 'future';
                             }
 
-                            $shortLabel = $step['role_name'];
+                            $shortLabel = $shortLabels[$step['role_name']] ?? $step['role_name'];
                             if ($state === 'current') {
                                 $activeLabel = $roleLabels[$step['role_name']] ?? ('Aguardando análise — ' . $step['role_name']);
                             }
@@ -229,7 +248,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         <?php elseif ($state === 'rejected'): ?>
                                             <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
                                         <?php elseif ($state === 'current'): ?>
-                                            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M5 2h14L12 12 5 2zM5 22h14L12 12 5 22z"/></svg>
                                         <?php else: ?>
                                             <span class="w-2 h-2 rounded-full bg-gray-300"></span>
                                         <?php endif; ?>
@@ -237,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <p class="text-xs text-center mt-2 leading-tight <?= $textClass ?>"><?= htmlspecialchars($shortLabel) ?></p>
                                 </div>
                                 <?php if ($i < $totalSteps - 1): ?>
-                                    <div class="h-0.5 w-8 flex-shrink-0 -mt-5 <?= $state === 'done' ? 'bg-green-400' : 'bg-gray-200' ?>"></div>
+                                    <div class="h-1 w-8 flex-shrink-0 -mt-5 rounded-full <?= $state === 'done' ? 'bg-green-500' : 'bg-gray-300' ?>"></div>
                                 <?php endif; ?>
                             </div>
                         <?php endforeach; ?>

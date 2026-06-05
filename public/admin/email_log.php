@@ -81,14 +81,28 @@ if (isset($_GET['view'])) {
                             (int)substr($parts[0],4,2), (int)substr($parts[0],6,2), (int)substr($parts[0],0,4)
                           ))
                         : '';
-                    $label   = preg_replace('/^\d{8}_\d{6}_/', '', basename($name, '.html'));
-                    $active  = ($preview['name'] ?? '') === $name;
+                    // Parsear TO e SUBJECT do bloco meta embutido no arquivo
+                    $head    = file_get_contents($f, false, null, 0, 800);
+                    $to      = '';
+                    $subject = '';
+                    if (preg_match('/>TO:<\/strong>\s*(.+?)<br>/i', $head, $m)) {
+                        $to = htmlspecialchars_decode(strip_tags($m[1]));
+                    }
+                    if (preg_match('/>SUBJECT:<\/strong>\s*(.+?)<\/div>/i', $head, $m)) {
+                        $subject = htmlspecialchars_decode(strip_tags($m[1]));
+                    }
+                    $active = ($preview['name'] ?? '') === $name;
                 ?>
                 <li>
                     <a href="email_log.php?view=<?= urlencode($name) ?>"
                         class="flex flex-col px-5 py-3 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors <?= $active ? 'bg-blue-50 dark:bg-blue-900/20 border-l-2 border-blue-500' : '' ?>">
                         <span class="text-xs text-gray-400 font-mono"><?= $dateStr ?></span>
-                        <span class="text-sm text-gray-700 dark:text-gray-300 font-medium truncate"><?= htmlspecialchars(str_replace('_', ' ', $label)) ?></span>
+                        <span class="text-sm text-gray-700 dark:text-gray-300 font-medium truncate" title="<?= htmlspecialchars($subject) ?>">
+                            <?= htmlspecialchars($subject ?: $name) ?>
+                        </span>
+                        <?php if ($to): ?>
+                        <span class="text-xs text-gray-400 truncate"><?= htmlspecialchars($to) ?></span>
+                        <?php endif; ?>
                     </a>
                 </li>
                 <?php endforeach; ?>
