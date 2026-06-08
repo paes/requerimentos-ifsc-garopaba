@@ -73,11 +73,10 @@ O SIGAA e demais sistemas SIG do IFSC não oferecem módulo equivalente para o f
 |--------|-------------|-------------------|
 | Prof. Thiago Paes | Docente Informática — Responsável técnico | Coordenador da comissão / desenvolvedor |
 | Prof. Nauber Gavski | Coordenador Pedagógico do câmpus | Representante da Coord. Pedagógica — validação de fluxos e testes |
-| Profa. Sabrina Pacheco | Coordenadora do Téc. Integrado em Informática | Representante de coordenação de curso — testes de aceitação |
+| Profa. Sabrina Pacheco | Coordenadora do Téc. Integrado em Informática | Representante de coordenação de curso — testes de aceitação e apoio ao processo institucional / fluxos SIPAC |
 | Luciane Stein | Registro Acadêmico / Secretaria | Representante da Secretaria — validação de fluxos e testes |
 | Thiago Waltrik | CTIC Câmpus Garopaba | Representante técnico CTIC — infraestrutura e LDAP |
 | Antonio Luiz Schalata | CTIC (em exercício na Reitoria) | Apoio técnico CTIC / DTIC |
-| Sabrina [ex-PROEN] | Ex-pró-reitora de desenvolvimento institucional | Apoio ao processo institucional (SIPAC/fluxos) |
 
 [Incluir portaria/ato de constituição após formalização]
 
