@@ -51,9 +51,11 @@ O SIGAA e demais sistemas SIG do IFSC não oferecem módulo equivalente para o f
 
 ## Identificação do Dono do Produto
 
-- **Área responsável pelo processo:** Coordenadoria Pedagógica / Direção de Ensino — Câmpus Garopaba
-- **Nome do responsável:** [preencher — Diretor(a) de Ensino]
-- **E-mail:** [preencher]
+- **Nome:** Prof. Thiago Paes
+- **E-mail:** thiago.paes@ifsc.edu.br
+- **Câmpus:** Garopaba
+- **Área:** Coordenadoria do Curso Técnico em Informática / Docente da área de Informática
+- *Nota: como desenvolvedor e responsável pelo sistema no câmpus, atua como product owner. A coordenadoria pedagógica e a direção de ensino são as áreas-cliente do sistema.*
 
 ---
 
@@ -67,7 +69,17 @@ O SIGAA e demais sistemas SIG do IFSC não oferecem módulo equivalente para o f
 
 ## Comissão de Implantação
 
-[Listar membros e portaria/ato de constituição após formação]
+| Membro | Cargo / Área | Papel na comissão |
+|--------|-------------|-------------------|
+| Prof. Thiago Paes | Docente Informática — Responsável técnico | Coordenador da comissão / desenvolvedor |
+| Prof. Nauber Gavski | Coordenador Pedagógico do câmpus | Representante da Coord. Pedagógica — validação de fluxos e testes |
+| Profa. Sabrina Pacheco | Coordenadora do Téc. Integrado em Informática | Representante de coordenação de curso — testes de aceitação |
+| Luciane Stein | Registro Acadêmico / Secretaria | Representante da Secretaria — validação de fluxos e testes |
+| Thiago Waltrik | CTIC Câmpus Garopaba | Representante técnico CTIC — infraestrutura e LDAP |
+| Antonio Luiz Schalata | CTIC (em exercício na Reitoria) | Apoio técnico CTIC / DTIC |
+| Sabrina [ex-PROEN] | Ex-pró-reitora de desenvolvimento institucional | Apoio ao processo institucional (SIPAC/fluxos) |
+
+[Incluir portaria/ato de constituição após formalização]
 
 ---
 
