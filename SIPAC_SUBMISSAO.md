@@ -67,7 +67,7 @@ O SIGAA e demais sistemas SIG do IFSC não oferecem módulo equivalente para o f
 
 ---
 
-## Comissão de Implantação
+## Comissão de Desenvolvimento, Planejamento e Implantação
 
 | Membro | Cargo / Área | Papel na comissão |
 |--------|-------------|-------------------|
