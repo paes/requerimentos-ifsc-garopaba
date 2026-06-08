@@ -1,8 +1,27 @@
-# Sistema de Requerimentos Acadêmicos — IFSC Câmpus Garopaba
+# INTEGRA — Sistema Integrado de Gestão Acadêmica · IFSC Câmpus Garopaba
 
-Sistema web para submissão e gestão de requerimentos acadêmicos, portal docente de substituições e módulo de equidade de horários. Desenvolvido originalmente pelo Prof. Eduardo Gomes (Câmpus Canoinhas) e adaptado para o Câmpus Garopaba pelo Prof. Thiago Paes.
+Plataforma web de gestão acadêmica do Câmpus Garopaba. Centraliza em um único sistema processos antes dispersos em e-mails, planilhas e atendimentos presenciais. Desenvolvido originalmente pelo Prof. Eduardo Gomes (Câmpus Canoinhas) e expandido pelo Prof. Thiago Paes para cobrir as necessidades do Câmpus Garopaba.
 
 **Contato:** thiago.paes@ifsc.edu.br
+
+### Escopo atual (implementado)
+
+| Módulo | Público | Status |
+|---|---|---|
+| Requerimentos discentes | Alunos + Coordenadores + Secretaria | ✅ Ativo |
+| Substituições docentes | Docentes + Coordenadores + DEPE | ✅ Ativo |
+| Equidade de horários (Justiceiro do Tempo) | DEPE + Coordenação Pedagógica | ✅ Ativo |
+| Grade de horários (import aSc XML) | DEPE + SysAdmin | ✅ Ativo |
+
+### Escopo planejado / em desenvolvimento
+
+| Módulo | Público-alvo | Status |
+|---|---|---|
+| Coord. Pedagógica — lista de alunos + histórico de atendimentos | CP | 🔜 Planejado |
+| Coord. Pedagógica — notas por semestre (migrar planilha) | CP | 🔜 Planejado |
+| Coord. Pedagógica — documentos de orientação docente | CP + Docentes | 🔜 Planejado |
+| Coord. Pedagógica — carteirinhas (saída antecipada / horário diferenciado) | CP + Alunos | 🔜 Migração futura |
+| Saídas externas docentes (autorizações, histórico, aprovação) | Docentes + Direção | 🔜 Planejado |
 
 ---
 
@@ -446,6 +465,13 @@ Em **desenvolvimento** (`ENABLE_EMAILS=false`): e-mails são salvos como `.html`
 - [ ] Treinamento dos servidores
 - [ ] Varredura de segurança pela DTIC (CGD 03/2025)
 - [ ] Revisão bienal (junho/2027)
+
+### Fase 4 — Expansão de módulos (pós go-live)
+- [ ] CP: lista de alunos + histórico de atendimentos individuais
+- [ ] CP: registro de notas por semestre (migração da planilha atual)
+- [ ] CP: documentos de orientação docente
+- [ ] CP: carteirinhas de saída antecipada e horário diferenciado
+- [ ] Docentes: solicitação de saídas externas com aprovação e histórico
 
 ---
 
