@@ -491,6 +491,61 @@ INSERT IGNORE INTO `request_types` (`id`,`name`,`active`,`featured`,`information
   'Apenas para cursos em regime de matrícula por unidade curricular. O cancelamento poderá ocorrer uma única vez para cada UC.',
   'Deve ser mantida matrícula em pelo menos uma unidade curricular.');
 
+-- --------------------------------------------------------
+-- Portal de Responsáveis (Fase 1 — jun/2026)
+-- --------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `guardians` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `cpf_hash` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone` varbinary(255) DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 0,
+  `must_change_password` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `guardian_students` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `guardian_id` int(11) NOT NULL,
+  `student_name` varchar(255) NOT NULL,
+  `student_matricula` varchar(50) NOT NULL,
+  `verified` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `guardian_id` (`guardian_id`),
+  CONSTRAINT `guardian_students_ibfk_1` FOREIGN KEY (`guardian_id`) REFERENCES `guardians` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `guardian_registrations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `protocol_code` varchar(20) NOT NULL,
+  `guardian_name` varchar(255) NOT NULL,
+  `guardian_email` varchar(255) NOT NULL,
+  `guardian_phone` varbinary(255) DEFAULT NULL,
+  `cpf_hash` varchar(255) NOT NULL,
+  `cpf_first5` varchar(5) NOT NULL,
+  `students_json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`students_json`)),
+  `signed_pdf_path` varchar(500) DEFAULT NULL,
+  `status` enum('pending','approved','rejected') NOT NULL DEFAULT 'pending',
+  `reviewed_by` int(11) DEFAULT NULL,
+  `review_note` text DEFAULT NULL,
+  `reviewed_at` datetime DEFAULT NULL,
+  `guardian_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `protocol_code` (`protocol_code`),
+  KEY `reviewed_by` (`reviewed_by`),
+  KEY `guardian_id` (`guardian_id`),
+  CONSTRAINT `guardian_registrations_ibfk_1` FOREIGN KEY (`reviewed_by`) REFERENCES `users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `guardian_registrations_ibfk_2` FOREIGN KEY (`guardian_id`) REFERENCES `guardians` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

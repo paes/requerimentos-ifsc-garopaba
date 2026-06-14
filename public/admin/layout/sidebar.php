@@ -251,6 +251,36 @@ if (!isset($isSysAdmin)) {
         <?php endif; ?>
 
         <?php
+            // "Responsáveis" — visível para Coord. Pedagógica e sysadmin
+            $guardianRoles = [9]; // Coord. Pedagógica
+            $showGuardianLink = isset($user) && ($isSysAdmin || in_array((int)($user['user_role'] ?? 0), $guardianRoles));
+            $pendingGuardians = 0;
+            if ($showGuardianLink && isset($conn)) {
+                $pgStmt = $conn->query("SELECT COUNT(*) FROM guardian_registrations WHERE status = 'pending'");
+                $pendingGuardians = (int)$pgStmt->fetchColumn();
+            }
+        ?>
+        <?php if ($showGuardianLink): ?>
+            <div class="mt-6 mb-2 px-4">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Responsáveis</p>
+            </div>
+            <a href="guardian_registrations.php"
+                class="flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 group <?= $currentPage == 'guardian_registrations.php' ? 'bg-brand-DEFAULT/10 text-brand-DEFAULT' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900' ?>">
+                <svg class="w-5 h-5 mr-3 <?= $currentPage == 'guardian_registrations.php' ? 'text-brand-DEFAULT' : 'text-gray-400 group-hover:text-gray-500' ?>"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                Cadastros de Responsáveis
+                <?php if ($pendingGuardians > 0): ?>
+                <span class="ml-auto bg-amber-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                    <?= $pendingGuardians ?>
+                </span>
+                <?php endif; ?>
+            </a>
+        <?php endif; ?>
+
+        <?php
             // "Docentes" seção visível para coordenadores, DEPE, Assessoria DEPE e sysadmin
             $teacherReqRoles = [2, 6, 14]; // Coordenador de Curso, DEPE, Assessoria DEPE
             $showTeacherReqLink = isset($user) && ($isSysAdmin || in_array((int)($user['user_role'] ?? 0), $teacherReqRoles));
