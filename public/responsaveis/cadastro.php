@@ -1,35 +1,15 @@
 <?php
 require_once '../../config/database.php';
 require_once '../../config/config.php';
-require_once '../../src/GuardianTermPdf.php';
 
 if (session_status() === PHP_SESSION_NONE) session_start();
 
-// Endpoint AJAX: gera o HTML do termo para impressão/PDF
-if (isset($_GET['action']) && $_GET['action'] === 'gerar_termo') {
-    header('Content-Type: text/html; charset=utf-8');
-    $students = [];
-    $raw = json_decode($_POST['students_json'] ?? '[]', true);
-    if (is_array($raw)) {
-        foreach ($raw as $s) {
-            $students[] = [
-                'name'      => trim($s['name'] ?? ''),
-                'matricula' => trim($s['matricula'] ?? ''),
-            ];
-        }
-    }
-    echo GuardianTermPdf::render([
-        'name'     => trim($_POST['guardian_name'] ?? ''),
-        'email'    => trim($_POST['guardian_email'] ?? ''),
-        'cpf'      => trim($_POST['guardian_cpf'] ?? ''),
-        'phone'    => trim($_POST['guardian_phone'] ?? ''),
-        'students' => $students,
-    ]);
-    exit;
-}
-
 $error   = '';
 $success = '';
+
+// Logo em base64 para geração do termo (PDF) no cliente
+$logoPath   = __DIR__ . '/../assets/img/logo.png';
+$logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(file_get_contents($logoPath)) : '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -42,6 +22,7 @@ $success = '';
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/tailwind.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="<?= BASE_URL ?>/assets/img/favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <script src="<?= BASE_URL ?>/assets/js/theme.js"></script>
 </head>
 <body class="bg-[#F2F4F8] min-h-screen py-10">
@@ -150,7 +131,9 @@ $success = '';
                 </div>
 
                 <button type="button" id="btn-gerar-termo"
-                    class="w-full bg-gray-700 text-white py-3 rounded-lg hover:bg-gray-800 transition-colors font-semibold text-sm">
+                    class="w-full py-3 rounded-lg font-semibold text-sm transition-colors"
+                    style="background:#374151;color:#fff;"
+                    onmouseover="this.style.background='#1f2937'" onmouseout="this.style.background='#374151'">
                     Gerar e Baixar Termo (PDF)
                 </button>
 
@@ -224,7 +207,10 @@ function updateRemoveButtons() {
     });
 }
 
-// Gerar termo (abre nova aba com HTML printável)
+// Logo do IFSC Garopaba (base64) para embutir no PDF
+const LOGO_DATA = '<?= $logoBase64 ?>';
+
+// Gerar termo (baixa PDF diretamente via jsPDF)
 document.getElementById('btn-gerar-termo').addEventListener('click', function () {
     const name    = document.getElementById('guardian_name').value.trim();
     const cpf     = document.getElementById('guardian_cpf').value.trim();
@@ -248,20 +234,139 @@ document.getElementById('btn-gerar-termo').addEventListener('click', function ()
         return;
     }
 
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'cadastro.php?action=gerar_termo';
-    form.target = '_blank';
+    if (!window.jspdf) { alert('Aguarde o carregamento da biblioteca de PDF e tente novamente.'); return; }
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+    const pageW = 210, mL = 18, mR = 18, cW = pageW - mL - mR;
+    const months = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+    const now = new Date();
 
-    const fields = { guardian_name: name, guardian_cpf: cpf, guardian_email: email, guardian_phone: phone, students_json: JSON.stringify(students) };
-    for (const [k, v] of Object.entries(fields)) {
-        const inp = document.createElement('input');
-        inp.type = 'hidden'; inp.name = k; inp.value = v;
-        form.appendChild(inp);
+    // Paleta verde IFSC
+    const GREEN = [28,187,155], GREEN_DARK = [15,110,92], GREEN_BG = [234,248,244];
+    const lh = 4.4; // entrelinha do corpo
+
+    function ensureSpace(needed, yy) { if (yy + needed > 286) { doc.addPage(); return 22; } return yy; }
+    function sectionHeader(num, title, yy) {
+        yy = ensureSpace(13, yy);
+        doc.setFillColor(...GREEN);
+        doc.roundedRect(mL, yy, cW, 7, 1.5, 1.5, 'F');
+        doc.setFont('helvetica','bold'); doc.setFontSize(10.5); doc.setTextColor(255,255,255);
+        doc.text(`${num}.  ${title}`, mL + 4, yy + 4.8);
+        return yy + 11;
     }
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
+
+    // --- Logo (canto superior esquerdo) ---
+    if (LOGO_DATA) { const h = 12, w = h * (1422/393); doc.addImage(LOGO_DATA, 'PNG', mL, 12, w, h); }
+
+    // --- Cabeçalho (à direita) ---
+    doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(90,90,90);
+    doc.text('Instituto Federal de Santa Catarina', pageW-mR, 16, { align:'right' });
+    doc.setFont('helvetica','bold'); doc.setTextColor(...GREEN_DARK);
+    doc.text('Câmpus Garopaba', pageW-mR, 21, { align:'right' });
+
+    // --- Divisória verde ---
+    doc.setDrawColor(...GREEN); doc.setLineWidth(0.9); doc.line(mL, 27, pageW-mR, 27);
+
+    // --- Título ---
+    doc.setFont('helvetica','bold'); doc.setFontSize(12.5); doc.setTextColor(...GREEN_DARK);
+    const titleLines = doc.splitTextToSize('TERMO DE AUTORIZAÇÃO DE ACESSO AO PORTAL DE RESPONSÁVEIS', cW);
+    let y = 35;
+    doc.text(titleLines, pageW/2, y, { align:'center' });
+    y += titleLines.length * 5.5 + 1;
+    doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(120,120,120);
+    doc.text('Sistema Web de Gestão de Requerimentos e Gestão de Ensino', pageW/2, y, { align:'center' });
+    y += 8;
+
+    // --- 1. Dados do Responsável ---
+    y = sectionHeader(1, 'Dados do Responsável', y);
+    const panelH = 24, colW = cW / 2;
+    doc.setFillColor(...GREEN_BG); doc.setDrawColor(...GREEN); doc.setLineWidth(0.3);
+    doc.roundedRect(mL, y, cW, panelH, 2, 2, 'FD');
+    const dataField = (label, value, x, yy) => {
+        doc.setFont('helvetica','bold'); doc.setFontSize(7.5); doc.setTextColor(...GREEN_DARK);
+        doc.text(label.toUpperCase(), x + 4, yy);
+        doc.setFont('helvetica','normal'); doc.setFontSize(9.5); doc.setTextColor(35,35,35);
+        doc.text(value || '—', x + 4, yy + 4.5);
+    };
+    dataField('Nome completo', name,  mL,        y + 6);
+    dataField('E-mail',        email, mL + colW, y + 6);
+    dataField('CPF',           cpf,   mL,        y + 17);
+    dataField('Telefone',      phone, mL + colW, y + 17);
+    y += panelH + 6;
+
+    // --- 2. Alunos sob responsabilidade ---
+    const stuH = students.length * 6 + 5;
+    y = ensureSpace(13 + stuH, y);
+    y = sectionHeader(2, 'Alunos sob responsabilidade', y);
+    doc.setFillColor(...GREEN_BG); doc.setDrawColor(...GREEN); doc.setLineWidth(0.3);
+    doc.roundedRect(mL, y, cW, stuH, 2, 2, 'FD');
+    let sy = y + 5.5;
+    doc.setFontSize(9.5);
+    students.forEach((s, i) => {
+        doc.setFont('helvetica','bold'); doc.setTextColor(...GREEN_DARK);
+        doc.text(`${i+1}.`, mL + 4, sy);
+        doc.setFont('helvetica','normal'); doc.setTextColor(35,35,35);
+        doc.text(`${s.name || '—'}${s.matricula ? '   ·   Matrícula: ' + s.matricula : ''}`, mL + 9, sy);
+        sy += 6;
+    });
+    y += stuH + 6;
+
+    // --- 3. Termo de Responsabilidade ---
+    y = sectionHeader(3, 'Termo de Responsabilidade', y);
+    doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(35,35,35);
+    const intro = `Eu, ${name}, portador(a) do CPF ${cpf}, declaro para os devidos fins que:`;
+    const introLines = doc.splitTextToSize(intro, cW);
+    doc.text(introLines, mL, y); y += introLines.length * lh + 2.5;
+
+    const clausulas = [
+        'Sou responsável legal pelo(s) aluno(s) listado(s) acima, matriculado(s) no IFSC Câmpus Garopaba;',
+        `O endereço de e-mail informado (${email}) é o mesmo cadastrado no SIGAA como e-mail de responsável do(s) aluno(s);`,
+        'Estou ciente de que o acesso ao Portal de Responsáveis me permitirá acompanhar e protocolar requerimentos em nome do(s) aluno(s) menor(es) de idade;',
+        'Assumo total responsabilidade pelo uso das credenciais de acesso, comprometendo-me a não compartilhá-las com terceiros, incluindo o(s) próprio(s) aluno(s);',
+        'Estou ciente de que informações falsas implicam em responsabilidade civil e administrativa, conforme legislação vigente;',
+        'Autorizo o IFSC Câmpus Garopaba a tratar os dados pessoais aqui informados para fins de gestão acadêmica, nos termos da LGPD (Lei nº 13.709/2018).'
+    ];
+    clausulas.forEach((c, i) => {
+        const lines = doc.splitTextToSize(c, cW - 8);
+        y = ensureSpace(lines.length * lh + 2.5, y);
+        doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.setTextColor(...GREEN_DARK);
+        doc.text(`${i+1})`, mL + 1, y);
+        doc.setFont('helvetica','normal'); doc.setTextColor(35,35,35);
+        doc.text(lines, mL + 8, y);
+        y += lines.length * lh + 2.5;
+    });
+    y += 5;
+
+    // --- Aviso gov.br (verde) ---
+    doc.setFont('helvetica','normal'); doc.setFontSize(8.5);
+    const noticeText = 'Instrução para assinatura digital: este documento deve ser assinado eletronicamente via gov.br (certificado ICP-Brasil ou aplicativo gov.br). Documentos sem assinatura digital não serão aceitos.';
+    const noticeLines = doc.splitTextToSize(noticeText, cW - 10);
+    const boxH = noticeLines.length * 4 + 6;
+    y = ensureSpace(boxH + 4, y);
+    doc.setFillColor(...GREEN_BG); doc.setDrawColor(...GREEN); doc.setLineWidth(0.3);
+    doc.roundedRect(mL, y, cW, boxH, 2, 2, 'FD');
+    doc.setTextColor(...GREEN_DARK);
+    doc.text(noticeLines, mL + 5, y + 5);
+    y += boxH + 12;
+
+    // --- Área de assinatura ---
+    y = ensureSpace(26, y);
+    doc.setDrawColor(80,80,80); doc.setLineWidth(0.4);
+    doc.line(pageW/2 - 45, y, pageW/2 + 45, y); y += 4.5;
+    doc.setFont('helvetica','bold'); doc.setFontSize(9.5); doc.setTextColor(50,50,50);
+    doc.text(`${name} — CPF: ${cpf}`, pageW/2, y, { align:'center' }); y += 4.5;
+    doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(140,140,140);
+    doc.text(`Garopaba, ${now.getDate()} de ${months[now.getMonth()]} de ${now.getFullYear()}.`, pageW/2, y, { align:'center' }); y += 5;
+    doc.setTextColor(19,81,180); doc.setFontSize(8.5);
+    const linkText = 'Assinatura digital via gov.br — clique para assinar (assinador.iti.br)';
+    doc.textWithLink(linkText, pageW/2 - doc.getTextWidth(linkText)/2, y, { url:'https://assinador.iti.br' });
+
+    // --- Rodapé verde ---
+    doc.setDrawColor(...GREEN); doc.setLineWidth(0.5); doc.line(mL, 289, pageW-mR, 289);
+    doc.setFont('helvetica','normal'); doc.setFontSize(7.5); doc.setTextColor(140,140,140);
+    doc.text('Instituto Federal de Santa Catarina – Câmpus Garopaba', pageW/2, 293, { align:'center' });
+
+    doc.save('termo-autorizacao-responsavel.pdf');
 });
 
 // Disable submit duplo
