@@ -191,6 +191,7 @@ require_once 'layout/header.php';
             <?= $editingSubject ? 'Editar Unidade Curricular' : 'Nova Unidade Curricular' ?>
         </h3>
         <form method="POST" class="space-y-4">
+            <?= Csrf::field() ?>
             <input type="hidden" name="action" value="<?= $editingSubject ? 'update' : 'create' ?>">
             <?php if ($editingSubject): ?>
                 <input type="hidden" name="id" value="<?= $editingSubject['id'] ?>">
@@ -380,6 +381,7 @@ require_once 'layout/header.php';
                                         </svg>
                                     </a>
                                     <form method="POST" class="inline-block" onsubmit="return confirm('Excluir esta UC?');">
+                                        <?= Csrf::field() ?>
                                         <input type="hidden" name="action" value="delete">
                                         <input type="hidden" name="id" value="<?= $s['id'] ?>">
                                         <button type="submit"

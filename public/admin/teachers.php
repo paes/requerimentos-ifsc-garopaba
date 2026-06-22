@@ -108,6 +108,7 @@ $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?= $editingTeacher ? 'Editar Docente' : 'Novo Docente' ?>
         </h3>
         <form method="POST" class="space-y-4">
+            <?= Csrf::field() ?>
             <input type="hidden" name="action" value="<?= $editingTeacher ? 'update' : 'create' ?>">
             <?php if ($editingTeacher): ?>
                 <input type="hidden" name="id" value="<?= $editingTeacher['id'] ?>">
@@ -204,6 +205,7 @@ $teachers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         </svg>
                                     </a>
                                     <form method="POST" class="inline-block" onsubmit="return confirm('Excluir este docente?');">
+                                        <?= Csrf::field() ?>
                                         <input type="hidden" name="action" value="delete">
                                         <input type="hidden" name="id" value="<?= $t['id'] ?>">
                                         <button type="submit"

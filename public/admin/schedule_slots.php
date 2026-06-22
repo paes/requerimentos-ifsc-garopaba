@@ -201,6 +201,7 @@ require_once 'layout/sidebar.php';
             <p class="text-xs text-gray-400 mb-4">Importe a exportação XML do aSc Timetables (formato asctt2012). Os dados do semestre serão substituídos.</p>
 
             <form method="POST" enctype="multipart/form-data" class="flex flex-wrap gap-4 items-end">
+                <?= Csrf::field() ?>
                 <input type="hidden" name="import_xml" value="1">
                 <div>
                     <label class="block text-xs font-semibold text-gray-500 mb-1 uppercase tracking-wider">Semestre</label>
@@ -407,6 +408,7 @@ require_once 'layout/sidebar.php';
                                     </td>
                                     <td class="px-5 py-3 text-right">
                                         <form method="POST" onsubmit="return confirm('Remover esta alocação?')">
+                                            <?= Csrf::field() ?>
                                             <input type="hidden" name="delete_slot_id" value="<?= $slot['id'] ?>">
                                             <button type="submit"
                                                 class="text-xs text-red-500 hover:text-red-700 font-medium">

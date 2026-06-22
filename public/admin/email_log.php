@@ -46,6 +46,7 @@ if (isset($_GET['view'])) {
         </div>
         <?php if (!empty($files)): ?>
         <form method="POST" onsubmit="return confirm('Apagar todos os e-mails do log?');">
+            <?= Csrf::field() ?>
             <input type="hidden" name="action" value="clear">
             <button type="submit" class="bg-red-50 border border-red-200 text-red-600 px-4 py-2 rounded-xl text-sm font-bold hover:bg-red-100 transition-colors">
                 Limpar log

@@ -116,6 +116,7 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
             Novo Curso
         </h3>
         <form method="POST" class="flex flex-col md:flex-row gap-4 items-end flex-wrap">
+            <?= Csrf::field() ?>
             <input type="hidden" name="action" value="create">
             <div class="flex-1 min-w-48">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Nome do Curso</label>
@@ -208,6 +209,7 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </button>
                                 <form method="POST" class="inline-block"
                                     onsubmit="return confirm('Tem certeza que deseja excluir este curso?');">
+                                    <?= Csrf::field() ?>
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="id" value="<?= $c['id'] ?>">
                                     <button type="submit"
@@ -241,6 +243,7 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </button>
         </div>
         <form method="POST" class="space-y-4">
+            <?= Csrf::field() ?>
             <input type="hidden" name="action" value="update">
             <input type="hidden" name="id" id="edit_id">
 

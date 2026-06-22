@@ -99,6 +99,7 @@ $roles = $conn->query("SELECT * FROM roles ORDER BY name")->fetchAll(PDO::FETCH_
                 Novo Tipo de Requerimento
             </h3>
             <form method="POST" class="flex gap-4 items-end">
+                <?= Csrf::field() ?>
                 <input type="hidden" name="action" value="create_type">
                 <div class="flex-1">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Nome do Tipo</label>
@@ -155,6 +156,7 @@ $roles = $conn->query("SELECT * FROM roles ORDER BY name")->fetchAll(PDO::FETCH_
                                         <span class="text-sm font-medium text-gray-700"><?= htmlspecialchars($step['role_name']) ?></span>
                                     </div>
                                     <form method="POST" onsubmit="return confirm('Remover etapa?');">
+                                        <?= Csrf::field() ?>
                                         <input type="hidden" name="action" value="delete_step">
                                         <input type="hidden" name="id" value="<?= $step['id'] ?>">
                                         <button type="submit" class="text-gray-400 hover:text-red-500 p-1 rounded-md hover:bg-red-50 transition-all">
@@ -169,6 +171,7 @@ $roles = $conn->query("SELECT * FROM roles ORDER BY name")->fetchAll(PDO::FETCH_
                         </ul>
 
                         <form method="POST" class="flex gap-4 items-end bg-gray-50 p-4 rounded-xl border border-dashed border-gray-300 hover:border-brand-DEFAULT/50 transition-colors">
+                            <?= Csrf::field() ?>
                             <input type="hidden" name="action" value="add_step">
                             <input type="hidden" name="request_type_id" value="<?= $type['id'] ?>">
                             

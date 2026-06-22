@@ -78,6 +78,7 @@ $roleName = $roleStmt->fetchColumn();
         </div>
 
         <form method="POST" class="space-y-6">
+            <?= Csrf::field() ?>
             <div>
                 <h3 class="text-lg font-bold text-gray-800 mb-4">Preferências</h3>
                 <label class="flex items-center cursor-pointer p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">

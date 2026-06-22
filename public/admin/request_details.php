@@ -737,6 +737,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         Análise do Requerimento
                     </h3>
                     <form method="POST" id="actionForm">
+                        <?= Csrf::field() ?>
                         <div class="mb-4">
                             <label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wider">Observação
                                 (Obrigatório)</label>
@@ -902,6 +903,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php if (isset($canUndo) && $canUndo): ?>
                         <form method="POST" id="undoForm"
                             onsubmit="return confirm('Tem certeza que deseja desfazer a sua última decisão? Esta ação retornará a requisição para a etapa anterior e apagará o último registro do histórico.');">
+                            <?= Csrf::field() ?>
                             <input type="hidden" name="action" value="undo">
                             <button type="submit"
                                 class="bg-yellow-50 text-yellow-600 border border-yellow-200 px-4 py-2 rounded-xl text-sm font-bold hover:bg-yellow-100 hover:text-yellow-700 transition-colors shadow-sm flex items-center">

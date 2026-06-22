@@ -404,6 +404,7 @@ require_once 'layout/sidebar.php';
                             <?php if ($canActNow): ?>
                                 <div class="mt-4 pt-4 border-t border-gray-100">
                                     <form method="POST" class="space-y-3">
+                                        <?= Csrf::field() ?>
                                         <input type="hidden" name="request_id" value="<?= $req['id'] ?>">
                                         <div>
                                             <label class="block text-xs font-medium text-gray-600 mb-1">Observação (opcional)</label>

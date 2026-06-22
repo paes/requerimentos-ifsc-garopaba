@@ -117,6 +117,7 @@ $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?= $editingType ? 'Editar Tipo' : 'Novo Tipo de Requisição' ?>
         </h3>
         <form method="POST" class="space-y-4">
+            <?= Csrf::field() ?>
             <input type="hidden" name="action" value="<?= $editingType ? 'update' : 'create' ?>">
             <?php if ($editingType): ?>
                 <input type="hidden" name="id" value="<?= $editingType['id'] ?>">
@@ -224,6 +225,7 @@ $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </a>
                                     <form method="POST" class="inline-block"
                                         onsubmit="return confirm('Tem certeza que deseja excluir esta função?');">
+                                        <?= Csrf::field() ?>
                                         <input type="hidden" name="action" value="delete">
                                         <input type="hidden" name="id" value="<?= $t['id'] ?>">
                                         <button type="submit"

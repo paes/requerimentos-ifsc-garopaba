@@ -264,6 +264,7 @@ require_once 'layout/sidebar.php';
                 <p class="text-xs text-gray-400 mt-0.5">Arraste um docente para a coordenação desejada</p>
             </div>
             <form method="POST" id="dnd-form">
+                <?= Csrf::field() ?>
                 <input type="hidden" name="save_dnd" value="1">
                 <input type="hidden" name="semester" value="<?= htmlspecialchars($viewSemester) ?>">
                 <!-- hidden inputs for assignments injected by JS -->
@@ -377,6 +378,7 @@ require_once 'layout/sidebar.php';
                 <p class="text-xs text-gray-400 mt-0.5">Arraste um docente para atribuir</p>
             </div>
             <form method="POST" id="campus-form">
+                <?= Csrf::field() ?>
                 <input type="hidden" name="save_campus" value="1">
                 <input type="hidden" name="semester" value="<?= htmlspecialchars($viewSemester) ?>">
                 <div id="campus-inputs"></div>
@@ -464,6 +466,7 @@ require_once 'layout/sidebar.php';
                     <td class="px-5 py-2.5 text-gray-600 dark:text-gray-300"><?= htmlspecialchars($c['role_name']) ?></td>
                     <td class="px-5 py-2.5 text-right">
                         <form method="POST" onsubmit="return confirm('Remover esta coordenação?')">
+                            <?= Csrf::field() ?>
                             <input type="hidden" name="delete_coord_id" value="<?= $c['id'] ?>">
                             <button type="submit" class="text-xs text-red-500 hover:text-red-700 font-medium">Remover</button>
                         </form>
@@ -482,6 +485,7 @@ require_once 'layout/sidebar.php';
         </summary>
         <div class="px-5 pb-5 pt-2">
             <form method="POST" class="space-y-4">
+                <?= Csrf::field() ?>
                 <input type="hidden" name="add_coord" value="1">
                 <input type="hidden" name="semester" value="<?= htmlspecialchars($viewSemester) ?>">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">

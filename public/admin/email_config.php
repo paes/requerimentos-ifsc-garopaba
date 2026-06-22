@@ -87,6 +87,7 @@ $config = $conn->query("SELECT * FROM email_config LIMIT 1")->fetch(PDO::FETCH_A
 
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 max-w-3xl">
         <form method="POST" class="space-y-6">
+            <?= Csrf::field() ?>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Servidor SMTP (Host)</label>
@@ -168,6 +169,7 @@ $config = $conn->query("SELECT * FROM email_config LIMIT 1")->fetch(PDO::FETCH_A
         </div>
 
         <form method="POST" action="process_queue_manual.php" target="_blank">
+            <?= Csrf::field() ?>
             <button type="submit" class="bg-gray-800 text-white px-6 py-2 rounded-xl font-bold hover:bg-gray-700 transition-all shadow-sm hover:shadow-md flex items-center">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                 Processar Fila Agora

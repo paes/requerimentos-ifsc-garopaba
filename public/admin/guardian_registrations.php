@@ -243,17 +243,21 @@ foreach (['pending', 'approved', 'rejected'] as $s) {
                 </p>
                 <div class="flex gap-3 items-start">
                     <form method="POST" class="flex-1 flex gap-2 items-start">
+                        <?= Csrf::field() ?>
                         <input type="hidden" name="reg_id" value="<?= $reg['id'] ?>">
                         <input type="hidden" name="action" value="approve">
                         <input type="text" name="review_note" placeholder="Observação (opcional)"
                             class="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-green-500 outline-none">
                         <button type="submit"
                             onclick="return confirm('Aprovar o cadastro de <?= addslashes($reg['guardian_name']) ?>?')"
-                            class="shrink-0 bg-green-600 text-white font-semibold text-sm px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                            class="shrink-0 font-semibold text-sm px-4 py-2 rounded-lg transition-colors"
+                            style="background:#16a34a;color:#fff;"
+                            onmouseover="this.style.background='#15803d'" onmouseout="this.style.background='#16a34a'">
                             Aprovar
                         </button>
                     </form>
                     <form method="POST">
+                        <?= Csrf::field() ?>
                         <input type="hidden" name="reg_id" value="<?= $reg['id'] ?>">
                         <input type="hidden" name="action" value="reject">
                         <input type="hidden" name="review_note" value="">

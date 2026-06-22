@@ -6,6 +6,7 @@
  */
 session_start();
 require_once 'LdapService.php';
+require_once 'Csrf.php';
 
 class Auth
 {
@@ -67,6 +68,10 @@ class Auth
         if (!isset($_SESSION['user_id'])) {
             header('Location: index.php');
             exit;
+        }
+        // CSRF: toda requisição POST autenticada (admin e portal docente) exige token válido
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            Csrf::check();
         }
     }
 

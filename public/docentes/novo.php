@@ -60,6 +60,7 @@ require_once 'layout/sidebar.php';
         </div>
 
         <form method="POST" action="submit.php" class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 space-y-6">
+            <?= Csrf::field() ?>
 
             <!-- Curso -->
             <div>

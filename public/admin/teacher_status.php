@@ -138,6 +138,7 @@ $currentPage = 'teacher_status.php';
 
     <?php if ($semester): ?>
     <form method="POST">
+        <?= Csrf::field() ?>
         <input type="hidden" name="semester" value="<?= htmlspecialchars($semester) ?>">
         <input type="hidden" name="save" value="1">
 

@@ -86,6 +86,7 @@ $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 Nova Função
             </h3>
             <form method="POST" class="flex flex-col md:flex-row gap-4 items-end">
+                <?= Csrf::field() ?>
                 <input type="hidden" name="action" value="create">
                 <div class="flex-1 w-full">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Nome da Função</label>
@@ -129,6 +130,7 @@ $roles = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <form method="POST" class="inline-block" onsubmit="return confirm('Tem certeza que deseja excluir esta função?');">
+                                        <?= Csrf::field() ?>
                                         <input type="hidden" name="action" value="delete">
                                         <input type="hidden" name="id" value="<?= $r['id'] ?>">
                                         <button type="submit" class="text-red-400 hover:text-red-600 font-bold p-2 hover:bg-red-50 rounded-lg transition-colors">
