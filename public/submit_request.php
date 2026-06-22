@@ -169,18 +169,24 @@ try {
     $requestId = $conn->lastInsertId();
 
     // 4. Handle Files (Permanent Transfer)
-    if (isset($_POST['temp_files'])) {
+    if (isset($_POST['temp_files']) && is_array($_POST['temp_files'])) {
         $tempFiles = $_POST['temp_files'];
         $uploadedCount = 0;
         $tempDir = __DIR__ . '/temp/';
         $targetDir = __DIR__ . '/uploads/';
 
         foreach ($tempFiles as $tempFile) {
-            $tempFilePath = $tempDir . $tempFile;
+            // SEGURANÇA: aceitar APENAS nomes gerados por upload_temp.php
+            // (32 hex + extensão permitida). Bloqueia path traversal (ex.: ../config/config.php).
+            if (!is_string($tempFile) || !preg_match('/^[a-f0-9]{32}\.(pdf|jpe?g|png|docx?)$/i', $tempFile)) {
+                continue;
+            }
+            $safeName     = basename($tempFile);
+            $tempFilePath = $tempDir . $safeName;
 
             if (file_exists($tempFilePath)) {
                 $uploadedCount++;
-                $extension = strtolower(pathinfo($tempFile, PATHINFO_EXTENSION));
+                $extension = strtolower(pathinfo($safeName, PATHINFO_EXTENSION));
                 $newFilename = "{$protocolCode}-" . str_pad($uploadedCount, 2, '0', STR_PAD_LEFT) . ".{$extension}";
                 $targetPath = $targetDir . $newFilename;
 
@@ -330,5 +336,8 @@ try {
     if (isset($conn)) {
         $conn->rollBack();
     }
-    die("Erro: " . $e->getMessage());
+    // Loga o detalhe internamente (não expõe ao usuário — evita vazamento de informação)
+    error_log('[submit_request] ' . $e->getMessage());
+    http_response_code(500);
+    die("Não foi possível registrar seu requerimento no momento. Tente novamente em alguns minutos ou contate a secretaria.");
 }

@@ -37,7 +37,10 @@ class Database {
             $this->conn->exec("set names utf8");
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $exception) {
-            die("Erro de Conexão: " . $exception->getMessage() . "<br>Verifique se a extensão 'pdo_mysql' está habilitada no seu php.ini.");
+            // Loga o detalhe (host/usuário/erro) só no servidor — nunca exibe ao usuário
+            error_log('[Database] Falha de conexão: ' . $exception->getMessage());
+            http_response_code(500);
+            die("Serviço temporariamente indisponível. Tente novamente em instantes.");
         }
 
         return $this->conn;

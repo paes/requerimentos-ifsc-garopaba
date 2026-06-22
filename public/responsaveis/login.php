@@ -32,6 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Login bem-sucedido — zera contador
             unset($_SESSION['guardian_login_attempts']);
 
+            // Previne fixação de sessão: novo ID ao autenticar
+            session_regenerate_id(true);
+
             $_SESSION['guardian_id']              = $guardian['id'];
             $_SESSION['guardian_name']            = $guardian['name'];
             $_SESSION['guardian_email']           = $guardian['email'];

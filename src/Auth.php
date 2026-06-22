@@ -38,6 +38,9 @@ class Auth
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user) {
+                // Previne fixação de sessão: novo ID ao elevar privilégio (login)
+                session_regenerate_id(true);
+
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_role'] = $user['role_id'];
