@@ -2,6 +2,7 @@
 // Guard para o portal de responsáveis — incluir no topo de cada página protegida
 require_once '../../config/database.php';
 require_once '../../config/config.php';
+require_once '../../src/Csrf.php';
 
 if (session_status() === PHP_SESSION_NONE) session_start();
 

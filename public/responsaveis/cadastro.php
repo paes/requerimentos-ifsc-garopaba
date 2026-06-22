@@ -1,6 +1,7 @@
 <?php
 require_once '../../config/database.php';
 require_once '../../config/config.php';
+require_once '../../src/Csrf.php';
 
 if (session_status() === PHP_SESSION_NONE) session_start();
 
@@ -50,6 +51,7 @@ $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(
     </div>
 
     <form id="form-cadastro" method="POST" action="submit_cadastro.php" enctype="multipart/form-data" class="space-y-6">
+        <?= Csrf::field() ?>
 
         <!-- Dados do responsável -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">

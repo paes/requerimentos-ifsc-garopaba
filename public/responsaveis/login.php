@@ -1,6 +1,7 @@
 <?php
 require_once '../../config/database.php';
 require_once '../../config/config.php';
+require_once '../../src/Csrf.php';
 
 if (session_status() === PHP_SESSION_NONE) session_start();
 
@@ -13,6 +14,7 @@ if (!empty($_SESSION['guardian_id'])) {
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    Csrf::check();
     $email    = strtolower(trim($_POST['email'] ?? ''));
     $password = $_POST['password'] ?? '';
 
@@ -80,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="POST" class="space-y-5">
+        <?= Csrf::field() ?>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
             <input type="email" name="email" required autocomplete="username"

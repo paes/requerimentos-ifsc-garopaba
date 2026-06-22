@@ -1,6 +1,7 @@
 <?php
 require_once '../../config/database.php';
 require_once '../../config/config.php';
+require_once '../../src/Csrf.php';
 require_once '../../src/CryptoHelper.php';
 require_once '../../src/EmailService.php';
 require_once '../../src/EmailTemplate.php';
@@ -11,6 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: cadastro.php');
     exit;
 }
+
+// CSRF: protege a criação de cadastro (com upload de arquivo)
+Csrf::check();
 
 // --- Coleta e validação básica ---
 $guardianName  = trim($_POST['guardian_name'] ?? '');

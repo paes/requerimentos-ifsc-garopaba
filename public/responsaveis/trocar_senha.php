@@ -1,6 +1,7 @@
 <?php
 require_once '../../config/database.php';
 require_once '../../config/config.php';
+require_once '../../src/Csrf.php';
 
 if (session_status() === PHP_SESSION_NONE) session_start();
 
@@ -15,6 +16,7 @@ $error   = '';
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    Csrf::check();
     $current  = $_POST['current_password'] ?? '';
     $new      = $_POST['new_password'] ?? '';
     $confirm  = $_POST['confirm_password'] ?? '';
@@ -70,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="POST" class="space-y-4">
+        <?= Csrf::field() ?>
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Senha atual (temporária)</label>
             <input type="password" name="current_password" required autocomplete="current-password"
