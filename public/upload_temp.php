@@ -13,7 +13,7 @@ $tempDir = __DIR__ . '/temp/';
 
 // Cria diretorio se nao existir
 if (!file_exists($tempDir)) {
-    mkdir($tempDir, 0777, true);
+    mkdir($tempDir, 0755, true);
 }
 
 // Verificacao Basica de Seguranca
@@ -44,6 +44,24 @@ $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
 if (!in_array($extension, $allowedExtensions)) {
     $response = ['success' => false, 'message' => 'Tipo de arquivo não permitido.'];
+    echo json_encode($response);
+    exit;
+}
+
+// Validacao de conteudo (MIME real) — defesa contra arquivo disfarcado pela extensao
+$allowedMimes = [
+    'application/pdf',
+    'image/jpeg', 'image/png',
+    'application/msword',                                                       // .doc
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',  // .docx
+    'application/zip',           // .docx as vezes detectado assim
+    'application/x-ole-storage', // .doc antigo as vezes detectado assim
+];
+$finfo = finfo_open(FILEINFO_MIME_TYPE);
+$mime  = finfo_file($finfo, $file['tmp_name']);
+finfo_close($finfo);
+if (!in_array($mime, $allowedMimes, true)) {
+    $response = ['success' => false, 'message' => 'O conteúdo do arquivo não corresponde a um tipo permitido.'];
     echo json_encode($response);
     exit;
 }

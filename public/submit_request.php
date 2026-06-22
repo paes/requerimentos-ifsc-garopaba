@@ -23,6 +23,34 @@ if (ENABLE_TURNSTILE) {
     }
 }
 
+// Validacao server-side (backstop — o formulario tambem valida via JS, mas e contornavel)
+$vName  = trim($_POST['student_name']  ?? '');
+$vEmail = trim($_POST['student_email'] ?? '');
+$vId    = trim($_POST['student_id']    ?? '');
+$vCourse = (int)($_POST['course_id']        ?? 0);
+$vType   = (int)($_POST['request_type_id']  ?? 0);
+$vIsMinor = !isset($_POST['is_adult']);
+
+$vErrors = [];
+if (mb_strlen($vName) < 3)                            $vErrors[] = 'Informe seu nome completo.';
+if (mb_strlen($vName) > 255)                          $vErrors[] = 'Nome muito longo.';
+if (!filter_var($vEmail, FILTER_VALIDATE_EMAIL))     $vErrors[] = 'Informe um e-mail válido.';
+if (mb_strlen($vEmail) > 255)                         $vErrors[] = 'E-mail muito longo.';
+if ($vId === '' || mb_strlen($vId) > 50)             $vErrors[] = 'Informe uma matrícula válida.';
+if ($vCourse <= 0)                                    $vErrors[] = 'Selecione o curso.';
+if ($vType <= 0)                                      $vErrors[] = 'Selecione o tipo de requerimento.';
+if ($vIsMinor) {
+    if (trim($_POST['guardian_name']  ?? '') === '') $vErrors[] = 'Informe o nome do responsável.';
+    if (trim($_POST['guardian_phone'] ?? '') === '') $vErrors[] = 'Informe o telefone do responsável.';
+}
+
+if ($vErrors) {
+    session_start(); // reabre a sessao (foi fechada acima) para guardar o erro
+    $_SESSION['submit_error'] = implode(' ', $vErrors);
+    header('Location: ' . BASE_URL . '/index.php?erro=validacao', true, 303);
+    exit;
+}
+
 try {
     $db = new Database();
     $conn = $db->getConnection();
