@@ -194,7 +194,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $activeLabel = '';
                         $totalSteps  = count($workflowSteps);
                     ?>
-                    <div class="flex items-start justify-center gap-0">
+                    <div class="overflow-x-auto pb-2 -mx-2 px-2">
+                    <div class="flex items-start justify-center gap-0 w-max min-w-full mx-auto">
                         <!-- Passo fixo: envio do requerimento pelo aluno — sempre concluído -->
                         <div class="flex items-center">
                             <div class="flex flex-col items-center w-20">
@@ -260,6 +261,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
+                    </div>
                     </div>
 
                     <?php if ($activeLabel): ?>

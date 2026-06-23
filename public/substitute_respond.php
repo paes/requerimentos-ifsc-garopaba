@@ -21,7 +21,7 @@ function renderPage(string $title, string $emoji, string $heading, string $body,
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>' . htmlspecialchars($title) . ' — IFSC Garopaba</title>
-<link rel="stylesheet" href="' . BASE_URL . '/assets/css/output.css">
+<link rel="stylesheet" href="' . BASE_URL . '/assets/css/tailwind.css">
 </head>
 <body class="min-h-screen bg-gray-50 flex items-center justify-center p-6">
 <div class="max-w-md w-full bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center">

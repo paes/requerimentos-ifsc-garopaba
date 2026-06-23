@@ -68,31 +68,56 @@ $logoBase64 = file_exists($logoPath) ? 'data:image/png;base64,' . base64_encode(
 
     <!-- Header -->
     <header class="theme-header text-white shadow-lg">
-        <div class="container mx-auto px-6 py-2 flex items-center justify-between">
-            <div class="flex items-center space-x-4">
+        <div class="container mx-auto px-4 sm:px-6 py-2 flex items-center justify-between">
+            <div class="flex items-center space-x-3 sm:space-x-4 min-w-0">
                 <img src="<?= BASE_URL ?>/assets/img/logob.png" alt="IFSC Logo"
-                    class="h-14 brightness-0 invert opacity-90 hover:opacity-100 transition-opacity">
+                    class="h-12 sm:h-14 brightness-0 invert opacity-90 hover:opacity-100 transition-opacity">
                 <div class="hidden md:block border-l border-white/30 pl-4">
                     <h1 class="text-lg font-bold tracking-tight">Instituto Federal de Santa Catarina</h1>
                     <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Sistema de Requerimentos</p>
                 </div>
             </div>
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-2 sm:space-x-4">
                 <div class="theme-switcher">
                     <button class="theme-btn" data-t="default" title="Esmeralda">💎</button>
                     <button class="theme-btn" data-t="ifsc"    title="IFSC">🍃</button>
                     <button class="theme-btn" data-t="noturno" title="Noturno">🌙</button>
                 </div>
-                <a href="<?= BASE_URL ?>/check_status.php"
-                    class="text-sm font-medium text-white/90 hover:text-white transition-colors">Consultar Protocolo</a>
-                <a href="<?= BASE_URL ?>/docentes/index.php"
-                    class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm font-medium transition-all">Portal Docente</a>
-                <a href="<?= BASE_URL ?>/admin/index.php"
-                    class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-all backdrop-blur-sm">Área
-                    Administrativa</a>
+                <!-- Links (desktop) -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="<?= BASE_URL ?>/check_status.php"
+                        class="text-sm font-medium text-white/90 hover:text-white transition-colors">Consultar Protocolo</a>
+                    <a href="<?= BASE_URL ?>/docentes/index.php"
+                        class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm font-medium transition-all">Portal Docente</a>
+                    <a href="<?= BASE_URL ?>/admin/index.php"
+                        class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-all backdrop-blur-sm">Área Administrativa</a>
+                </div>
+                <!-- Menu (mobile) -->
+                <button type="button" id="navToggle" aria-label="Abrir menu" aria-expanded="false"
+                    class="md:hidden p-2 -mr-1 rounded-lg hover:bg-white/10 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
             </div>
         </div>
+        <!-- Dropdown mobile -->
+        <div id="mobileNav" class="hidden md:hidden border-t border-white/15 px-4 pb-3 pt-2 space-y-1">
+            <a href="<?= BASE_URL ?>/check_status.php" class="block px-3 py-2 rounded-lg text-sm font-medium hover:bg-white/10 transition-colors">Consultar Protocolo</a>
+            <a href="<?= BASE_URL ?>/docentes/index.php" class="block px-3 py-2 rounded-lg text-sm font-medium hover:bg-white/10 transition-colors">Portal Docente</a>
+            <a href="<?= BASE_URL ?>/admin/index.php" class="block px-3 py-2 rounded-lg text-sm font-medium hover:bg-white/10 transition-colors">Área Administrativa</a>
+        </div>
     </header>
+    <script>
+        (function () {
+            var btn = document.getElementById('navToggle');
+            var nav = document.getElementById('mobileNav');
+            if (btn && nav) btn.addEventListener('click', function () {
+                var open = nav.classList.toggle('hidden') === false;
+                btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+        })();
+    </script>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12 max-w-4xl">
