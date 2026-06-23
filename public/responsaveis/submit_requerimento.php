@@ -282,6 +282,7 @@ if ($action === 'confirmar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
             $uploadedCount = 0;
             $tempDir   = dirname(__DIR__) . '/temp/';
             $targetDir = dirname(__DIR__) . '/uploads/';
+            if (!is_dir($targetDir)) mkdir($targetDir, 0755, true); // garante a pasta (evita perda silenciosa de anexos)
             foreach ((array)$formData['temp_files'] as $tempFile) {
                 // SEGURANÇA: aceitar APENAS nomes gerados por upload_temp.php (bloqueia path traversal)
                 if (!is_string($tempFile) || !preg_match('/^[a-f0-9]{32}\.(pdf|jpe?g|png|docx?)$/i', $tempFile)) {

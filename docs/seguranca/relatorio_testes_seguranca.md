@@ -41,6 +41,7 @@
 | 7 | 🟡 Menor | Upload validado só por extensão (sem checagem de MIME real) | A04 · CWE-434 | `upload_temp.php` | `613b168` |
 | 8 | 🟡 Menor | `mkdir(..., 0777)` no diretório temporário | CWE-732 | `upload_temp.php` | `613b168` |
 | 9 | 🟡 Menor | Conexão PDO sem `charset=utf8mb4` | — | `config/database.php` | `613b168` |
+| 10 | 🟡 Menor | Pasta `public/uploads/` não criada pelo handler → **perda silenciosa de anexos** em implantação sem o diretório (descoberto no teste E2E 3.7) | A04 (disponibilidade/integridade) | `submit_request.php`, `responsaveis/submit_requerimento.php` | (correção + `.gitkeep`) |
 
 ### Itens identificados e **adiados** (exigem mais que um patch)
 - **AES-256-CBC sem autenticação (HMAC)** em `src/CryptoHelper.php` — migrar para AES-GCM exige **re-criptografar os telefones já gravados** (script de migração). *Pendente.*
@@ -106,10 +107,26 @@ novo_requerimento, confirmar_otp, submit_requerimento, trocar_senha), `public/ad
 ### 3.6 Stepper / página de consulta (regressão pós-responsividade)
 **Resultado: APROVADO.** Consulta com protocolo real (`2026-1-0013`) renderizou "Fluxo do Requerimento", a "Linha do Tempo" e o wrapper de rolagem — **sem erros PHP** (nenhum *Fatal/Parse/Warning/Notice*).
 
+### 3.7 Submissão completa de requerimento + bloqueio de path traversal (E2E)
+**Resultado: APROVADO** (com 1 achado de robustez corrigido — ver item #10).
+
+Fluxo real exercitado: upload de PDF via `upload_temp.php` → submissão em `submit_request.php` com **dois** anexos — um legítimo (`[32hex].pdf`) e um **payload malicioso** (`../../config/config.php`) — gravação real no banco e no disco, seguida de remoção dos dados de teste.
+
+| Caso de teste | Esperado | Obtido |
+|---|---|---|
+| Upload de PDF válido (`upload_temp.php`, com checagem de MIME) | aceito | ✅ aceito (`application/pdf`) |
+| Submissão válida cria o requerimento | request gravado + redirect `success.php?protocol=` | ✅ request criado, redirect 303 com protocolo |
+| Anexo **legítimo** movido para `uploads/` e registrado | 1 arquivo `PROTO-01.pdf` em `request_files` | ✅ salvo e registrado (1 linha) |
+| Payload **`../../config/config.php`** | bloqueado (não movido/registrado) | ✅ `config/config.php` intacto (md5 inalterado); **nenhum `.php`** em `uploads/` |
+| Total de anexos gravados | 1 (só o legítimo) | ✅ **1** |
+
+> **Achado:** na 1ª execução, o anexo legítimo **não** foi salvo porque `public/uploads/` não existia e o handler não a criava (perda silenciosa). Corrigido (item #10): handlers passam a criar a pasta (`mkdir 0755`) e foi adicionado `public/uploads/.gitkeep`. Reexecução: **tudo aprovado**.
+>
+> **Limpeza:** request de teste, linhas de `request_files`, arquivo em `uploads/`, PDF temporário e logs de e-mail de dev gerados foram **removidos** após o teste (banco e disco retornados ao estado anterior).
+
 ---
 
 ## 4. Não testado dinamicamente (cobertura futura)
-- **Submissão completa de requerimento** (insere no banco) — exercitaria o caminho corrigido de path traversal com gravação real. Não executado para não poluir o banco.
 - **XSS de `guardian_registrations.php`** — validado por **inspeção de código + lint** (codificação `htmlspecialchars(addslashes(...), ENT_QUOTES)` no contexto atributo-HTML › string-JS); não explorado dinamicamente.
 - **Varredura oficial da DTIC** (Etapa 6) — pendente, exigência da Resolução CGD 03/2025.
 
@@ -123,6 +140,7 @@ a0cd9bb  Correcao: path traversal (anexos), vazamento de erro, fixacao de sessao
 bacd1f0  CSRF no painel admin e portal docente (central em Auth::check)
 613b168  Validacao server-side do form do aluno + endurecimentos menores (MIME, perms, charset)
 b4594c6  Correcao de XSS armazenado em guardian_registrations.php
+<novo>   Cria public/uploads/ nos handlers (+ .gitkeep); documenta teste E2E (secao 3.7)
 ```
 
 *(Repositório local; após a migração para o git.ifsc.edu.br, atualizar com os links permanentes dos commits.)*

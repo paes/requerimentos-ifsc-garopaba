@@ -202,6 +202,7 @@ try {
         $uploadedCount = 0;
         $tempDir = __DIR__ . '/temp/';
         $targetDir = __DIR__ . '/uploads/';
+        if (!is_dir($targetDir)) mkdir($targetDir, 0755, true); // garante a pasta (evita perda silenciosa de anexos)
 
         foreach ($tempFiles as $tempFile) {
             // SEGURANÇA: aceitar APENAS nomes gerados por upload_temp.php
