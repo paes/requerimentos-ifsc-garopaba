@@ -4,6 +4,10 @@
 # Dados locais do Claude Code (memória, planos, configurações de sessão)
 .claude/
 
+# Artefatos do instalador de skills/agentes (tooling local, não faz parte da aplicação)
+.agents/
+skills-lock.json
+
 # E-mails de dev (gerados em modo de teste local)
 storage/email_log/*.html
 
