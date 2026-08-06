@@ -14,7 +14,12 @@ storage/email_log/*.html
 # Arquivos Temporarios e Uploads
 public/uploads/*
 !public/uploads/.gitkeep
+!public/uploads/.htaccess
 public/temp/*
+
+# Anexos de requerimento (dados pessoais/sensiveis — LGPD): fora do webroot, nunca no git
+storage/request_files/*
+!storage/request_files/.gitkeep
 !public/temp/.gitkeep
 
 # Dependencias e Cache (caso use composer futuramente)

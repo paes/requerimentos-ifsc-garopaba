@@ -201,7 +201,9 @@ try {
         $tempFiles = $_POST['temp_files'];
         $uploadedCount = 0;
         $tempDir = __DIR__ . '/temp/';
-        $targetDir = __DIR__ . '/uploads/';
+        // Anexos podem conter dados sensíveis (atestados/laudos de saúde — LGPD Art. 11).
+        // Guardados FORA do webroot; servidos só via endpoint autenticado (admin/request_file.php).
+        $targetDir = dirname(__DIR__) . '/storage/request_files/';
         if (!is_dir($targetDir)) mkdir($targetDir, 0755, true); // garante a pasta (evita perda silenciosa de anexos)
 
         foreach ($tempFiles as $tempFile) {

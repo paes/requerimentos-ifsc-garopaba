@@ -613,7 +613,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <span
                                         class="text-sm font-medium text-gray-700 truncate"><?= htmlspecialchars($file['filepath']) ?></span>
                                 </div>
-                                <a href="<?= BASE_URL ?>/uploads/<?= htmlspecialchars($file['filepath']) ?>" target="_blank"
+                                <a href="<?= BASE_URL ?>/admin/request_file.php?id=<?= (int)$file['id'] ?>" target="_blank"
                                     class="text-brand-DEFAULT hover:text-brand-dark p-2 rounded-lg hover:bg-brand-light/10 transition-colors">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

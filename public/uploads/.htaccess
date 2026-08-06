@@ -1,0 +1,10 @@
+# Anexos de requerimento foram movidos para storage/request_files/ (fora do webroot) e passaram
+# a ser servidos apenas por admin/request_file.php (autenticado). Este diretorio nao deve mais
+# servir arquivos: bloqueio de acesso direto como defesa em profundidade (LGPD — dados sensiveis).
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

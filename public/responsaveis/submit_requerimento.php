@@ -281,7 +281,9 @@ if ($action === 'confirmar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!empty($formData['temp_files'])) {
             $uploadedCount = 0;
             $tempDir   = dirname(__DIR__) . '/temp/';
-            $targetDir = dirname(__DIR__) . '/uploads/';
+            // Anexos podem conter dados sensíveis (atestados/laudos — LGPD Art. 11): fora do webroot,
+            // servidos só via endpoint autenticado (admin/request_file.php).
+            $targetDir = dirname(__DIR__, 2) . '/storage/request_files/';
             if (!is_dir($targetDir)) mkdir($targetDir, 0755, true); // garante a pasta (evita perda silenciosa de anexos)
             foreach ((array)$formData['temp_files'] as $tempFile) {
                 // SEGURANÇA: aceitar APENAS nomes gerados por upload_temp.php (bloqueia path traversal)
